@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Questionario Vitalia — Scegli la lingua / Choose your language</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-deep:  #0D3B1E;
+      --green-mid:   #1A5C30;
+      --green-light: #2E7D46;
+      --gold:        #C9A84C;
+      --gold-light:  #E0C06A;
+      --cream:       #FAF7F0;
+      --white:       #FFFFFF;
+      --text-dark:   #1A1A1A;
+      --text-mid:    #4A4A4A;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--green-deep);
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem 1.5rem;
+    }
+
+    /* ---- decorative background gradient ---- */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 10%, rgba(46,125,70,0.25) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 90%, rgba(201,168,76,0.10) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 680px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.5rem;
+    }
+
+    /* ---- header ---- */
+    .header {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .logo-wrap {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      border: 2px solid rgba(201,168,76,0.40);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .logo-wrap img {
+      width: 62px;
+      height: 62px;
+      object-fit: contain;
+    }
+
+    .logo-fallback {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.02em;
+    }
+
+    .tagline {
+      font-size: 0.80rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.85;
+    }
+
+    .headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 5vw, 2.1rem);
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--white);
+      text-align: center;
+    }
+
+    .headline span {
+      color: var(--gold-light);
+    }
+
+    .sub {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.6;
+      text-align: center;
+      max-width: 440px;
+    }
+
+    /* ---- divider ---- */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      width: 100%;
+      max-width: 380px;
+    }
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(201,168,76,0.30);
+    }
+    .divider span {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(201,168,76,0.60);
+      white-space: nowrap;
+    }
+
+    /* ---- language cards ---- */
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      width: 100%;
+    }
+
+    .lang-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.90rem;
+      padding: 2rem 1.5rem 2.25rem;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.05);
+      border: 1.5px solid rgba(255,255,255,0.10);
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--white);
+      transition: transform 0.22s ease, background 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .lang-card:hover {
+      background: rgba(255,255,255,0.09);
+      border-color: rgba(201,168,76,0.55);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.30);
+    }
+
+    .lang-card:active {
+      transform: translateY(-1px);
+    }
+
+    .flag {
+      font-size: 3.4rem;
+      line-height: 1;
+    }
+
+    .lang-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.30rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .lang-native {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.50);
+      letter-spacing: 0.04em;
+    }
+
+    .lang-cta {
+      margin-top: 0.25rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.40rem;
+      font-size: 0.80rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.85;
+      transition: opacity 0.18s;
+    }
+
+    .lang-card:hover .lang-cta {
+      opacity: 1;
+    }
+
+    .lang-cta svg {
+      width: 12px;
+      height: 12px;
+      flex-shrink: 0;
+      fill: currentColor;
+      transition: transform 0.18s;
+    }
+
+    .lang-card:hover .lang-cta svg {
+      transform: translateX(3px);
+    }
+
+    /* ---- footer note ---- */
+    .footer-note {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.35);
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .footer-note a {
+      color: rgba(201,168,76,0.65);
+      text-decoration: none;
+    }
+
+    .footer-note a:hover {
+      color: var(--gold-light);
+    }
+
+    /* ---- mobile: stack cards ---- */
+    @media (max-width: 420px) {
+      .cards {
+        grid-template-columns: 1fr;
+        max-width: 320px;
+        margin: 0 auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="logo-wrap">
+        <img src="logo_vitalia.jpg" alt="Vitalia logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+        <span class="logo-fallback" style="display:none;">V</span>
+      </div>
+      <p class="tagline">Vitalia · La barretta italiana nutraceutica</p>
+      <h1 class="headline">Scegli la lingua<br/><span>Choose your language</span></h1>
+      <p class="sub">Partecipa al nostro questionario · Take part in our survey</p>
+    </div>
+
+    <!-- Divider -->
+    <div class="divider"><span>seleziona · select</span></div>
+
+    <!-- Language cards -->
+    <div class="cards">
+
+      <!-- Italian -->
+      <a
+        href="INSERISCI_LINK_FORM_IT"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="lang-card"
+        aria-label="Compila il questionario in italiano"
+      >
+        <div class="flag">🇮🇹</div>
+        <div class="lang-name">Italiano</div>
+        <div class="lang-native">Questionario in italiano</div>
+        <div class="lang-cta">
+          Inizia
+          <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </div>
+      </a>
+
+      <!-- English -->
+      <a
+        href="INSERISCI_LINK_FORM_EN"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="lang-card"
+        aria-label="Fill in the survey in English"
+      >
+        <div class="flag">🇬🇧</div>
+        <div class="lang-name">English</div>
+        <div class="lang-native">Survey in English</div>
+        <div class="lang-cta">
+          Start
+          <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Footer -->
+    <p class="footer-note">
+      Il questionario richiede circa 5 minuti · The survey takes about 5 minutes.<br/>
+      Le risposte sono anonime · Responses are anonymous.<br/>
+      <a href="index.html">← Torna al sito / Back to site</a>
+    </p>
+
+  </div>
+</body>
+</html>

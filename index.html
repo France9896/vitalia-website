@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vitalia — La prima barretta italiana nutraceutica. Ingredienti regionali DOP/IGP, vitamine brevettate con l'Università di Parma, zero dolcificanti.">
+  <meta property="og:title" content="Vitalia — La prima barretta italiana nutraceutica">
+  <meta property="og:description" content="Ingredienti DOP/IGP delle regioni italiane + complesso vitaminico brevettato UniPR. In arrivo nel 2027.">
+  <meta property="og:image" content="logo_vitalia.jpg">
+  <title>Vitalia — La Prima Barretta Italiana Nutraceutica</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── RESET & BASE ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #1A1A1A;
+      background: #fff;
+      line-height: 1.6;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ─── VARIABLES ─────────────────────────────────────────────── */
+    :root {
+      --green-dark:  #0D3B1E;
+      --green:       #145430;
+      --green-mid:   #1A6B3A;
+      --green-light: #2D9156;
+      --green-xl:    #D6EDE1;
+      --gold:        #C89B20;
+      --gold-light:  #F0D060;
+      --white:       #FFFFFF;
+      --dark:        #1A1A1A;
+      --grey:        #4A4A4A;
+      --grey-light:  #888888;
+      --grey-bg:     #F6F7F6;
+    }
+
+    /* ─── NAVBAR ────────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      height: 70px;
+      background: rgba(13, 59, 30, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(200, 155, 32, 0.2);
+      transition: background 0.3s;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .nav-logo img {
+      height: 40px; width: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid var(--gold);
+    }
+    .nav-logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 2px;
+    }
+    .nav-links {
+      display: flex; align-items: center; gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.80);
+      font-weight: 500;
+      transition: color 0.2s;
+      letter-spacing: 0.5px;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold);
+      color: var(--green-dark) !important;
+      padding: 8px 22px;
+      border-radius: 4px;
+      font-weight: 600 !important;
+      letter-spacing: 0.3px !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--gold-light) !important; }
+    .nav-hamburger { display: none; cursor: pointer; }
+    .nav-hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--white); margin: 5px 0;
+      transition: 0.3s;
+    }
+
+    /* ─── HERO ──────────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--green-dark) 0%, #0F4A22 50%, #1A5C2E 100%);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 100px 5% 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 30% 40%, rgba(200,155,32,0.08) 0%, transparent 60%),
+                  radial-gradient(ellipse at 70% 60%, rgba(45,145,86,0.12) 0%, transparent 60%);
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(200,155,32,0.15);
+      border: 1px solid rgba(200,155,32,0.4);
+      color: var(--gold);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      padding: 6px 16px;
+      border-radius: 2px;
+      margin-bottom: 28px;
+      text-transform: uppercase;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+      max-width: 900px;
+    }
+    .hero h1 span { color: var(--gold); }
+    .hero-sub {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      color: rgba(255,255,255,0.75);
+      font-style: italic;
+      margin-bottom: 24px;
+    }
+    .hero-desc {
+      font-size: 1rem;
+      color: #AACFB6;
+      max-width: 580px;
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+    .hero-dots {
+      display: flex; align-items: center; justify-content: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: #AACFB6;
+      margin-bottom: 44px;
+    }
+    .hero-dots span { color: var(--gold); font-weight: 600; }
+    .hero-dots-sep { color: rgba(255,255,255,0.25); }
+    .hero-buttons {
+      display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;
+      margin-bottom: 64px;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--green-dark);
+      padding: 14px 36px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: 4px;
+      letter-spacing: 0.3px;
+      transition: background 0.2s, transform 0.15s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      padding: 14px 36px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      border-radius: 4px;
+      border: 1.5px solid rgba(255,255,255,0.35);
+      transition: border-color 0.2s, color 0.2s;
+      cursor: pointer;
+    }
+    .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+    .hero-stats {
+      display: flex; gap: 48px; flex-wrap: wrap; justify-content: center;
+    }
+    .hero-stat { text-align: center; }
+    .hero-stat-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .hero-stat-label {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.55);
+      margin-top: 2px;
+    }
+
+    /* ─── SECTION COMMONS ───────────────────────────────────────── */
+    section { padding: 80px 5%; }
+    .section-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      color: var(--green-mid);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1rem;
+      color: var(--grey-light);
+      max-width: 580px;
+      line-height: 1.7;
+      margin-bottom: 48px;
+    }
+    .section-center { text-align: center; }
+    .section-center .section-sub { margin-left: auto; margin-right: auto; }
+
+    /* ─── PILLAR CARDS ──────────────────────────────────────────── */
+    .pillars {
+      background: var(--grey-bg);
+    }
+    .pillar-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .pillar-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 32px 28px;
+      border-top: 4px solid var(--green);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .pillar-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+    .pillar-icon {
+      width: 48px; height: 48px;
+      background: var(--green-xl);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+    }
+    .pillar-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+    .pillar-card p {
+      font-size: 0.9rem;
+      color: var(--grey);
+      line-height: 1.65;
+    }
+
+    /* ─── PRODUCTS ──────────────────────────────────────────────── */
+    .products { background: var(--white); }
+    .products-inner { max-width: 1200px; margin: 0 auto; }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+    }
+    .product-card {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      transition: transform 0.2s;
+    }
+    .product-card:hover { transform: translateY(-6px); }
+    .product-header {
+      padding: 28px 24px 20px;
+      color: var(--white);
+      position: relative;
+    }
+    .product-header.sicilia  { background: linear-gradient(135deg, #B05010 0%, #D4701A 100%); }
+    .product-header.toscana  { background: linear-gradient(135deg, #145430 0%, #1A6B3A 100%); }
+    .product-header.trentino { background: linear-gradient(135deg, #1B5EA8 0%, #2470C8 100%); }
+    .product-region {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: rgba(255,255,255,0.7);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .product-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .product-claim {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 3px 12px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+    }
+    .product-body { padding: 24px; background: var(--white); }
+    .product-section-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--green-mid);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      margin-top: 18px;
+    }
+    .product-section-label:first-child { margin-top: 0; }
+    .ingredient-list { list-style: none; }
+    .ingredient-list li {
+      font-size: 0.88rem;
+      color: var(--grey);
+      padding: 3px 0;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .ingredient-list li::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+    .vitamin-list { list-style: none; }
+    .vitamin-list li {
+      font-size: 0.82rem;
+      color: var(--grey);
+      padding: 2px 0;
+    }
+
+    /* ─── SCIENCE / UNIPR ───────────────────────────────────────── */
+    .science {
+      background: var(--green-dark);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    .science::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 80% 20%, rgba(200,155,32,0.06) 0%, transparent 60%);
+    }
+    .science-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
+      align-items: center;
+    }
+    .science .section-tag { color: var(--gold); }
+    .science .section-title { color: var(--white); }
+    .science .section-sub { color: rgba(255,255,255,0.65); margin-bottom: 32px; }
+    .science-steps { list-style: none; }
+    .science-step {
+      display: flex; gap: 16px; margin-bottom: 20px;
+    }
+    .science-step-num {
+      width: 32px; height: 32px; flex-shrink: 0;
+      background: var(--gold);
+      color: var(--green-dark);
+      border-radius: 50%;
+      font-weight: 700; font-size: 0.85rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .science-step-text h4 {
+      font-size: 0.95rem; font-weight: 600; color: var(--gold);
+      margin-bottom: 2px;
+    }
+    .science-step-text p {
+      font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.5;
+    }
+    .science-stats {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    }
+    .science-stat-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(200,155,32,0.2);
+      border-radius: 8px;
+      padding: 20px;
+    }
+    .science-stat-card .val {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem; font-weight: 700; color: var(--gold);
+      margin-bottom: 4px;
+    }
+    .science-stat-card .lbl {
+      font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 1.4;
+    }
+    .science-logo-box {
+      grid-column: 1 / -1;
+      display: flex; align-items: center; gap: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(200,155,32,0.15);
+      border-radius: 8px; padding: 16px 20px;
+      margin-top: 8px;
+    }
+    .science-logo-box p {
+      font-size: 0.85rem; color: rgba(255,255,255,0.55);
+    }
+    .science-logo-box strong { color: var(--gold); font-size: 0.95rem; }
+
+    /* ─── WAITLIST ───────────────────────────────────────────────── */
+    .waitlist {
+      background: var(--grey-bg);
+    }
+    .waitlist-inner {
+      max-width: 700px; margin: 0 auto; text-align: center;
+    }
+    .waitlist .section-tag { color: var(--green-mid); }
+    .waitlist-form {
+      display: flex; flex-direction: column; gap: 14px;
+      margin-top: 40px;
+    }
+    .waitlist-form-row {
+      display: flex; gap: 12px;
+    }
+    .waitlist-input {
+      flex: 1;
+      padding: 14px 18px;
+      font-size: 0.95rem;
+      font-family: 'Inter', sans-serif;
+      border: 1.5px solid #D8DAD8;
+      border-radius: 4px;
+      background: var(--white);
+      color: var(--dark);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .waitlist-input:focus { border-color: var(--green); }
+    .waitlist-input::placeholder { color: #AAAAAA; }
+    .waitlist-submit {
+      background: var(--green);
+      color: var(--white);
+      padding: 14px 32px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      border: none; border-radius: 4px; cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+    .waitlist-submit:hover { background: var(--green-mid); transform: translateY(-1px); }
+    .waitlist-note {
+      font-size: 0.78rem; color: var(--grey-light); margin-top: 10px;
+    }
+    .waitlist-count {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--white);
+      border: 1.5px solid var(--green-xl);
+      border-radius: 20px;
+      padding: 8px 18px;
+      font-size: 0.85rem;
+      color: var(--green-mid);
+      font-weight: 600;
+      margin-bottom: 32px;
+    }
+    .waitlist-count::before {
+      content: '🌿';
+    }
+
+    /* ─── SURVEY SECTION ─────────────────────────────────────────── */
+    .survey {
+      background: var(--white);
+    }
+    .survey-inner {
+      max-width: 900px; margin: 0 auto;
+    }
+    .survey-box {
+      background: var(--green-dark);
+      border-radius: 12px;
+      padding: 48px;
+      display: flex; gap: 48px; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    .survey-box::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 90% 50%, rgba(200,155,32,0.1), transparent 60%);
+    }
+    .survey-text { flex: 1; }
+    .survey-text .tag {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 2px;
+      color: var(--gold); text-transform: uppercase; margin-bottom: 10px;
+    }
+    .survey-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem; font-weight: 700; color: var(--white);
+      line-height: 1.25; margin-bottom: 12px;
+    }
+    .survey-text p {
+      font-size: 0.9rem; color: rgba(255,255,255,0.65); line-height: 1.6;
+    }
+    .survey-cta {
+      flex-shrink: 0; text-align: center;
+    }
+    .survey-time {
+      font-size: 0.78rem; color: rgba(255,255,255,0.45); margin-top: 10px;
+    }
+
+    /* ─── SOCIAL SECTION ─────────────────────────────────────────── */
+    .social-section { background: var(--grey-bg); }
+    .social-section-inner { max-width: 1200px; margin: 0 auto; }
+    .social-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;
+    }
+    .social-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 28px 24px;
+      display: flex; align-items: flex-start; gap: 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      transition: transform 0.2s;
+    }
+    .social-card:hover { transform: translateY(-3px); }
+    .social-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; flex-shrink: 0;
+    }
+    .social-icon.ig { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+    .social-icon.tt { background: #010101; }
+    .social-icon.wa { background: #25D366; }
+    .social-text h3 { font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
+    .social-text p { font-size: 0.85rem; color: var(--grey-light); }
+    .social-text a {
+      display: inline-block; margin-top: 8px;
+      font-size: 0.83rem; font-weight: 600; color: var(--green);
+    }
+    .social-text a:hover { color: var(--green-mid); text-decoration: underline; }
+
+    /* ─── FOOTER ─────────────────────────────────────────────────── */
+    footer {
+      background: var(--green-dark);
+      color: rgba(255,255,255,0.6);
+      padding: 48px 5% 28px;
+    }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .footer-brand h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; font-weight: 700;
+      color: var(--white); letter-spacing: 2px; margin-bottom: 10px;
+    }
+    .footer-brand p { font-size: 0.85rem; line-height: 1.7; }
+    .footer-col h4 {
+      font-size: 0.8rem; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 14px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 8px; }
+    .footer-col ul li a {
+      font-size: 0.85rem; color: rgba(255,255,255,0.55);
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--gold); }
+    .footer-bottom {
+      max-width: 1200px; margin: 20px auto 0;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+      font-size: 0.78rem; color: rgba(255,255,255,0.3);
+    }
+    .footer-bottom a { color: var(--gold); }
+
+    /* ─── ANIMATIONS ─────────────────────────────────────────────── */
+    .fade-in {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: fixed; top: 70px; left: 0; right: 0;
+        background: var(--green-dark);
+        padding: 20px 5%;
+        gap: 16px;
+        border-bottom: 1px solid rgba(200,155,32,0.2);
+      }
+      .nav-hamburger { display: block; }
+      .science-inner { grid-template-columns: 1fr; gap: 40px; }
+      .survey-box { flex-direction: column; gap: 24px; padding: 32px 24px; }
+      .survey-cta { width: 100%; }
+      .waitlist-form-row { flex-direction: column; }
+      .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+      .hero-stats { gap: 24px; }
+    }
+    @media (max-width: 480px) {
+      section { padding: 60px 4%; }
+      .hero { padding: 90px 4% 50px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════ NAVBAR ════════════════════════════════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-logo">
+      <img src="logo_vitalia.jpg" alt="Vitalia Logo" onerror="this.style.display='none'">
+      <span class="nav-logo-text">VITALIA</span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#prodotti">I Prodotti</a></li>
+      <li><a href="#scienza">La Scienza</a></li>
+      <li><a href="#questionario">Questionario</a></li>
+      <li><a href="#waitlist" class="nav-cta">Entra nella lista 🌿</a></li>
+    </ul>
+    <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- ════ HERO ═══════════════════════════════════════════════════ -->
+  <section class="hero" id="home">
+    <div class="hero-badge">In arrivo · Parma, Italia · 2027</div>
+    <h1>La prima barretta italiana<br><span>nutraceutica</span></h1>
+    <p class="hero-sub">Ingredienti regionali DOP/IGP · Vitamine brevettate UniPR · Zero dolcificanti</p>
+    <p class="hero-desc">
+      Vitalia nasce dall'incontro tra la gastronomia delle regioni italiane e la scienza
+      nutrizionale dell'Università di Parma. Un formato snack che non esiste ancora.
+    </p>
+    <div class="hero-dots">
+      <span>100% Natural</span>
+      <span class="hero-dots-sep">·</span>
+      <span>Patent Pending UniPR</span>
+      <span class="hero-dots-sep">·</span>
+      <span>Clean Label</span>
+      <span class="hero-dots-sep">·</span>
+      <span>Made in Italy</span>
+    </div>
+    <div class="hero-buttons">
+      <a href="#waitlist" class="btn-primary">Voglio essere tra i primi 🌿</a>
+      <a href="#questionario" class="btn-secondary">Dai il tuo parere →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-val">€4,5B</div>
+        <div class="hero-stat-label">Mercato integratori IT</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val">0</div>
+        <div class="hero-stat-label">Brand italiani nel top-5 EU</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val">UniPR</div>
+        <div class="hero-stat-label">Partner scientifico</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val">3</div>
+        <div class="hero-stat-label">Referenze regionali</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ PILLAR CARDS ════════════════════════════════════════════ -->
+  <section class="pillars" id="perche">
+    <div style="max-width:1200px; margin:0 auto;">
+      <div class="section-center fade-in">
+        <div class="section-tag">Perché Vitalia</div>
+        <h2 class="section-title">Un gap che nessuno ha ancora colmato</h2>
+        <p class="section-sub">
+          Il mercato delle barrette naturali non offre nutraceutica. Gli integratori non
+          offrono gusto. Vitalia è il primo a unire entrambe le dimensioni.
+        </p>
+      </div>
+      <div class="pillar-grid">
+        <div class="pillar-card fade-in">
+          <div class="pillar-icon">🌿</div>
+          <h3>100% Clean Label</h3>
+          <p>Zero sucralosio, zero conservanti, zero coloranti artificiali. Ogni ingrediente è leggibile e riconoscibile. Etichetta trasparente, sempre.</p>
+        </div>
+        <div class="pillar-card fade-in">
+          <div class="pillar-icon">🔬</div>
+          <h3>Vitamine Brevettate UniPR</h3>
+          <p>Il complesso vitaminico è formulato e validato dal Dipartimento di Scienze degli Alimenti dell'Università di Parma — Food Valley d'Europa.</p>
+        </div>
+        <div class="pillar-card fade-in">
+          <div class="pillar-icon">🏔️</div>
+          <h3>Ingredienti Regionali DOP/IGP</h3>
+          <p>Pistacchio Bronte DOP, Castagna Toscana IGP, Mela Val di Non DOP. Ogni barretta racconta il sapore autentico di una regione italiana.</p>
+        </div>
+        <div class="pillar-card fade-in">
+          <div class="pillar-icon">⚡</div>
+          <h3>Funzionalità Reale</h3>
+          <p>Non è uno snack "healthy" di facciata. I dosaggi vitaminici sono calibrati su NRV EU certificati — biodisponibilità testata in laboratorio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ PRODUCTS ════════════════════════════════════════════════ -->
+  <section class="products" id="prodotti">
+    <div class="products-inner">
+      <div class="section-center fade-in">
+        <div class="section-tag">I Prodotti</div>
+        <h2 class="section-title">Tre regioni. Tre storie. Tre formule.</h2>
+        <p class="section-sub">
+          Ogni barretta Vitalia è un viaggio: ingredienti certificati della regione, vitamine
+          selezionate per il beneficio specifico, packaging che racconta il territorio.
+        </p>
+      </div>
+      <div class="product-grid">
+
+        <!-- SICILIA -->
+        <div class="product-card fade-in">
+          <div class="product-header sicilia">
+            <div class="product-region">Sicilia</div>
+            <div class="product-name">Vitalia Sole</div>
+            <div class="product-claim">Energia & Immunità</div>
+          </div>
+          <div class="product-body">
+            <div class="product-section-label">Ingredienti</div>
+            <ul class="ingredient-list">
+              <li>Pistacchio Bronte DOP</li>
+              <li>Arancia Rossa di Sicilia IGP</li>
+              <li>Mandorle di Noto</li>
+              <li>Datteri Medjool</li>
+              <li>Miele di Zagara</li>
+            </ul>
+            <div class="product-section-label">Vitamine (% NRV EU)</div>
+            <ul class="vitamin-list">
+              <li>Vitamina C — 900 mg (1125% NRV)</li>
+              <li>Vitamina D3 — 400 UI (200% NRV)</li>
+              <li>Zinco — 5 mg (50% NRV)</li>
+              <li>Folato — 200 mcg (100% NRV)</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- TOSCANA -->
+        <div class="product-card fade-in">
+          <div class="product-header toscana">
+            <div class="product-region">Toscana</div>
+            <div class="product-name">Vitalia Terra</div>
+            <div class="product-claim">Concentrazione & Equilibrio</div>
+          </div>
+          <div class="product-body">
+            <div class="product-section-label">Ingredienti</div>
+            <ul class="ingredient-list">
+              <li>Castagna Toscana IGP (farina)</li>
+              <li>Fico di Carmignano IGP</li>
+              <li>Nocciola Romana IGP</li>
+              <li>Miele di Acacia</li>
+              <li>Avena integrale BIO</li>
+            </ul>
+            <div class="product-section-label">Vitamine (% NRV EU)</div>
+            <ul class="vitamin-list">
+              <li>Vitamina B6 — 1,4 mg (100% NRV)</li>
+              <li>Vitamina B12 — 2,5 mcg (100% NRV)</li>
+              <li>Ferro — 7 mg (50% NRV)</li>
+              <li>Magnesio — 75 mg (20% NRV)</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- TRENTINO -->
+        <div class="product-card fade-in">
+          <div class="product-header trentino">
+            <div class="product-region">Trentino</div>
+            <div class="product-name">Vitalia Alpi</div>
+            <div class="product-claim">Recovery & Benessere</div>
+          </div>
+          <div class="product-body">
+            <div class="product-section-label">Ingredienti</div>
+            <ul class="ingredient-list">
+              <li>Mela Val di Non DOP (liofilizzata)</li>
+              <li>Lampone Alpino BIO</li>
+              <li>Noci di Sorrento</li>
+              <li>Canapa biologica (semi)</li>
+              <li>Quinoa BIO</li>
+            </ul>
+            <div class="product-section-label">Vitamine (% NRV EU)</div>
+            <ul class="vitamin-list">
+              <li>Vitamina E — 12 mg (100% NRV)</li>
+              <li>Omega-3 EPA+DHA — 300 mg</li>
+              <li>Selenio — 55 mcg (100% NRV)</li>
+              <li>Vitamina K2 — 75 mcg (100% NRV)</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+      <p style="text-align:center; font-size:0.76rem; color:#AAAAAA; margin-top:28px;">
+        Formulazione preliminare Vitalia — ricette da validare con UniPR DSAF. Valori NRV secondo EU Reg. 1169/2011.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════ SCIENCE / UNIPR ════════════════════════════════════════ -->
+  <section class="science" id="scienza">
+    <div class="science-inner">
+      <div class="fade-in">
+        <div class="section-tag">La Scienza</div>
+        <h2 class="section-title" style="color:var(--white)">Partnership con l'Università di Parma</h2>
+        <p class="section-sub">
+          Il Dipartimento di Scienze degli Alimenti UniPR — uno dei migliori in Europa — studia,
+          valida e protegge la formulazione Vitalia. Non è marketing: è un accordo già firmato.
+        </p>
+        <ol class="science-steps">
+          <li class="science-step">
+            <div class="science-step-num">1</div>
+            <div class="science-step-text">
+              <h4>Formulazione</h4>
+              <p>Selezione ingredienti DOP/IGP + progettazione complesso vitaminico specifico per ogni referenza.</p>
+            </div>
+          </li>
+          <li class="science-step">
+            <div class="science-step-num">2</div>
+            <div class="science-step-text">
+              <h4>Analisi Chimiche</h4>
+              <p>HPLC per quantificazione vitaminica. GC-MS stabilità aromi. AAS per minerali. 15 combinazioni testate.</p>
+            </div>
+          </li>
+          <li class="science-step">
+            <div class="science-step-num">3</div>
+            <div class="science-step-text">
+              <h4>Shelf Life & Sensoriale</h4>
+              <p>ASLT a 40°C/75% RH → proiezione 18 mesi. Panel sensoriale addestrato UniPR n=20 soggetti.</p>
+            </div>
+          </li>
+          <li class="science-step">
+            <div class="science-step-num">4</div>
+            <div class="science-step-text">
+              <h4>Brevetto PCT/EP</h4>
+              <p>Deposito brevetto europeo sulla formula proprietaria. Co-titolarità UniPR + Vitalia.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+      <div class="fade-in">
+        <div class="science-stats">
+          <div class="science-stat-card">
+            <div class="val">Top 5</div>
+            <div class="lbl">Dipartimenti food science in Europa (DSAF UniPR)</div>
+          </div>
+          <div class="science-stat-card">
+            <div class="val">35+</div>
+            <div class="lbl">Anni di ricerca su nutraceutica e food processing</div>
+          </div>
+          <div class="science-stat-card">
+            <div class="val">Food Valley</div>
+            <div class="lbl">Barilla, Parmalat, Mutti: distretto food più produttivo EU</div>
+          </div>
+          <div class="science-stat-card">
+            <div class="val">✓ Firmato</div>
+            <div class="lbl">Contratto di ricerca UniPR già operativo — Maggio 2026</div>
+          </div>
+          <div class="science-logo-box" style="grid-column:1/-1">
+            <div style="font-size:2rem">🎓</div>
+            <div>
+              <strong>Università degli Studi di Parma</strong>
+              <p>DSAF · Dipartimento di Scienze degli Alimenti · Emilia-Romagna</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ SURVEY CTA ══════════════════════════════════════════════ -->
+  <section class="survey" id="questionario">
+    <div class="survey-inner">
+      <div class="survey-box fade-in">
+        <div class="survey-text">
+          <div class="tag">Partecipa · 5 minuti</div>
+          <h2>Il tuo parere costruisce Vitalia</h2>
+          <p>
+            Stiamo raccogliendo feedback da consumatori italiani per validare il prodotto
+            prima del lancio. Le tue risposte ci aiutano a capire cosa vuoi davvero da
+            uno snack premium. E se vuoi, iscriviti per ricevere un'offerta esclusiva al lancio.
+          </p>
+        </div>
+        <div class="survey-cta">
+          <a href="https://forms.gle/INSERISCI_LINK_FORM" target="_blank" class="btn-primary" style="display:inline-block; font-size:1rem;">
+            Compila il questionario →
+          </a>
+          <p class="survey-time">⏱ Circa 5 minuti · Anonimo</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ WAITLIST ════════════════════════════════════════════════ -->
+  <section class="waitlist" id="waitlist">
+    <div class="waitlist-inner fade-in">
+      <div class="section-tag">Early Adopter</div>
+      <h2 class="section-title">Sii tra i primi a provarla</h2>
+      <p class="section-sub">
+        Lascia la tua email e sarai tra i primissimi a sapere quando Vitalia sarà disponibile.
+        Per te: sconto di lancio esclusivo + box di degustazione omaggio.
+      </p>
+      <div class="waitlist-count">
+        Già 47 persone nella lista d'attesa
+      </div>
+      <form class="waitlist-form" onsubmit="submitWaitlist(event)">
+        <div class="waitlist-form-row">
+          <input type="text" class="waitlist-input" id="wl-name" placeholder="Il tuo nome" required>
+          <input type="email" class="waitlist-input" id="wl-email" placeholder="La tua email" required>
+          <button type="submit" class="waitlist-submit">Iscrivimi 🌿</button>
+        </div>
+        <p class="waitlist-note">🔒 Nessuno spam. Solo l'email di lancio e l'offerta early adopter. Puoi cancellarti in qualsiasi momento.</p>
+      </form>
+      <div id="waitlist-success" style="display:none; background:var(--green-xl); border-radius:8px; padding:20px; margin-top:16px; color:var(--green); font-weight:600; text-align:center;">
+        🎉 Sei nella lista! Ti contatteremo al lancio con la tua offerta esclusiva.
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ SOCIAL ══════════════════════════════════════════════════ -->
+  <section class="social-section">
+    <div class="social-section-inner">
+      <div class="section-center fade-in" style="margin-bottom:32px;">
+        <div class="section-tag">Seguici</div>
+        <h2 class="section-title">Unisciti alla community Vitalia</h2>
+        <p class="section-sub">
+          Contenuti su nutraceutica, ingredienti regionali e il dietro le quinte della startup.
+        </p>
+      </div>
+      <div class="social-grid fade-in">
+        <div class="social-card">
+          <div class="social-icon ig">📸</div>
+          <div class="social-text">
+            <h3>Instagram</h3>
+            <p>Storie degli ingredienti, lab UniPR, dietro le quinte</p>
+            <a href="https://instagram.com/vitalia.italia" target="_blank">@vitalia.italia →</a>
+          </div>
+        </div>
+        <div class="social-card">
+          <div class="social-icon tt">🎵</div>
+          <div class="social-text">
+            <h3>TikTok</h3>
+            <p>Video brevi su nutraceutica, ingredienti DOP/IGP e laboratorio</p>
+            <a href="https://tiktok.com/@vitalia.italia" target="_blank">@vitalia.italia →</a>
+          </div>
+        </div>
+        <div class="social-card">
+          <div class="social-icon wa">💬</div>
+          <div class="social-text">
+            <h3>Contatti</h3>
+            <p>Per collaborazioni, partnership o domande sul progetto</p>
+            <a href="mailto:f.amato2798@gmail.com">f.amato2798@gmail.com →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ FOOTER ══════════════════════════════════════════════════ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <h3>VITALIA</h3>
+        <p>
+          La prima barretta italiana nutraceutica. Ingredienti DOP/IGP delle regioni italiane,
+          vitamine brevettate con l'Università di Parma, zero dolcificanti. In arrivo nel 2027.
+        </p>
+        <p style="margin-top:12px; font-size:0.8rem;">Parma, Emilia-Romagna · Italia</p>
+      </div>
+      <div class="footer-col">
+        <h4>Prodotti</h4>
+        <ul>
+          <li><a href="#prodotti">Vitalia Sole — Sicilia</a></li>
+          <li><a href="#prodotti">Vitalia Terra — Toscana</a></li>
+          <li><a href="#prodotti">Vitalia Alpi — Trentino</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Progetto</h4>
+        <ul>
+          <li><a href="#scienza">Partnership UniPR</a></li>
+          <li><a href="#questionario">Questionario</a></li>
+          <li><a href="#waitlist">Early Adopter</a></li>
+          <li><a href="mailto:f.amato2798@gmail.com">Investor Relations</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Vitalia — Tutti i diritti riservati. Formulazione in fase di validazione scientifica UniPR.</span>
+      <span>Made with 🌿 in Parma, Italia</span>
+    </div>
+  </footer>
+
+  <script>
+    // ── Mobile menu ─────────────────────────────────────────────────
+    function toggleMenu() {
+      const links = document.getElementById('nav-links');
+      links.classList.toggle('open');
+    }
+
+    // ── Scroll fade-in ──────────────────────────────────────────────
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          // stagger children
+          const children = e.target.querySelectorAll('.pillar-card, .product-card, .science-step, .social-card');
+          children.forEach((c, i) => {
+            setTimeout(() => c.classList.add('visible'), i * 100);
+          });
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    // make cards themselves fade
+    document.querySelectorAll('.pillar-card, .product-card, .science-step, .social-card').forEach(el => {
+      el.classList.add('fade-in');
+      observer.observe(el);
+    });
+
+    // ── Sticky nav background ────────────────────────────────────────
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        nav.style.background = 'rgba(13,59,30,0.98)';
+      } else {
+        nav.style.background = 'rgba(13,59,30,0.96)';
+      }
+    });
+
+    // ── Waitlist form (sends to your email via mailto fallback) ──────
+    function submitWaitlist(e) {
+      e.preventDefault();
+      const name  = document.getElementById('wl-name').value;
+      const email = document.getElementById('wl-email').value;
+      // In production: replace with Formspree, Netlify Forms, or direct API call
+      // For now: opens email client as fallback
+      const subject = encodeURIComponent('Vitalia — Iscrizione lista d\'attesa');
+      const body    = encodeURIComponent(`Nome: ${name}\nEmail: ${email}\n\nIscrizione alla lista early adopter Vitalia.`);
+      window.open(`mailto:f.amato2798@gmail.com?subject=${subject}&body=${body}`);
+      document.querySelector('.waitlist-form').style.display = 'none';
+      document.getElementById('waitlist-success').style.display = 'block';
+    }
+
+    // ── Smooth anchor offset for fixed nav ──────────────────────────
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          const top = target.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top, behavior: 'smooth' });
+          document.getElementById('nav-links').classList.remove('open');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
