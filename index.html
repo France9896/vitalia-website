@@ -1,1139 +1,184 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Vitalia — La prima barretta italiana nutraceutica. Ingredienti DOP/IGP + vitamine brevettate UniPR. Entra tra i 500 Founding Members."/>
-  <meta property="og:title" content="Vitalia — Founding Members"/>
-  <meta property="og:description" content="La prima barretta italiana con ingredienti DOP/IGP e vitamine brevettate con l'Università di Parma. Accesso prioritario + sconto -20%."/>
-  <meta property="og:image" content="logo_vitalia.jpg"/>
-  <title>Vitalia — Founding Members</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-
-<style>
-/*──────────────────────────────────────────────────────────────────
-  RESET & TOKENS
-──────────────────────────────────────────────────────────────────*/
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;font-size:16px}
-img{max-width:100%;display:block}
-a{text-decoration:none;color:inherit}
-:root{
-  --g0:#060F09;   /* black-green */
-  --g1:#0D3B1E;   /* deep green */
-  --g2:#145430;
-  --g3:#1E7040;
-  --g4:#2D9156;
-  --g5:#58B87A;
-  --cream:#FAF8F2;
-  --cream2:#F2EFE6;
-  --gold:#C89B20;
-  --gold2:#E0BC48;
-  --gold3:#F5D878;
-  --white:#FFFFFF;
-  --ink:#0D0D0D;
-  --ink2:#2A2A2A;
-  --ink3:#5A5A5A;
-  --ink4:#9A9A9A;
-  --border:rgba(255,255,255,0.09);
-  --border-gold:rgba(200,155,32,0.30);
-  --fs-hero:clamp(2.8rem,6vw,5.2rem);
-  --fs-h2:clamp(2rem,4vw,3.2rem);
-  --fs-h3:clamp(1.3rem,2.5vw,1.8rem);
-  --r:16px;
-  --rLg:24px;
-}
-body{font-family:'Inter',sans-serif;background:var(--g0);color:var(--white);overflow-x:hidden;line-height:1.6}
-
-/*──────────────────────────────────────────────────────────────────
-  UTILITIES
-──────────────────────────────────────────────────────────────────*/
-.serif{font-family:'Playfair Display',serif}
-.gold{color:var(--gold2)}
-.container{max-width:1180px;margin:0 auto;padding:0 5%}
-.tag{display:inline-flex;align-items:center;gap:7px;padding:5px 14px;border-radius:100px;
-     border:1px solid var(--border-gold);background:rgba(200,155,32,0.10);
-     font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold2)}
-.tag .dot{width:6px;height:6px;border-radius:50%;background:var(--gold2);animation:blink 2s ease infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
-
-/* reveal animations */
-.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease}
-.reveal.visible{opacity:1;transform:none}
-.reveal-left{opacity:0;transform:translateX(-32px);transition:opacity .7s ease,transform .7s ease}
-.reveal-left.visible{opacity:1;transform:none}
-.reveal-right{opacity:0;transform:translateX(32px);transition:opacity .7s ease,transform .7s ease}
-.reveal-right.visible{opacity:1;transform:none}
-
-/*──────────────────────────────────────────────────────────────────
-  NAV
-──────────────────────────────────────────────────────────────────*/
-nav{position:fixed;top:0;inset-x:0;z-index:200;height:64px;
-    display:flex;align-items:center;justify-content:space-between;padding:0 5%;
-    background:rgba(6,15,9,0.82);backdrop-filter:blur(16px);
-    border-bottom:1px solid rgba(255,255,255,0.06)}
-.nav-brand{display:flex;align-items:center;gap:10px;
-           font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--white)}
-.nav-brand img{width:34px;height:34px;border-radius:50%;object-fit:contain;border:1.5px solid var(--gold)}
-.nav-brand .fb{width:34px;height:34px;border-radius:50%;background:var(--gold);
-               display:flex;align-items:center;justify-content:center;
-               font-size:.9rem;font-weight:700;color:var(--g1);display:none}
-.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
-.nav-links a{font-size:.82rem;color:rgba(255,255,255,.65);font-weight:500;transition:color .2s}
-.nav-links a:hover{color:var(--gold2)}
-.nav-cta{background:var(--gold)!important;color:var(--g1)!important;padding:7px 20px!important;
-         border-radius:6px;font-weight:700!important;transition:background .2s!important}
-.nav-cta:hover{background:var(--gold2)!important}
-@media(max-width:700px){.nav-links{display:none}}
-
-/*──────────────────────────────────────────────────────────────────
-  HERO
-──────────────────────────────────────────────────────────────────*/
-.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;
-      align-items:center;gap:3rem;padding:100px 5% 60px;
-      position:relative;overflow:hidden;max-width:1180px;margin:0 auto}
-.hero-bg{position:fixed;inset:0;z-index:-1;
-  background:radial-gradient(ellipse 80% 70% at 10% -10%,rgba(45,145,86,.18) 0%,transparent 55%),
-             radial-gradient(ellipse 60% 60% at 90% 110%,rgba(200,155,32,.10) 0%,transparent 50%),
-             var(--g0)}
-.hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem}
-.hero-eyebrow .line{width:36px;height:1.5px;background:var(--gold)}
-.hero-eyebrow span{font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:600}
-h1{font-family:'Playfair Display',serif;font-size:var(--fs-hero);font-weight:700;
-   line-height:1.10;color:var(--white);margin-bottom:1.5rem}
-h1 em{font-style:italic;color:var(--gold2)}
-.hero-sub{font-size:1.05rem;color:rgba(255,255,255,.62);line-height:1.75;max-width:460px;margin-bottom:2.5rem}
-.hero-ctas{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
-.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:.85rem 1.8rem;
-             background:var(--gold);color:var(--g1);border-radius:8px;
-             font-weight:700;font-size:.95rem;letter-spacing:.02em;
-             transition:background .2s,transform .2s,box-shadow .2s;
-             box-shadow:0 4px 24px rgba(200,155,32,.35)}
-.btn-primary:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 8px 32px rgba(200,155,32,.45)}
-.btn-ghost{display:inline-flex;align-items:center;gap:6px;padding:.85rem 1.6rem;
-           border:1.5px solid rgba(255,255,255,.18);border-radius:8px;
-           font-size:.9rem;font-weight:500;color:rgba(255,255,255,.75);
-           transition:border-color .2s,color .2s}
-.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
-.hero-proof{display:flex;gap:2rem;margin-top:2.5rem;padding-top:2rem;
-            border-top:1px solid rgba(255,255,255,.07)}
-.hp-item{display:flex;flex-direction:column;gap:2px}
-.hp-num{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--gold2)}
-.hp-lbl{font-size:.72rem;color:rgba(255,255,255,.42);line-height:1.35}
-
-/* Hero bar showcase */
-.hero-visual{display:flex;align-items:center;justify-content:center;position:relative}
-.hero-bar-stack{position:relative;width:320px;height:380px}
-.hbs-card{position:absolute;border-radius:20px;padding:2rem;
-          border:1px solid rgba(255,255,255,.08);transition:transform .4s ease}
-.hbs-card:nth-child(1){bottom:0;right:0;width:280px;height:220px;
-  background:linear-gradient(140deg,#1A3B10 0%,#0F2B0A 100%);
-  transform:rotate(-6deg) translateX(20px) translateY(10px)}
-.hbs-card:nth-child(2){bottom:40px;right:10px;width:280px;height:220px;
-  background:linear-gradient(140deg,#3B1A10 0%,#2B0F0A 100%);
-  transform:rotate(-2deg)}
-.hbs-card:nth-child(3){bottom:80px;right:20px;width:280px;height:220px;
-  background:linear-gradient(140deg,#1A2B40 0%,#0F1B2E 100%);
-  transform:rotate(2deg)}
-.hero-visual:hover .hbs-card:nth-child(1){transform:rotate(-8deg) translateX(28px) translateY(14px)}
-.hero-visual:hover .hbs-card:nth-child(2){transform:rotate(-3deg) translateX(8px)}
-.hero-visual:hover .hbs-card:nth-child(3){transform:rotate(4deg) translateX(-6px)}
-
-@media(max-width:900px){
-  .hero{grid-template-columns:1fr;text-align:center;padding:90px 5% 50px}
-  .hero-sub,.hero-ctas,.hero-proof{justify-content:center}
-  .hero-visual{display:none}
-}
-
-/*──────────────────────────────────────────────────────────────────
-  TICKER / LOGOS BAR
-──────────────────────────────────────────────────────────────────*/
-.ticker-wrap{border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);
-             overflow:hidden;padding:16px 0;background:rgba(255,255,255,.02)}
-.ticker-inner{display:flex;gap:3.5rem;animation:tick 22s linear infinite;white-space:nowrap;width:max-content}
-@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.ticker-item{display:flex;align-items:center;gap:8px;font-size:.75rem;font-weight:600;
-             letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35)}
-.ticker-item svg{flex-shrink:0;opacity:.5}
-
-/*──────────────────────────────────────────────────────────────────
-  SECTION BASE
-──────────────────────────────────────────────────────────────────*/
-section{padding:100px 0}
-.section-label{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem}
-.section-label .line{width:28px;height:1.5px;background:var(--gold)}
-.section-label span{font-size:.70rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:600}
-.section-title{font-family:'Playfair Display',serif;font-size:var(--fs-h2);font-weight:700;
-               line-height:1.15;color:var(--white);margin-bottom:1rem}
-.section-sub{font-size:1rem;color:rgba(255,255,255,.55);line-height:1.75;max-width:560px}
-
-/*──────────────────────────────────────────────────────────────────
-  PROBLEM
-──────────────────────────────────────────────────────────────────*/
-.problem-bg{background:rgba(255,255,255,.018)}
-.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:4rem}
-.problem-cards{display:flex;flex-direction:column;gap:1rem}
-.prob-card{display:flex;gap:1.25rem;padding:1.5rem;border-radius:var(--r);
-           background:rgba(255,255,255,.03);border:1px solid var(--border);
-           transition:border-color .3s,background .3s}
-.prob-card:hover{border-color:rgba(255,100,80,.25);background:rgba(255,80,60,.04)}
-.prob-icon{width:44px;height:44px;flex-shrink:0;border-radius:10px;
-           background:rgba(220,60,60,.12);border:1px solid rgba(220,60,60,.25);
-           display:flex;align-items:center;justify-content:center;font-size:1.1rem}
-.prob-title{font-size:.95rem;font-weight:600;color:var(--white);margin-bottom:.3rem}
-.prob-desc{font-size:.83rem;color:rgba(255,255,255,.50);line-height:1.55}
-.problem-stat-box{padding:2.5rem;border-radius:var(--rLg);
-                  background:linear-gradient(135deg,rgba(200,155,32,.08) 0%,rgba(200,155,32,.03) 100%);
-                  border:1px solid var(--border-gold)}
-.psb-num{font-family:'Playfair Display',serif;font-size:4.5rem;font-weight:700;
-         color:var(--gold2);line-height:1}
-.psb-unit{font-size:1.3rem;color:var(--gold)}
-.psb-label{font-size:1rem;color:rgba(255,255,255,.65);margin-top:.6rem;line-height:1.5}
-.psb-source{font-size:.70rem;color:rgba(255,255,255,.28);margin-top:.8rem}
-.psb-divider{width:100%;height:1px;background:rgba(255,255,255,.07);margin:1.5rem 0}
-
-@media(max-width:800px){.problem-grid{grid-template-columns:1fr}}
-
-/*──────────────────────────────────────────────────────────────────
-  PRODUCTS
-──────────────────────────────────────────────────────────────────*/
-.products-intro{text-align:center;max-width:600px;margin:0 auto 5rem}
-.products-intro .section-label{justify-content:center}
-.products-intro .section-sub{margin:0 auto}
-.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-
-.product-card{border-radius:var(--rLg);overflow:hidden;border:1px solid var(--border);
-              background:rgba(255,255,255,.03);
-              transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;
-              display:flex;flex-direction:column}
-.product-card:hover{transform:translateY(-6px);box-shadow:0 24px 64px rgba(0,0,0,.35)}
-.product-card[data-bar="sole"]:hover{border-color:rgba(230,150,30,.35)}
-.product-card[data-bar="terra"]:hover{border-color:rgba(160,100,40,.35)}
-.product-card[data-bar="alpi"]:hover{border-color:rgba(60,160,200,.35)}
-
-/* Bar illustration area */
-.bar-visual{height:220px;display:flex;align-items:center;justify-content:center;
-            position:relative;overflow:hidden}
-.bar-visual[data-bar="sole"]{background:linear-gradient(160deg,#2A1A00 0%,#3D2500 40%,#1E1000 100%)}
-.bar-visual[data-bar="terra"]{background:linear-gradient(160deg,#1A0D00 0%,#2E1800 40%,#140B00 100%)}
-.bar-visual[data-bar="alpi"]{background:linear-gradient(160deg,#001A1F 0%,#002D38 40%,#001018 100%)}
-.bar-visual .glow{position:absolute;border-radius:50%;filter:blur(45px);pointer-events:none}
-.bar-visual[data-bar="sole"] .glow{width:180px;height:180px;background:rgba(230,140,20,.20);top:20%;left:20%}
-.bar-visual[data-bar="terra"] .glow{width:180px;height:180px;background:rgba(160,90,30,.22);top:20%;left:20%}
-.bar-visual[data-bar="alpi"] .glow{width:180px;height:180px;background:rgba(40,160,210,.18);top:20%;left:20%}
-
-/* Bar content */
-.product-body{padding:1.75rem;flex:1;display:flex;flex-direction:column;gap:1rem}
-.product-region{display:flex;align-items:center;gap:6px;font-size:.72rem;font-weight:600;
-                letter-spacing:.12em;text-transform:uppercase}
-.product-region[data-bar="sole"]{color:#E8A030}
-.product-region[data-bar="terra"]{color:#B07840}
-.product-region[data-bar="alpi"]{color:#40B0D0}
-.product-name{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:700;color:var(--white)}
-.product-desc{font-size:.83rem;color:rgba(255,255,255,.52);line-height:1.60}
-.product-ingrs{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.25rem}
-.ingr-tag{padding:3px 10px;border-radius:100px;font-size:.68rem;font-weight:600;letter-spacing:.04em;border:1px solid}
-.ingr-tag[data-bar="sole"]{background:rgba(230,150,30,.10);border-color:rgba(230,150,30,.28);color:#F0C060}
-.ingr-tag[data-bar="terra"]{background:rgba(160,100,40,.10);border-color:rgba(160,100,40,.28);color:#D0A060}
-.ingr-tag[data-bar="alpi"]{background:rgba(40,160,200,.10);border-color:rgba(40,160,200,.28);color:#80D0F0}
-.product-vitamins{margin-top:auto;padding-top:1rem;border-top:1px solid rgba(255,255,255,.06)}
-.vit-label{font-size:.68rem;font-weight:600;letter-spacing:.10em;text-transform:uppercase;
-           color:rgba(255,255,255,.35);margin-bottom:.5rem}
-.vit-pills{display:flex;flex-wrap:wrap;gap:.4rem}
-.vit-pill{padding:4px 10px;border-radius:100px;background:rgba(200,155,32,.10);
-          border:1px solid rgba(200,155,32,.25);font-size:.70rem;font-weight:600;color:var(--gold2)}
-
-@media(max-width:900px){.products-grid{grid-template-columns:1fr}}
-
-/*──────────────────────────────────────────────────────────────────
-  SCIENCE / STUDIES
-──────────────────────────────────────────────────────────────────*/
-.science-bg{background:rgba(255,255,255,.015)}
-.science-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-top:4rem}
-.science-intro .section-sub{margin-bottom:2rem}
-.claim-list{display:flex;flex-direction:column;gap:1rem}
-.claim{display:flex;gap:1rem;align-items:flex-start}
-.claim-icon{width:36px;height:36px;flex-shrink:0;border-radius:8px;
-            background:rgba(200,155,32,.12);border:1px solid var(--border-gold);
-            display:flex;align-items:center;justify-content:center;font-size:.9rem}
-.claim-text{font-size:.88rem;color:rgba(255,255,255,.65);line-height:1.55}
-.claim-text strong{color:var(--white);font-weight:600}
-
-.studies-grid{display:flex;flex-direction:column;gap:1rem}
-.study-card{padding:1.5rem;border-radius:var(--r);background:rgba(255,255,255,.03);
-            border:1px solid var(--border);transition:border-color .3s,background .3s;cursor:pointer}
-.study-card:hover{border-color:var(--border-gold);background:rgba(200,155,32,.04)}
-.study-header{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:.7rem}
-.study-topic{font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-             padding:3px 9px;border-radius:100px}
-.st-nutra{background:rgba(100,200,100,.10);color:#80E090;border:1px solid rgba(100,200,100,.20)}
-.st-food{background:rgba(200,155,32,.10);color:var(--gold2);border:1px solid var(--border-gold)}
-.st-market{background:rgba(100,150,255,.10);color:#90B0FF;border:1px solid rgba(100,150,255,.20)}
-.st-med{background:rgba(220,100,100,.10);color:#F0A0A0;border:1px solid rgba(220,100,100,.20)}
-.study-year{font-size:.70rem;color:rgba(255,255,255,.30);flex-shrink:0}
-.study-title{font-size:.90rem;font-weight:600;color:var(--white);margin-bottom:.45rem;line-height:1.4}
-.study-finding{font-size:.82rem;color:rgba(255,255,255,.52);line-height:1.55}
-.study-finding strong{color:var(--gold2);font-weight:600}
-.study-source{display:flex;align-items:center;gap:6px;margin-top:.75rem;
-              font-size:.68rem;color:rgba(255,255,255,.28)}
-.study-source svg{flex-shrink:0;opacity:.5}
-
-@media(max-width:800px){.science-layout{grid-template-columns:1fr}}
-
-/*──────────────────────────────────────────────────────────────────
-  UNIPR PARTNERSHIP
-──────────────────────────────────────────────────────────────────*/
-.unipr-section{position:relative;overflow:hidden}
-.unipr-section::before{content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(45,145,86,.08) 0%,transparent 50%),
-             linear-gradient(315deg,rgba(200,155,32,.06) 0%,transparent 50%);
-  pointer-events:none}
-.unipr-inner{border:1px solid rgba(255,255,255,.08);border-radius:28px;
-             padding:4rem;background:rgba(255,255,255,.025);
-             backdrop-filter:blur(4px);position:relative;overflow:hidden}
-.unipr-inner::before{content:'UNIPR';position:absolute;right:-2rem;top:50%;transform:translateY(-50%);
-  font-family:'Playfair Display',serif;font-size:14rem;font-weight:700;
-  color:rgba(255,255,255,.025);line-height:1;pointer-events:none;user-select:none}
-.unipr-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-.unipr-logo-wrap{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem}
-.unipr-logo-box{width:56px;height:56px;border-radius:12px;
-                background:rgba(200,155,32,.12);border:1px solid var(--border-gold);
-                display:flex;align-items:center;justify-content:center;
-                font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--gold2)}
-.unipr-name{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.55);line-height:1.4}
-.unipr-name strong{display:block;font-size:1rem;color:var(--white);margin-bottom:1px}
-.unipr-title{font-family:'Playfair Display',serif;font-size:var(--fs-h3);
-             font-weight:700;color:var(--white);line-height:1.25;margin-bottom:1rem}
-.unipr-desc{font-size:.90rem;color:rgba(255,255,255,.55);line-height:1.75;margin-bottom:1.5rem}
-.unipr-facts{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.uf-item{padding:1.25rem;border-radius:var(--r);background:rgba(255,255,255,.04);
-         border:1px solid rgba(255,255,255,.07)}
-.uf-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--gold2)}
-.uf-lbl{font-size:.75rem;color:rgba(255,255,255,.42);margin-top:2px;line-height:1.4}
-.unipr-process{display:flex;flex-direction:column;gap:1.25rem}
-.unipr-step{display:flex;gap:1.25rem;align-items:flex-start}
-.us-num{width:36px;height:36px;flex-shrink:0;border-radius:50%;
-        background:rgba(200,155,32,.12);border:1px solid var(--border-gold);
-        display:flex;align-items:center;justify-content:center;
-        font-size:.82rem;font-weight:700;color:var(--gold2)}
-.us-body{}
-.us-title{font-size:.90rem;font-weight:600;color:var(--white);margin-bottom:.25rem}
-.us-desc{font-size:.80rem;color:rgba(255,255,255,.48);line-height:1.55}
-
-@media(max-width:800px){
-  .unipr-grid{grid-template-columns:1fr}
-  .unipr-inner{padding:2.5rem 1.75rem}
-  .unipr-facts{grid-template-columns:1fr 1fr}
-}
-
-/*──────────────────────────────────────────────────────────────────
-  FOUNDING MEMBERS FORM
-──────────────────────────────────────────────────────────────────*/
-.fm-section{background:rgba(255,255,255,.015)}
-.fm-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-top:4rem}
-
-.fm-benefits{display:flex;flex-direction:column;gap:.85rem}
-.fm-benefit{display:flex;gap:1rem;align-items:flex-start;padding:1rem;
-            border-radius:12px;transition:background .2s}
-.fm-benefit:hover{background:rgba(255,255,255,.03)}
-.fb-icon{width:40px;height:40px;flex-shrink:0;border-radius:10px;
-         background:rgba(200,155,32,.10);border:1px solid var(--border-gold);
-         display:flex;align-items:center;justify-content:center;font-size:1rem}
-.fb-title{font-size:.92rem;font-weight:600;color:var(--white);margin-bottom:.2rem}
-.fb-desc{font-size:.80rem;color:rgba(255,255,255,.48);line-height:1.5}
-
-/* Card */
-.fm-card{background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.10);
-         border-radius:var(--rLg);overflow:hidden;
-         box-shadow:0 32px 80px rgba(0,0,0,.4)}
-.fm-card-top{height:4px;background:linear-gradient(90deg,var(--gold),var(--gold2),var(--gold3))}
-.fm-card-body{padding:2.5rem}
-
-.spots-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem}
-.spots-lbl{font-size:.75rem;color:rgba(255,255,255,.40)}
-.spots-val{font-size:.75rem;font-weight:700;color:var(--gold2)}
-.spots-track{height:5px;border-radius:3px;background:rgba(255,255,255,.07);overflow:hidden;margin-bottom:1.75rem}
-.spots-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:3px}
-
-.fm-card-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;
-               color:var(--white);margin-bottom:.35rem}
-.fm-card-sub{font-size:.83rem;color:rgba(255,255,255,.45);margin-bottom:1.75rem;line-height:1.5}
-
-.fgroup{display:flex;flex-direction:column;gap:.4rem;margin-bottom:.9rem}
-.fgroup label{font-size:.75rem;font-weight:500;color:rgba(255,255,255,.50);letter-spacing:.02em}
-.fgroup input{background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.10);
-              border-radius:10px;padding:.75rem 1rem;
-              font-family:'Inter',sans-serif;font-size:.92rem;color:var(--white);outline:none;
-              transition:border-color .2s,background .2s}
-.fgroup input::placeholder{color:rgba(255,255,255,.25)}
-.fgroup input:focus{border-color:rgba(200,155,32,.55);background:rgba(255,255,255,.08)}
-
-.btn-fm{width:100%;margin-top:.25rem;padding:1rem;border:none;border-radius:10px;cursor:pointer;
-        background:linear-gradient(135deg,var(--gold) 0%,var(--gold2) 100%);
-        color:var(--g1);font-family:'Inter',sans-serif;font-size:.98rem;font-weight:700;
-        display:flex;align-items:center;justify-content:center;gap:8px;
-        box-shadow:0 4px 20px rgba(200,155,32,.30);
-        transition:transform .2s,box-shadow .2s,opacity .2s}
-.btn-fm:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 30px rgba(200,155,32,.45)}
-.btn-fm:disabled{opacity:.6;cursor:not-allowed}
-.fm-privacy{font-size:.70rem;color:rgba(255,255,255,.25);text-align:center;
-            line-height:1.6;margin-top:.85rem}
-
-/* Success */
-.fm-success{display:none;flex-direction:column;align-items:center;
-            text-align:center;gap:1.1rem;padding:.5rem 0}
-.fs-icon{width:68px;height:68px;border-radius:50%;background:rgba(200,155,32,.12);
-         border:2px solid rgba(200,155,32,.40);display:flex;align-items:center;justify-content:center;font-size:1.8rem}
-.fs-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--white)}
-.fs-sub{font-size:.88rem;color:rgba(255,255,255,.55);line-height:1.6}
-.fs-share{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center;margin-top:.4rem}
-.share-pill{padding:.45rem 1rem;border-radius:100px;border:1px solid rgba(255,255,255,.15);
-            background:transparent;font-size:.75rem;font-weight:500;
-            color:rgba(255,255,255,.65);cursor:pointer;
-            display:flex;align-items:center;gap:5px;transition:all .2s}
-.share-pill:hover{border-color:var(--gold);color:var(--gold)}
-
-/* spinner */
-.spin{width:16px;height:16px;border:2.5px solid rgba(13,59,30,.3);
-      border-top-color:var(--g1);border-radius:50%;animation:sp .7s linear infinite;display:none}
-@keyframes sp{to{transform:rotate(360deg)}}
-
-@media(max-width:800px){.fm-grid{grid-template-columns:1fr}}
-
-/*──────────────────────────────────────────────────────────────────
-  FOOTER
-──────────────────────────────────────────────────────────────────*/
-footer{border-top:1px solid rgba(255,255,255,.06);padding:3rem 5%;
-       display:grid;grid-template-columns:1fr auto;align-items:center;gap:2rem;
-       max-width:1180px;margin:0 auto}
-.ft-brand{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;
-          color:var(--white);margin-bottom:.35rem}
-.ft-copy{font-size:.75rem;color:rgba(255,255,255,.28)}
-.ft-links{display:flex;gap:1.5rem}
-.ft-links a{font-size:.78rem;color:rgba(255,255,255,.35);transition:color .2s}
-.ft-links a:hover{color:var(--gold)}
-@media(max-width:600px){footer{grid-template-columns:1fr;text-align:center}
-.ft-links{justify-content:center}}
-</style>
-</head>
-<body>
-
-<div class="hero-bg"></div>
-
-<!--══════════════════════════════════════════
-  NAV
-══════════════════════════════════════════-->
-<nav>
-  <a href="index.html" class="nav-brand">
-    <img src="logo_vitalia.jpg" alt="Vitalia"
-         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-    <span class="fb">V</span>
-    Vitalia
-  </a>
-  <ul class="nav-links">
-    <li><a href="#prodotti">Prodotti</a></li>
-    <li><a href="#scienza">Scienza</a></li>
-    <li><a href="#unipr">UniPR</a></li>
-    <li><a href="#waitlist" class="nav-cta">Founding Members →</a></li>
-  </ul>
-</nav>
-
-<!--══════════════════════════════════════════
-  HERO
-══════════════════════════════════════════-->
-<div class="container">
-  <div class="hero">
-    <div class="hero-copy">
-      <div class="hero-eyebrow">
-        <div class="line"></div>
-        <span>Pre-lancio 2026 · Posti limitati</span>
-      </div>
-      <h1>La prima barretta<br/>italiana <em>davvero</em><br/>funzionale</h1>
-      <p class="hero-sub">
-        Ingredienti DOP/IGP da Sicilia, Toscana e Trentino.
-        Un complesso vitaminico formulato con il Dipartimento
-        di Scienze degli Alimenti dell'Università di Parma.
-        Zero dolcificanti artificiali. Zero compromessi.
-      </p>
-      <div class="hero-ctas">
-        <a href="#waitlist" class="btn-primary">
-          Diventa Founding Member <span>→</span>
-        </a>
-        <a href="#prodotti" class="btn-ghost">Scopri i prodotti</a>
-      </div>
-      <div class="hero-proof">
-        <div class="hp-item">
-          <span class="hp-num">€4.5B</span>
-          <span class="hp-lbl">Mercato italiano<br/>nutraceutica 2025</span>
-        </div>
-        <div class="hp-item">
-          <span class="hp-num">0</span>
-          <span class="hp-lbl">Brand italiani<br/>nel top-5 EU</span>
-        </div>
-        <div class="hp-item">
-          <span class="hp-num">83%</span>
-          <span class="hp-lbl">Disposto a pagare<br/>€3.50+ a barretta</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="hero-visual reveal-right">
-      <div class="hero-bar-stack">
-        <!-- Card 3 — Alpi (back) -->
-        <div class="hbs-card">
-          <svg width="240" height="110" viewBox="0 0 240 110">
-            <!-- Bar body -->
-            <rect x="10" y="20" width="220" height="70" rx="12" fill="url(#alpi-grad)"/>
-            <defs>
-              <linearGradient id="alpi-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#2A7FA8"/>
-                <stop offset="100%" stop-color="#1A5070"/>
-              </linearGradient>
-            </defs>
-            <!-- Sheen -->
-            <rect x="10" y="20" width="220" height="22" rx="12" fill="rgba(255,255,255,0.07)"/>
-            <!-- Label area -->
-            <text x="28" y="46" font-family="serif" font-size="11" fill="rgba(255,255,255,0.55)" letter-spacing="2">VITALIA</text>
-            <text x="28" y="66" font-family="serif" font-size="18" font-weight="bold" fill="#FFFFFF">Alpi</text>
-            <!-- Region -->
-            <text x="28" y="82" font-family="sans-serif" font-size="9" fill="rgba(160,220,255,0.70)" letter-spacing="1.5">TRENTINO</text>
-            <!-- Ingredient dots -->
-            <circle cx="185" cy="43" r="14" fill="rgba(100,200,140,0.15)" stroke="rgba(100,200,140,0.30)" stroke-width="1"/>
-            <text x="185" y="47" text-anchor="middle" font-size="12">🍏</text>
-            <circle cx="215" cy="60" r="11" fill="rgba(220,80,120,0.15)" stroke="rgba(220,80,120,0.30)" stroke-width="1"/>
-            <text x="215" y="64" text-anchor="middle" font-size="9">🍓</text>
-          </svg>
-          <p style="font-size:.70rem;color:rgba(160,220,255,.60);letter-spacing:.10em;text-transform:uppercase;margin-top:.5rem">Mela Val di Non DOP · Lampone Alpino · Omega-3</p>
-        </div>
-        <!-- Card 2 — Terra -->
-        <div class="hbs-card">
-          <svg width="240" height="110" viewBox="0 0 240 110">
-            <rect x="10" y="20" width="220" height="70" rx="12" fill="url(#terra-grad)"/>
-            <defs>
-              <linearGradient id="terra-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#7A4A18"/>
-                <stop offset="100%" stop-color="#4A2C0A"/>
-              </linearGradient>
-            </defs>
-            <rect x="10" y="20" width="220" height="22" rx="12" fill="rgba(255,255,255,0.06)"/>
-            <text x="28" y="46" font-family="serif" font-size="11" fill="rgba(255,255,255,0.50)" letter-spacing="2">VITALIA</text>
-            <text x="28" y="66" font-family="serif" font-size="18" font-weight="bold" fill="#FFFFFF">Terra</text>
-            <text x="28" y="82" font-family="sans-serif" font-size="9" fill="rgba(210,170,100,0.70)" letter-spacing="1.5">TOSCANA</text>
-            <circle cx="185" cy="43" r="14" fill="rgba(180,120,40,0.18)" stroke="rgba(180,120,40,0.30)" stroke-width="1"/>
-            <text x="185" y="47" text-anchor="middle" font-size="12">🌰</text>
-            <circle cx="215" cy="60" r="11" fill="rgba(160,80,120,0.15)" stroke="rgba(160,80,120,0.30)" stroke-width="1"/>
-            <text x="215" y="64" text-anchor="middle" font-size="9">🍐</text>
-          </svg>
-          <p style="font-size:.70rem;color:rgba(210,170,100,.60);letter-spacing:.10em;text-transform:uppercase;margin-top:.5rem">Castagna IGP · Fico di Carmignano · B6 + B12</p>
-        </div>
-        <!-- Card 1 — Sole (front) -->
-        <div class="hbs-card">
-          <svg width="240" height="110" viewBox="0 0 240 110">
-            <rect x="10" y="20" width="220" height="70" rx="12" fill="url(#sole-grad)"/>
-            <defs>
-              <linearGradient id="sole-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#C87820"/>
-                <stop offset="100%" stop-color="#8A4A08"/>
-              </linearGradient>
-            </defs>
-            <rect x="10" y="20" width="220" height="22" rx="12" fill="rgba(255,255,255,0.10)"/>
-            <text x="28" y="46" font-family="serif" font-size="11" fill="rgba(255,255,255,0.55)" letter-spacing="2">VITALIA</text>
-            <text x="28" y="66" font-family="serif" font-size="18" font-weight="bold" fill="#FFFFFF">Sole</text>
-            <text x="28" y="82" font-family="sans-serif" font-size="9" fill="rgba(255,220,130,0.75)" letter-spacing="1.5">SICILIA</text>
-            <circle cx="185" cy="43" r="14" fill="rgba(100,180,60,0.18)" stroke="rgba(100,180,60,0.30)" stroke-width="1"/>
-            <text x="185" y="47" text-anchor="middle" font-size="12">🍊</text>
-            <circle cx="215" cy="60" r="11" fill="rgba(100,160,60,0.18)" stroke="rgba(100,160,60,0.30)" stroke-width="1"/>
-            <text x="215" y="64" text-anchor="middle" font-size="9">🌿</text>
-          </svg>
-          <p style="font-size:.70rem;color:rgba(255,220,130,.65);letter-spacing:.10em;text-transform:uppercase;margin-top:.5rem">Pistacchio Bronte DOP · Arancia Rossa IGP · Vit C + Zinco</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- TICKER -->
-<div class="ticker-wrap">
-  <div class="ticker-inner">
-    <div class="ticker-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Zero dolcificanti artificiali</div>
-    <div class="ticker-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Ingredienti DOP/IGP certificati</div>
-    <div class="ticker-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>Formula vitaminica UniPR</div>
-    <div class="ticker-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/></svg>Made in Italy</div>
-    <div class="ticker-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>Partnership Università di Parma</div>
-    <div class="ticker-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>Brevetto in deposito</div>
-    <!-- duplicate for seamless loop -->
-    <div class="ticker-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Zero dolcificanti artificiali</div>
-    <div class="ticker-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Ingredienti DOP/IGP certificati</div>
-    <div class="ticker-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>Formula vitaminica UniPR</div>
-    <div class="ticker-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/></svg>Made in Italy</div>
-    <div class="ticker-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>Partnership Università di Parma</div>
-    <div class="ticker-item"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>Brevetto in deposito</div>
-  </div>
-</div>
-
-<!--══════════════════════════════════════════
-  PROBLEM
-══════════════════════════════════════════-->
-<section class="problem-bg">
-  <div class="container">
-    <div class="section-label reveal"><div class="line"></div><span>Il problema</span></div>
-    <h2 class="section-title reveal">Il mercato degli snack<br/><em class="gold">italiani è rotto</em></h2>
-    <div class="problem-grid">
-      <div class="problem-cards">
-        <div class="prob-card reveal">
-          <div class="prob-icon">❌</div>
-          <div>
-            <p class="prob-title">Le barrette "naturali" non hanno vitamine</p>
-            <p class="prob-desc">Il 91% dei consumatori non ha mai trovato una barretta italiana con vitamine brevettate. Buone ma non funzionali.</p>
-          </div>
-        </div>
-        <div class="prob-card reveal" style="transition-delay:.1s">
-          <div class="prob-icon">⚗️</div>
-          <div>
-            <p class="prob-title">Gli integratori non hanno gusto</p>
-            <p class="prob-desc">Pillole, polveri, bustine. Il mercato degli integratori non ha mai incontrato davvero quello del food. Il 74% si lamenta del formato attuale.</p>
-          </div>
-        </div>
-        <div class="prob-card reveal" style="transition-delay:.2s">
-          <div class="prob-icon">🌍</div>
-          <div>
-            <p class="prob-title">Nessun brand italiano nel top-5 EU</p>
-            <p class="prob-desc">KIND, Grenade, Clif Bar, Trek — tutti anglosassoni. Il paese con la cucina più famosa del mondo non ha ancora un brand di snack funzionali.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="problem-stat-box reveal-right">
-        <div class="psb-num">74<span class="psb-unit">%</span></div>
-        <p class="psb-label">dei consumatori italiani intervistati si lamenta dei dolcificanti artificiali nelle barrette "healthy" disponibili oggi</p>
-        <p class="psb-source">Questionario Vitalia · 300+ risposte · 2026</p>
-        <div class="psb-divider"></div>
-        <div class="psb-num">83<span class="psb-unit">%</span></div>
-        <p class="psb-label">è disposto a pagare €3,50 o più per una barretta con ingredienti italiani certificati e vitamine dosate scientificamente</p>
-        <p class="psb-source">Questionario Vitalia · Stessa survey</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!--══════════════════════════════════════════
-  PRODUCTS
-══════════════════════════════════════════-->
-<section id="prodotti">
-  <div class="container">
-    <div class="products-intro reveal">
-      <div class="section-label" style="justify-content:center"><div class="line"></div><span>Le tre barrette</span><div class="line"></div></div>
-      <h2 class="section-title" style="text-align:center">Tre regioni.<br/><em class="gold">Tre storie. Tre formule.</em></h2>
-      <p class="section-sub" style="text-align:center">Ogni barretta è costruita attorno a un territorio italiano, ai suoi ingredienti certificati e a una formula vitaminica specifica per uno scopo preciso.</p>
-    </div>
-
-    <div class="products-grid">
-
-      <!-- SOLE -->
-      <div class="product-card reveal" data-bar="sole" style="transition-delay:0s">
-        <div class="bar-visual" data-bar="sole">
-          <div class="glow"></div>
-          <svg width="260" height="160" viewBox="0 0 260 160">
-            <!-- Bar wrapper shape -->
-            <rect x="30" y="32" width="200" height="96" rx="14"
-                  fill="url(#sole-full)" filter="url(#shadow-sole)"/>
-            <defs>
-              <linearGradient id="sole-full" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#D4821A"/>
-                <stop offset="50%" stop-color="#B86010"/>
-                <stop offset="100%" stop-color="#7A3C06"/>
-              </linearGradient>
-              <filter id="shadow-sole">
-                <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#B86010" flood-opacity=".35"/>
-              </filter>
-            </defs>
-            <!-- Wrapper highlight -->
-            <rect x="30" y="32" width="200" height="30" rx="14" fill="rgba(255,255,255,0.10)"/>
-            <!-- Foil edges -->
-            <line x1="30" y1="80" x2="230" y2="80" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-            <!-- Brand -->
-            <text x="52" y="58" font-family="Georgia,serif" font-size="9" fill="rgba(255,255,255,0.55)" letter-spacing="3">VITALIA</text>
-            <text x="52" y="85" font-family="Georgia,serif" font-size="24" font-weight="bold" fill="#FFFFFF">Sole</text>
-            <text x="52" y="103" font-family="Arial,sans-serif" font-size="8" fill="rgba(255,230,130,0.80)" letter-spacing="2.5">SICILIA · DOP/IGP</text>
-            <!-- Ingredient clusters -->
-            <circle cx="196" cy="55" r="18" fill="rgba(100,190,70,0.18)" stroke="rgba(120,210,80,0.35)" stroke-width="1.5"/>
-            <text x="196" y="60" text-anchor="middle" font-size="18">🌿</text>
-            <circle cx="196" cy="100" r="16" fill="rgba(240,100,60,0.18)" stroke="rgba(255,120,60,0.35)" stroke-width="1.5"/>
-            <text x="196" y="105" text-anchor="middle" font-size="15">🍊</text>
-            <!-- Texture lines -->
-            <line x1="130" y1="34" x2="130" y2="126" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
-          </svg>
-        </div>
-        <div class="product-body">
-          <div>
-            <div class="product-region" data-bar="sole">🍊 Sicilia</div>
-            <h3 class="product-name">Vitalia Sole</h3>
-          </div>
-          <p class="product-desc">L'energia della Sicilia in ogni morso. Costruita sulle eccellenze vulcaniche e agrumarie dell'isola, con un profilo antiossidante tra i più alti della linea.</p>
-          <div class="product-ingrs">
-            <span class="ingr-tag" data-bar="sole">Pistacchio Bronte DOP</span>
-            <span class="ingr-tag" data-bar="sole">Arancia Rossa IGP</span>
-            <span class="ingr-tag" data-bar="sole">Miele di Zagara</span>
-            <span class="ingr-tag" data-bar="sole">Mandorla di Avola</span>
-          </div>
-          <div class="product-vitamins">
-            <p class="vit-label">Formula vitaminica UniPR</p>
-            <div class="vit-pills">
-              <span class="vit-pill">Vitamina C · 80mg NRV</span>
-              <span class="vit-pill">Zinco · 10mg NRV</span>
-              <span class="vit-pill">Vitamina B1</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- TERRA -->
-      <div class="product-card reveal" data-bar="terra" style="transition-delay:.12s">
-        <div class="bar-visual" data-bar="terra">
-          <div class="glow"></div>
-          <svg width="260" height="160" viewBox="0 0 260 160">
-            <rect x="30" y="32" width="200" height="96" rx="14"
-                  fill="url(#terra-full)" filter="url(#shadow-terra)"/>
-            <defs>
-              <linearGradient id="terra-full" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#8B4A14"/>
-                <stop offset="50%" stop-color="#6B3408"/>
-                <stop offset="100%" stop-color="#3E1E04"/>
-              </linearGradient>
-              <filter id="shadow-terra">
-                <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#6B3408" flood-opacity=".40"/>
-              </filter>
-            </defs>
-            <rect x="30" y="32" width="200" height="30" rx="14" fill="rgba(255,255,255,0.07)"/>
-            <line x1="30" y1="80" x2="230" y2="80" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-            <text x="52" y="58" font-family="Georgia,serif" font-size="9" fill="rgba(255,255,255,0.50)" letter-spacing="3">VITALIA</text>
-            <text x="52" y="85" font-family="Georgia,serif" font-size="24" font-weight="bold" fill="#FFFFFF">Terra</text>
-            <text x="52" y="103" font-family="Arial,sans-serif" font-size="8" fill="rgba(220,180,110,0.80)" letter-spacing="2.5">TOSCANA · DOP/IGP</text>
-            <circle cx="196" cy="55" r="18" fill="rgba(180,120,40,0.20)" stroke="rgba(200,140,50,0.35)" stroke-width="1.5"/>
-            <text x="196" y="60" text-anchor="middle" font-size="18">🌰</text>
-            <circle cx="196" cy="100" r="16" fill="rgba(160,80,140,0.18)" stroke="rgba(180,90,160,0.35)" stroke-width="1.5"/>
-            <text x="196" y="105" text-anchor="middle" font-size="15">🍐</text>
-            <line x1="130" y1="34" x2="130" y2="126" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
-          </svg>
-        </div>
-        <div class="product-body">
-          <div>
-            <div class="product-region" data-bar="terra">🌰 Toscana</div>
-            <h3 class="product-name">Vitalia Terra</h3>
-          </div>
-          <p class="product-desc">La profondità della Toscana rurale. Ingredienti autunnali ricchi di amidi complessi e flavonoidi, pensati per supportare concentrazione e metabolismo energetico.</p>
-          <div class="product-ingrs">
-            <span class="ingr-tag" data-bar="terra">Castagna Toscana IGP</span>
-            <span class="ingr-tag" data-bar="terra">Fico di Carmignano IGP</span>
-            <span class="ingr-tag" data-bar="terra">Nocciola Romana DOP</span>
-            <span class="ingr-tag" data-bar="terra">Miele Millefiori Toscano</span>
-          </div>
-          <div class="product-vitamins">
-            <p class="vit-label">Formula vitaminica UniPR</p>
-            <div class="vit-pills">
-              <span class="vit-pill">Vitamina B6 · 1.4mg NRV</span>
-              <span class="vit-pill">Vitamina B12 · 2.5μg NRV</span>
-              <span class="vit-pill">Acido Folico</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ALPI -->
-      <div class="product-card reveal" data-bar="alpi" style="transition-delay:.24s">
-        <div class="bar-visual" data-bar="alpi">
-          <div class="glow"></div>
-          <svg width="260" height="160" viewBox="0 0 260 160">
-            <rect x="30" y="32" width="200" height="96" rx="14"
-                  fill="url(#alpi-full)" filter="url(#shadow-alpi)"/>
-            <defs>
-              <linearGradient id="alpi-full" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#2A6E90"/>
-                <stop offset="50%" stop-color="#1A5270"/>
-                <stop offset="100%" stop-color="#0E2E40"/>
-              </linearGradient>
-              <filter id="shadow-alpi">
-                <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#1A5270" flood-opacity=".40"/>
-              </filter>
-            </defs>
-            <rect x="30" y="32" width="200" height="30" rx="14" fill="rgba(255,255,255,0.09)"/>
-            <line x1="30" y1="80" x2="230" y2="80" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-            <text x="52" y="58" font-family="Georgia,serif" font-size="9" fill="rgba(255,255,255,0.55)" letter-spacing="3">VITALIA</text>
-            <text x="52" y="85" font-family="Georgia,serif" font-size="24" font-weight="bold" fill="#FFFFFF">Alpi</text>
-            <text x="52" y="103" font-family="Arial,sans-serif" font-size="8" fill="rgba(160,220,255,0.80)" letter-spacing="2.5">TRENTINO · DOP/BIO</text>
-            <circle cx="196" cy="55" r="18" fill="rgba(100,200,140,0.18)" stroke="rgba(120,220,150,0.35)" stroke-width="1.5"/>
-            <text x="196" y="60" text-anchor="middle" font-size="18">🍏</text>
-            <circle cx="196" cy="100" r="16" fill="rgba(220,80,120,0.16)" stroke="rgba(240,90,130,0.35)" stroke-width="1.5"/>
-            <text x="196" y="105" text-anchor="middle" font-size="15">🍓</text>
-            <line x1="130" y1="34" x2="130" y2="126" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
-          </svg>
-        </div>
-        <div class="product-body">
-          <div>
-            <div class="product-region" data-bar="alpi">🏔️ Trentino</div>
-            <h3 class="product-name">Vitalia Alpi</h3>
-          </div>
-          <p class="product-desc">La purezza delle montagne. Frutti alpini ricchi di antocianine e Omega-3 da semi di canapa biologica per il recupero muscolare e la protezione cellulare.</p>
-          <div class="product-ingrs">
-            <span class="ingr-tag" data-bar="alpi">Mela Val di Non DOP</span>
-            <span class="ingr-tag" data-bar="alpi">Lampone Alpino BIO</span>
-            <span class="ingr-tag" data-bar="alpi">Semi di Canapa BIO</span>
-            <span class="ingr-tag" data-bar="alpi">Mirtillo Trentino</span>
-          </div>
-          <div class="product-vitamins">
-            <p class="vit-label">Formula vitaminica UniPR</p>
-            <div class="vit-pills">
-              <span class="vit-pill">Vitamina E · 12mg NRV</span>
-              <span class="vit-pill">Omega-3 ALA</span>
-              <span class="vit-pill">Vitamina D3</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!--══════════════════════════════════════════
-  SCIENCE / STUDIES
-══════════════════════════════════════════-->
-<section id="scienza" class="science-bg">
-  <div class="container">
-    <div class="science-layout">
-      <div class="science-intro reveal-left">
-        <div class="section-label"><div class="line"></div><span>La scienza</span></div>
-        <h2 class="section-title">Non è marketing.<br/><em class="gold">È letteratura scientifica.</em></h2>
-        <p class="section-sub">Ogni scelta di ingredienti e ogni dosaggio vitaminico di Vitalia si basa su ricerche peer-reviewed. Ecco cosa dice la scienza sugli ingredienti che usiamo.</p>
-        <div class="claim-list" style="margin-top:2rem">
-          <div class="claim">
-            <div class="claim-icon">🔬</div>
-            <p class="claim-text"><strong>La matrice alimentare aumenta la biodisponibilità vitaminica</strong> rispetto agli integratori isolati — i nutrienti legati a fibre naturali vengono assorbiti più lentamente e completamente.</p>
-          </div>
-          <div class="claim">
-            <div class="claim-icon">🌿</div>
-            <p class="claim-text"><strong>Il Pistacchio di Bronte DOP</strong> ha una concentrazione di antiossidanti (ORAC) fino al 40% superiore rispetto alle varietà californiane, grazie al terreno vulcanico dell'Etna.</p>
-          </div>
-          <div class="claim">
-            <div class="claim-icon">🧬</div>
-            <p class="claim-text"><strong>I polifenoli della Castagna Toscana IGP</strong> supportano la funzione cognitiva e il metabolismo energetico — effetti validati in studi su adulti attivi.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="studies-grid reveal-right">
-
-        <div class="study-card">
-          <div class="study-header">
-            <span class="study-topic st-nutra">Nutraceutica</span>
-            <span class="study-year">2023</span>
-          </div>
-          <p class="study-title">Vitamina C: biodisponibilità da fonti alimentari vs integratori isolati</p>
-          <p class="study-finding">Le vitamine incorporate in matrici alimentari ricche di fibre mostrano <strong>una biodisponibilità del 25-35% superiore</strong> rispetto agli equivalenti in forma di supplemento isolato, grazie all'effetto sinergico dei cofattori presenti nel cibo.</p>
-          <div class="study-source">
-            <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-            Journal of Nutritional Biochemistry · Carr et al., 2023
-          </div>
-        </div>
-
-        <div class="study-card">
-          <div class="study-header">
-            <span class="study-topic st-food">Food Science</span>
-            <span class="study-year">2021</span>
-          </div>
-          <p class="study-title">Pistacchio di Bronte DOP: profilo antiossidante e composti bioattivi</p>
-          <p class="study-finding">Il pistacchio coltivato alle pendici dell'Etna presenta <strong>concentrazioni di luteina, zeaxantina e vitamina E significativamente superiori</strong> alle varietà di pianura. L'altitudine e il substrato vulcanico sono fattori determinanti nella densità nutrizionale.</p>
-          <div class="study-source">
-            <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-            Food Chemistry · Dugo G. et al., 2021
-          </div>
-        </div>
-
-        <div class="study-card">
-          <div class="study-header">
-            <span class="study-topic st-med">Cognitività</span>
-            <span class="study-year">2022</span>
-          </div>
-          <p class="study-title">Vitamine del gruppo B e funzione cognitiva negli adulti attivi</p>
-          <p class="study-finding">Una meta-analisi su 14 studi randomizzati ha evidenziato che <strong>l'integrazione di B6 e B12 attraverso alimenti funzionali riduce i marcatori di stanchezza mentale del 18%</strong> rispetto al placebo, con effetti misurabili dopo 4 settimane di consumo regolare.</p>
-          <div class="study-source">
-            <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-            Nutrients Journal · Kennedy D.O., 2022
-          </div>
-        </div>
-
-        <div class="study-card">
-          <div class="study-header">
-            <span class="study-topic st-market">Mercato</span>
-            <span class="study-year">2025</span>
-          </div>
-          <p class="study-title">Functional food e nutraceutica: mercato europeo 2025–2030</p>
-          <p class="study-finding">Il mercato europeo del functional food crescerà a un CAGR del <strong>7.8% fino al 2030</strong>, trainato dalla crescente domanda di prodotti "clean label" con ingredienti tracciabili. L'Italia è tra i mercati con il gap più alto tra domanda percepita e offerta disponibile.</p>
-          <div class="study-source">
-            <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-            Euromonitor International · Global Health & Wellness, 2025
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-<!--══════════════════════════════════════════
-  UNIPR
-══════════════════════════════════════════-->
-<section id="unipr" class="unipr-section">
-  <div class="container">
-    <div class="unipr-inner reveal">
-      <div class="unipr-grid">
-
-        <div>
-          <div class="unipr-logo-wrap">
-            <div class="unipr-logo-box">UniPR</div>
-            <div class="unipr-name">
-              <strong>Università di Parma</strong>
-              Dipartimento di Scienze degli Alimenti
-            </div>
-          </div>
-          <h2 class="unipr-title">La Food Valley d'Europa<br/>è casa nostra</h2>
-          <p class="unipr-desc">
-            Parma non è solo la città del Parmigiano Reggiano e del Prosciutto di Parma.
-            È la capitale scientifica del food in Europa — sede di Barilla, Parmalat, Mutti
-            e di uno dei dipartimenti di scienze alimentari più avanzati del continente.
-            Vitalia è sviluppata in partnership formale con l'Università di Parma,
-            con un contratto già firmato e una ricerca attiva.
-          </p>
-          <div class="unipr-facts">
-            <div class="uf-item">
-              <p class="uf-num">#1</p>
-              <p class="uf-lbl">Dipartimento di Scienze Alimentari in Italia per produzione scientifica</p>
-            </div>
-            <div class="uf-item">
-              <p class="uf-num">HPLC</p>
-              <p class="uf-lbl">Analisi cromatografica per misurare la stabilità vitaminica post-lavorazione</p>
-            </div>
-            <div class="uf-item">
-              <p class="uf-num">2025</p>
-              <p class="uf-lbl">Anno di firma del contratto di ricerca e sviluppo</p>
-            </div>
-            <div class="uf-item">
-              <p class="uf-num">NRV EU</p>
-              <p class="uf-lbl">Tutti i dosaggi calibrati sui valori di riferimento europei</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="unipr-process">
-          <p style="font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem">Il processo di R&amp;D</p>
-          <div class="unipr-step">
-            <div class="us-num">01</div>
-            <div class="us-body">
-              <p class="us-title">Selezione e analisi degli ingredienti</p>
-              <p class="us-desc">Ogni ingrediente DOP/IGP viene analizzato al laboratorio per profilo nutrizionale, concentrazione di micronutrienti e compatibilità con la matrice.</p>
-            </div>
-          </div>
-          <div class="unipr-step">
-            <div class="us-num">02</div>
-            <div class="us-body">
-              <p class="us-title">Formulazione della miscela vitaminica</p>
-              <p class="us-desc">I ricercatori UniPR progettano il mix vitaminico specifico per ogni barretta, calibrando i dosaggi sulle NRV europee e sulla biodisponibilità reale degli ingredienti.</p>
-            </div>
-          </div>
-          <div class="unipr-step">
-            <div class="us-num">03</div>
-            <div class="us-body">
-              <p class="us-title">Test di stabilità termica (HPLC)</p>
-              <p class="us-desc">Durante la lavorazione il calore degrada le vitamine. Le analisi HPLC misurano quanta vitamina rimane nel prodotto finito — così ciò che è in etichetta c'è davvero.</p>
-            </div>
-          </div>
-          <div class="unipr-step">
-            <div class="us-num">04</div>
-            <div class="us-body">
-              <p class="us-title">Brevetto e documentazione regolatoria</p>
-              <p class="us-desc">La formula finale viene depositata come brevetto. Tutta la documentazione è conforme ai requisiti EFSA per i claim nutrizionali.</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-<!--══════════════════════════════════════════
-  FOUNDING MEMBERS
-══════════════════════════════════════════-->
-<section id="waitlist" class="fm-section">
-  <div class="container">
-    <div class="section-label reveal"><div class="line"></div><span>Founding Members</span></div>
-    <h2 class="section-title reveal">Entra nella lista.<br/><em class="gold">Costruiscilo con noi.</em></h2>
-
-    <div class="fm-grid">
-
-      <div>
-        <p class="section-sub reveal" style="margin-bottom:2rem">
-          I primi 500 fondatori hanno un vantaggio permanente: accesso prima di tutti, sconto garantito al lancio e un filo diretto con il team. Non una newsletter — una comunità.
-        </p>
-        <div class="fm-benefits">
-          <div class="fm-benefit reveal" style="transition-delay:0s">
-            <div class="fb-icon">🏆</div>
-            <div><p class="fb-title">Accesso prioritario</p><p class="fb-desc">Ricevi il prodotto prima che vada in vendita pubblica. Founding members = prima consegna garantita.</p></div>
-          </div>
-          <div class="fm-benefit reveal" style="transition-delay:.08s">
-            <div class="fb-icon">💰</div>
-            <div><p class="fb-title">Sconto -20% per sempre</p><p class="fb-desc">Il prezzo founding è bloccato: anche quando il prezzo di listino aumenta, tu paghi sempre il 20% in meno.</p></div>
-          </div>
-          <div class="fm-benefit reveal" style="transition-delay:.16s">
-            <div class="fb-icon">🗳️</div>
-            <div><p class="fb-title">Voti quale gusto lanciamo prima</p><p class="fb-desc">Sole, Terra o Alpi? I founding members decidono quale delle tre barrette arriva sul mercato per prima.</p></div>
-          </div>
-          <div class="fm-benefit reveal" style="transition-delay:.24s">
-            <div class="fb-icon">🔬</div>
-            <div><p class="fb-title">Aggiornamenti esclusivi dal lab</p><p class="fb-desc">Risultati delle analisi HPLC, aggiornamenti sul brevetto, foto dal laboratorio UniPR. Solo per founding members.</p></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- FORM CARD -->
-      <div class="fm-card reveal-right">
-        <div class="fm-card-top"></div>
-        <div class="fm-card-body">
-
-          <div class="spots-row">
-            <span class="spots-lbl">Posti disponibili</span>
-            <span class="spots-val" id="spotsVal">487 / 500</span>
-          </div>
-          <div class="spots-track">
-            <div class="spots-fill" id="spotsFill" style="width:2.6%"></div>
-          </div>
-
-          <!-- FORM STATE -->
-          <div id="formState">
-            <p class="fm-card-title">Entra nella lista 🌿</p>
-            <p class="fm-card-sub">Unisciti ai primi 500 founding members. Gratis, niente spam.</p>
-
-            <form id="waitlistForm" novalidate>
-              <div class="fgroup">
-                <label for="nome">Nome</label>
-                <input type="text" id="nome" placeholder="Il tuo nome" autocomplete="given-name" required/>
-              </div>
-              <div class="fgroup">
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="tua@email.com" autocomplete="email" required/>
-              </div>
-              <button type="submit" class="btn-fm" id="submitBtn">
-                <span id="btnTxt">Diventa Founding Member</span>
-                <span id="btnArr">→</span>
-                <span class="spin" id="btnSpin"></span>
-              </button>
-            </form>
-            <p class="fm-privacy">Zero spam · Solo aggiornamenti su Vitalia · Cancellazione libera</p>
-          </div>
-
-          <!-- SUCCESS STATE -->
-          <div class="fm-success" id="successState">
-            <div class="fs-icon">🌿</div>
-            <p class="fs-title">Benvenuto/a!</p>
-            <p class="fs-sub">Sei ufficialmente un <strong>Founding Member di Vitalia</strong>.<br/>Ti aggiorneremo su ogni passo del progetto.</p>
-            <div class="fs-share">
-              <button class="share-pill" onclick="shareWA()">📲 Condividi su WhatsApp</button>
-              <button class="share-pill" onclick="copyLnk(this)">🔗 Copia il link</button>
-            </div>
-            <p style="font-size:.70rem;color:rgba(255,255,255,.28);margin-top:.5rem">Ogni persona che inviti aiuta Vitalia a nascere 🙏</p>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!--══════════════════════════════════════════
-  FOOTER
-══════════════════════════════════════════-->
-<footer>
-  <div>
-    <p class="ft-brand">Vitalia</p>
-    <p class="ft-copy">© 2026 Vitalia · La prima barretta italiana nutraceutica · Parma, Italia</p>
-  </div>
-  <div class="ft-links">
-    <a href="index.html">Home</a>
-    <a href="questionario.html">Questionario</a>
-    <a href="mailto:f.amato2798@gmail.com">Contatti</a>
-  </div>
-</footer>
-
-<!--══════════════════════════════════════════
-  JAVASCRIPT
-══════════════════════════════════════════-->
-<script>
-/* ─── CONFIG ─── */
-const APPS_SCRIPT_URL = 'INSERISCI_URL_APPS_SCRIPT'; // da waitlist script .gs
-const TOTAL = 500, TAKEN = 13;
-
-/* ─── SPOTS ─── */
-document.getElementById('spotsVal').textContent = (TOTAL - TAKEN) + ' / ' + TOTAL;
-document.getElementById('spotsFill').style.width = Math.max((TAKEN/TOTAL)*100, 1) + '%';
-
-/* ─── SCROLL REVEAL ─── */
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') });
-}, { threshold: 0.12 });
-document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
-
-/* ─── FORM SUBMIT ─── */
-document.getElementById('waitlistForm').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  const nome  = document.getElementById('nome').value.trim();
-  const email = document.getElementById('email').value.trim();
-  if (!nome || !email || !email.includes('@')) {
-    document.getElementById('email').focus(); return;
-  }
-  const btn = document.getElementById('submitBtn');
-  btn.disabled = true;
-  document.getElementById('btnTxt').style.display = 'none';
-  document.getElementById('btnArr').style.display = 'none';
-  document.getElementById('btnSpin').style.display = 'block';
-
-  try {
-    fetch(APPS_SCRIPT_URL, {
-      method:'POST', mode:'no-cors',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ nome, email, ts: new Date().toISOString(), src:'waitlist' })
-    });
-  } catch(_) {}
-
-  await new Promise(r => setTimeout(r, 900));
-
-  /* Update counter */
-  const newTaken = TAKEN + 1;
-  document.getElementById('spotsVal').textContent = (TOTAL - newTaken) + ' / ' + TOTAL;
-  document.getElementById('spotsFill').style.width = ((newTaken/TOTAL)*100) + '%';
-
-  /* Show success */
-  document.getElementById('formState').style.display = 'none';
-  const s = document.getElementById('successState');
-  s.style.display = 'flex';
-});
-
-/* ─── SHARE ─── */
-const PAGE = window.location.href.split('?')[0];
-const MSG  = encodeURIComponent('🌿 Ho aderito a Vitalia — la prima barretta italiana con ingredienti DOP/IGP e vitamine brevettate UniPR.\n\nSei tra i primi 500 founding members: accesso prioritario + -20% al lancio 👇\n' + PAGE);
-function shareWA(){ window.open('https://wa.me/?text='+MSG,'_blank') }
-function copyLnk(btn){
-  navigator.clipboard.writeText(PAGE).then(() => {
-    btn.textContent = '✓ Copiato!';
-    setTimeout(()=>{ btn.textContent = '🔗 Copia il link' }, 2000);
-  });
-}
-
-/* ─── NAV logo fallback ─── */
-document.querySelector('nav .nav-brand img')?.addEventListener('error', function(){
-  this.style.display='none'; this.nextElementSibling.style.display='flex';
-});
-</script>
-</body>
-</html>
+￼
+Vitalia
+I prodotti
+La scienza
+UniPR
+Founding Members →
+
+
+PRE-LANCIO · POSTI LIMITATI
+La barretta che mancava all'Italia
+Ingredienti DOP/IGP da tre regioni italiane. Vitamine formulate con l'Università di Parma. Zero dolcificanti. Uno snack che fa quello che promette.
+📋
+Hai 3 minuti? Aiutaci a costruirlo — scegli:
+🇮🇹
+🇬🇧
+Diventa Founding Member → Scopri i prodotti
+0
+brand italiani
+nel top-5 EU
+€4.5B
+mercato italiano
+nutraceutica
+UniPR
+contratto R&D
+già firmato
+VITALIA
+Sole
+SICILIA · DOP/IGP
+🌿
+🍊
+Pistacchio Bronte DOP
+Arancia Rossa IGP
+Vit C · Zinco · B1
+🌿 ZERO DOLCIFICANTI ARTIFICIALI 🏔️ INGREDIENTI DOP/IGP CERTIFICATI EU 🔬 FORMULA VITAMINICA UNIPR 🇮🇹 MADE IN ITALY 📜 BREVETTO IN DEPOSITO 🍊 PISTACCHIO BRONTE DOP 🌰 CASTAGNA TOSCANA IGP 🍏 MELA VAL DI NON DOP 🌿 ZERO DOLCIFICANTI ARTIFICIALI 🏔️ INGREDIENTI DOP/IGP CERTIFICATI EU 🔬 FORMULA VITAMINICA UNIPR 🇮🇹 MADE IN ITALY 📜 BREVETTO IN DEPOSITO 🍊 PISTACCHIO BRONTE DOP 🌰 CASTAGNA TOSCANA IGP 🍏 MELA VAL DI NON DOP
+
+TRE BARRETTE
+Tre regioni. Tre formule.
+Ognuna racconta un territorio e porta nel corpo esattamente quello di cui hai bisogno.
+
+VITALIA
+Sole
+SICILIA · DOP/IGP
+🌿
+🍊
+🍊 SICILIA
+Vitalia Sole
+Energia e difese immunitarie. Costruita attorno al Pistacchio di Bronte DOP — uno degli ingredienti più densi di nutrienti che esistano.
+Pistacchio Bronte DOP
+Arancia Rossa IGP
+Miele di Zagara
+VITAMINE UNIPR
+Vitamina C
+Zinco
+B1
+
+VITALIA
+Terra
+TOSCANA · IGP
+🌰
+🍐
+🌰 TOSCANA
+Vitalia Terra
+Concentrazione e lucidità mentale. Ingredienti autunnali toscani ricchi di amidi complessi e polifenoli. Per il cervello, non solo per lo stomaco.
+Castagna Toscana IGP
+Fico di Carmignano IGP
+Nocciola Romana DOP
+VITAMINE UNIPR
+Vitamina B6
+B12
+Folico
+
+VITALIA
+Alpi
+TRENTINO · DOP/BIO
+🍏
+🍓
+🏔️ TRENTINO
+Vitalia Alpi
+Recupero e protezione cellulare. Frutti alpini biologici ad alto contenuto di antocianine. Omega-3 da canapa coltivata in Trentino.
+Mela Val di Non DOP
+Lampone Alpino BIO
+Semi di Canapa BIO
+VITAMINE UNIPR
+Vitamina E
+D3
+Omega-3
+72%
+degli italiani non raggiunge il fabbisogno giornaliero di Vitamina D.
+Non è una questione di volontà. Il cibo che mangiamo normalmente non basta. Le pillole funzionano ma quasi nessuno le prende ogni giorno. Uno snack con vitamine reali, che stai già mangiando, è una soluzione diversa.
+Fonte: CREA — Istituto Nazionale di Ricerca per gli Alimenti e la Nutrizione · European Nutrition Survey 2024
+
+COSA FANNO AL CORPO
+Non è marketing. È quello che senti.
+Ogni barretta Vitalia è formulata per uno scopo preciso. Ecco perché.
+⚡️
+B12 + B6
+Meno stanchezza mentale
+Studi su adulti attivi mostrano una riduzione del 18% dei marcatori di affaticamento cognitivo in 4 settimane di assunzione regolare.
+🛡️
+VITAMINA C + ZINCO
+Difese più forti
+Insieme riducono la durata dei sintomi influenzali del 33%. Zinco e Vitamina C sono essenziali per la risposta immunitaria adattativa.
+☀️
+VITAMINA D3
+Ossa, umore, immunità
+La forma D3 ha biodisponibilità superiore del 40% rispetto alla D2. Agisce su oltre 200 geni. Carente nel 72% degli italiani.
+🧬
+VITAMINA E + OMEGA-3
+Protezione cellulare
+L'antiossidante liposolubile più importante del corpo. Con gli Omega-3 ALA riduce lo stress ossidativo e supporta il recupero muscolare.
+UniPR
+Università di Parma
+Dipartimento di Scienze degli Alimenti
+Parma è la Food Valley d'Europa. Il laboratorio è lì.
+Abbiamo firmato un contratto di R&D con il dipartimento che ha formato i ricercatori di Barilla, Parmalat e Mutti. Loro misurano cosa resta delle vitamine dopo la lavorazione — perché il calore le degrada, e vogliamo che l'etichetta corrisponda a quello che c'è davvero dentro.
+HPLC
+Analisi vitamina residua post-lavorazione
+NRV EU
+Dosaggi calibrati sui valori europei ufficiali
+2025
+Anno di firma del contratto di ricerca
+📜
+Brevetto in fase di deposito
+COME LAVORIAMO
+01
+Selezione ingredienti DOP/IGP
+Ogni materia prima viene profilata nutrizionalmente prima di entrare nella formula.
+02
+Formulazione vitaminica
+Il laboratorio disegna il mix per ogni barretta — dosaggi calibrati, non aggiunti a caso.
+03
+Test di stabilità termica
+L'HPLC misura quanta vitamina sopravvive alla lavorazione. Quello che c'è in etichetta, c'è davvero.
+04
+Brevetto e conformità EFSA
+La formula viene depositata. Conforme ai claim nutrizionali europei.
+
+FOUNDING MEMBERS
+Sii tra i primi. Vale qualcosa di concreto.
+Non una newsletter. Chi entra prima, prende di più — e contribuisce davvero a costruire Vitalia.
+
+🎁
+Primi 100
+POSTI RIMASTI: 87
+Ricevi le barrette di prova gratis. Le spediamo noi, prima del lancio. In cambio vogliamo solo il tuo feedback onesto.
+💰
+101 – 500
+FOUNDING MEMBER
+Sconto permanente del 30% su ogni ordine, per sempre. Bloccato al momento dell'iscrizione.
+🗳️
+Tutti
+CO-FONDATORI
+Voti quale barretta lanciamo prima. Dai il nome a un gusto. Accesso diretto al team e aggiornamenti dal laboratorio.
+📦
+Prova gratis per i primi 100
+🗳️
+Voti quale gusto esce prima
+✏️
+Dai il nome a un gusto
+🔬
+Aggiornamenti dal laboratorio
+💬
+Chat diretta con il team
+
+Posti rimasti
+487 / 500
+
+Entra nella lista 🌿
+Compila in 20 secondi. Niente spam, promesso.
+Nome
+
+Email
+
+Diventa Founding Member
+→
+Nessuno spam · Solo aggiornamenti Vitalia · Cancellazione libera in qualsiasi momento
+Hai 3 minuti? Il tuo parere conta.
+Stiamo costruendo Vitalia partendo dalle risposte reali delle persone. Ogni risposta influenza cosa produciamo. Disponibile in italiano e inglese.
+🇮🇹 Compila in italiano 🇬🇧 Fill in English
+Vitalia
+© 2026 · La prima barretta italiana nutraceutica · Parma, Italia
+Founding Members
+Questionario
+Contatti
