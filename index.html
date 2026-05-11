@@ -34,20 +34,27 @@ a{text-decoration:none;color:inherit}
 
 /*── NAV ──*/
 nav{position:fixed;top:0;inset-x:0;z-index:300;height:60px;
-    display:flex;align-items:center;justify-content:space-between;padding:0 6%;
+    display:flex;align-items:center;justify-content:space-between;padding:0 6%;gap:2rem;
     background:rgba(6,15,9,0);transition:background .4s,backdrop-filter .4s,border-color .4s;
     border-bottom:1px solid rgba(255,255,255,0);backdrop-filter:blur(0px)}
 nav.s{background:rgba(6,15,9,.90);backdrop-filter:blur(18px);border-color:rgba(255,255,255,.06)}
-.nb{display:flex;align-items:center;gap:9px;font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700}
+.nb{display:flex;align-items:center;gap:9px;font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;flex-shrink:0}
 .nb img{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--gold);object-fit:contain}
 .nb .fb{width:32px;height:32px;border-radius:50%;background:var(--gold);color:var(--g1);
         display:none;align-items:center;justify-content:center;font-size:.85rem;font-weight:700}
-.nr{display:flex;align-items:center;gap:1.5rem}
-.nr a{font-size:.80rem;color:rgba(255,255,255,.58);font-weight:500;transition:color .2s}
+.nr{display:flex;align-items:center;gap:2rem}
+.nr a{font-size:.80rem;color:rgba(255,255,255,.58);font-weight:500;transition:color .2s;white-space:nowrap}
 .nr a:hover{color:var(--gold2)}
-.nr .cta{padding:7px 18px;background:var(--gold);color:var(--g1)!important;border-radius:6px;font-weight:700!important}
+.nr .cta{padding:7px 18px;background:var(--gold);color:var(--g1)!important;border-radius:6px;font-weight:700!important;white-space:nowrap}
 .nr .cta:hover{background:var(--gold2)!important}
-@media(max-width:640px){.nr .hm{display:none}}
+/* language toggle */
+.lang-tog{display:flex;align-items:center;gap:2px;padding:4px;border-radius:8px;
+          background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10)}
+.lang-tog button{padding:3px 9px;border:none;border-radius:5px;font-size:.72rem;font-weight:600;
+                 cursor:pointer;background:transparent;color:rgba(255,255,255,.45);transition:all .2s}
+.lang-tog button.active{background:var(--gold);color:var(--g1)}
+@media(max-width:720px){.nr .hm{display:none}}
+@media(max-width:480px){.lang-tog{display:none}}
 
 /*── HERO ──*/
 .hero{min-height:100vh;display:flex;align-items:center;padding:80px 0 60px;position:relative;overflow:hidden}
@@ -293,10 +300,14 @@ footer{border-top:1px solid var(--border);padding:2.25rem 6%;
     <span class="fb">V</span>Vitalia
   </a>
   <div class="nr">
-    <a href="#prodotti" class="hm">I prodotti</a>
-    <a href="#scienza" class="hm">La scienza</a>
+    <a href="#prodotti" class="hm" data-key="nav.products">I prodotti</a>
+    <a href="#scienza" class="hm" data-key="nav.how">Come funziona</a>
     <a href="#unipr" class="hm">UniPR</a>
-    <a href="#waitlist" class="cta">Founding Members →</a>
+    <a href="#waitlist" class="cta" data-key="nav.cta">Founding Members →</a>
+    <div class="lang-tog">
+      <button onclick="setLang('it')" id="btn-it" class="active">🇮🇹 IT</button>
+      <button onclick="setLang('en')" id="btn-en">🇬🇧 EN</button>
+    </div>
   </div>
 </nav>
 
@@ -322,9 +333,10 @@ footer{border-top:1px solid var(--border);padding:2.25rem 6%;
           <a href="#prodotti" class="bo">Scopri i prodotti</a>
         </div>
         <div class="hprf" data-r style="transition-delay:.34s">
-          <div class="hpi"><span class="hpn">0</span><span class="hpl">brand italiani<br/>nel top-5 EU</span></div>
-          <div class="hpi"><span class="hpn">€4.5B</span><span class="hpl">mercato italiano<br/>nutraceutica</span></div>
-          <div class="hpi"><span class="hpn">UniPR</span><span class="hpl">contratto R&amp;D<br/>già firmato</span></div>
+          <div class="hpi"><span class="hpn">0</span><span class="hpl" data-key="stat1">brand italiani<br/>nel top-5 EU</span></div>
+          <div class="hpi"><span class="hpn">€4.5B</span><span class="hpl" data-key="stat2">mercato italiano<br/>nutraceutica</span></div>
+          <div class="hpi"><span class="hpn">UniPR</span><span class="hpl" data-key="stat3">contratto R&amp;D<br/>già firmato</span></div>
+          <div class="hpi"><span class="hpn" style="color:#ff8c6b">40%</span><span class="hpl" data-key="stat4">delle vitamine<br/>si degrada in lavorazione</span></div>
         </div>
       </div>
       <div class="hr" data-r="R">
@@ -427,7 +439,7 @@ footer{border-top:1px solid var(--border);padding:2.25rem 6%;
         <div class="bb">
           <div class="brg" data-v="sole">🍊 Sicilia</div>
           <h3 class="bn">Vitalia Sole</h3>
-          <p class="bdesc">Energia e difese immunitarie. Costruita attorno al Pistacchio di Bronte DOP — uno degli ingredienti più densi di nutrienti che esistano.</p>
+          <p class="bdesc" id="sole-desc">Energia e difese immunitarie. Costruita attorno al Pistacchio di Bronte DOP — uno degli ingredienti più densi di nutrienti che esistano.</p>
           <div class="bis">
             <span class="bi2" data-v="sole">Pistacchio Bronte DOP</span>
             <span class="bi2" data-v="sole">Arancia Rossa IGP</span>
@@ -462,7 +474,7 @@ footer{border-top:1px solid var(--border);padding:2.25rem 6%;
         <div class="bb">
           <div class="brg" data-v="terra">🌰 Toscana</div>
           <h3 class="bn">Vitalia Terra</h3>
-          <p class="bdesc">Concentrazione e lucidità mentale. Ingredienti autunnali toscani ricchi di amidi complessi e polifenoli. Per il cervello, non solo per lo stomaco.</p>
+          <p class="bdesc" id="terra-desc">Concentrazione e lucidità mentale. Ingredienti autunnali toscani ricchi di amidi complessi e polifenoli. Per il cervello, non solo per lo stomaco.</p>
           <div class="bis">
             <span class="bi2" data-v="terra">Castagna Toscana IGP</span>
             <span class="bi2" data-v="terra">Fico di Carmignano IGP</span>
@@ -497,7 +509,7 @@ footer{border-top:1px solid var(--border);padding:2.25rem 6%;
         <div class="bb">
           <div class="brg" data-v="alpi">🏔️ Trentino</div>
           <h3 class="bn">Vitalia Alpi</h3>
-          <p class="bdesc">Recupero e protezione cellulare. Frutti alpini biologici ad alto contenuto di antocianine. Omega-3 da canapa coltivata in Trentino.</p>
+          <p class="bdesc" id="alpi-desc">Recupero e protezione cellulare. Frutti alpini biologici ad alto contenuto di antocianine. Omega-3 da canapa coltivata in Trentino.</p>
           <div class="bis">
             <span class="bi2" data-v="alpi">Mela Val di Non DOP</span>
             <span class="bi2" data-v="alpi">Lampone Alpino BIO</span>
@@ -538,27 +550,27 @@ footer{border-top:1px solid var(--border);padding:2.25rem 6%;
     <div class="vg">
       <div class="vc" data-r style="transition-delay:0s">
         <div class="vi">⚡️</div>
-        <p class="vn">B12 + B6</p>
-        <p class="ve">Meno stanchezza mentale</p>
-        <p class="vd">Studi su adulti attivi mostrano una riduzione del 18% dei marcatori di affaticamento cognitivo in 4 settimane di assunzione regolare.</p>
+        <p class="vn" id="vn1">B12 + B6</p>
+        <p class="ve" id="ve1">Meno stanchezza mentale</p>
+        <p class="vd" id="vd1">Studi su adulti attivi mostrano una riduzione del 18% dei marcatori di affaticamento cognitivo in 4 settimane di assunzione regolare.</p>
       </div>
       <div class="vc" data-r style="transition-delay:.09s">
         <div class="vi">🛡️</div>
-        <p class="vn">Vitamina C + Zinco</p>
-        <p class="ve">Difese più forti</p>
-        <p class="vd">Insieme riducono la durata dei sintomi influenzali del 33%. Zinco e Vitamina C sono essenziali per la risposta immunitaria adattativa.</p>
+        <p class="vn" id="vn2">Vitamina C + Zinco</p>
+        <p class="ve" id="ve2">Difese più forti</p>
+        <p class="vd" id="vd2">Insieme riducono la durata dei sintomi influenzali del 33%. Zinco e Vitamina C sono essenziali per la risposta immunitaria adattativa.</p>
       </div>
       <div class="vc" data-r style="transition-delay:.18s">
         <div class="vi">☀️</div>
-        <p class="vn">Vitamina D3</p>
-        <p class="ve">Ossa, umore, immunità</p>
-        <p class="vd">La forma D3 ha biodisponibilità superiore del 40% rispetto alla D2. Agisce su oltre 200 geni. Carente nel 72% degli italiani.</p>
+        <p class="vn" id="vn3">Vitamina D3</p>
+        <p class="ve" id="ve3">Ossa, umore, immunità</p>
+        <p class="vd" id="vd3">La forma D3 ha biodisponibilità superiore del 40% rispetto alla D2. Agisce su oltre 200 geni. Carente nel 72% degli italiani.</p>
       </div>
       <div class="vc" data-r style="transition-delay:.27s">
         <div class="vi">🧬</div>
-        <p class="vn">Vitamina E + Omega-3</p>
-        <p class="ve">Protezione cellulare</p>
-        <p class="vd">L'antiossidante liposolubile più importante del corpo. Con gli Omega-3 ALA riduce lo stress ossidativo e supporta il recupero muscolare.</p>
+        <p class="vn" id="vn4">Vitamina E + Omega-3</p>
+        <p class="ve" id="ve4">Protezione cellulare</p>
+        <p class="vd" id="vd4">L'antiossidante liposolubile più importante del corpo. Con gli Omega-3 ALA riduce lo stress ossidativo e supporta il recupero muscolare.</p>
       </div>
     </div>
   </div>
@@ -605,21 +617,21 @@ footer{border-top:1px solid var(--border);padding:2.25rem 6%;
       <div class="tier ft">
         <div class="tier-stripe"></div>
         <div class="te">🎁</div>
-        <p class="tt2">Primi 100</p>
-        <p class="tsp">Posti rimasti: 87</p>
-        <p class="tpk"><strong>Ricevi le barrette di prova gratis.</strong> Le spediamo noi, prima del lancio. In cambio vogliamo solo il tuo feedback onesto.</p>
+        <p class="tt2" id="t1-title">Primi 100</p>
+        <p class="tsp" id="t1-spots">Posti rimasti: 87</p>
+        <p class="tpk" id="t1-perk"><strong>Ricevi le barrette di prova gratis.</strong> Le spediamo noi, prima del lancio. In cambio vogliamo solo il tuo feedback onesto.</p>
       </div>
       <div class="tier">
         <div class="te">💰</div>
-        <p class="tt2">101 – 500</p>
-        <p class="tsp">Founding member</p>
-        <p class="tpk"><strong>Sconto permanente del 30%</strong> su ogni ordine, per sempre. Bloccato al momento dell'iscrizione.</p>
+        <p class="tt2" id="t2-title">101 – 500</p>
+        <p class="tsp" id="t2-spots">Founding member</p>
+        <p class="tpk" id="t2-perk"><strong>Sconto permanente del 30%</strong> su ogni ordine, per sempre. Bloccato al momento dell'iscrizione.</p>
       </div>
       <div class="tier">
         <div class="te">🗳️</div>
-        <p class="tt2">Tutti</p>
-        <p class="tsp">Co-fondatori</p>
-        <p class="tpk"><strong>Voti quale barretta lanciamo prima.</strong> Dai il nome a un gusto. Accesso diretto al team e aggiornamenti dal laboratorio.</p>
+        <p class="tt2" id="t3-title">Tutti</p>
+        <p class="tsp" id="t3-spots">Co-fondatori</p>
+        <p class="tpk" id="t3-perk"><strong>Voti quale barretta lanciamo prima.</strong> Dai il nome a un gusto. Accesso diretto al team e aggiornamenti dal laboratorio.</p>
       </div>
     </div>
     <div class="echips" data-r>
@@ -743,6 +755,164 @@ function copyLnk(btn){navigator.clipboard.writeText(PAGE).then(()=>{btn.textCont
 
 /* logo fallback */
 document.querySelector('.nb img')?.addEventListener('error',function(){this.style.display='none';this.nextElementSibling.style.display='flex'});
+
+/* ─── LANGUAGE TOGGLE ─── */
+const T={
+  it:{
+    'nav.products':'I prodotti','nav.how':'Come funziona','nav.cta':'Founding Members →',
+    'stat1':'brand italiani\nnel top-5 EU','stat2':'mercato italiano\nnutraceutica',
+    'stat3':'contratto R&D\ngià firmato','stat4':'delle vitamine\nsi degrada in lavorazione',
+    'hero.eyebrow':'Pre-lancio · Posti limitati',
+    'hero.h1':'La barretta<br/>che mancava<br/>all\'<em>Italia</em>',
+    'hero.sub':'Ingredienti DOP/IGP da tre regioni italiane. Vitamine formulate con l\'Università di Parma. Zero dolcificanti. Uno snack che fa quello che promette.',
+    'hero.pill':'Hai 3 minuti? <strong>Aiutaci a costruirlo</strong> — scegli:',
+    'hero.cta1':'Diventa Founding Member →','hero.cta2':'Scopri i prodotti',
+    'prod.tag':'Tre barrette','prod.h2':'Tre regioni.<br/><em style="color:var(--gold2);font-style:italic">Tre formule.</em>',
+    'prod.sub':'Ognuna racconta un territorio e porta nel corpo esattamente quello di cui hai bisogno.',
+    'sole.reg':'🍊 Sicilia','sole.name':'Vitalia Sole',
+    'sole.desc':'Energia e difese immunitarie. Costruita attorno al Pistacchio di Bronte DOP — uno degli ingredienti più densi di nutrienti che esistano.',
+    'terra.reg':'🌰 Toscana','terra.name':'Vitalia Terra',
+    'terra.desc':'Concentrazione e lucidità mentale. Ingredienti autunnali toscani ricchi di amidi complessi e polifenoli. Per il cervello, non solo per lo stomaco.',
+    'alpi.reg':'🏔️ Trentino','alpi.name':'Vitalia Alpi',
+    'alpi.desc':'Recupero e protezione cellulare. Frutti alpini biologici ad alto contenuto di antocianine. Omega-3 da canapa coltivata in Trentino.',
+    'stat.h3':'degli italiani non raggiunge il fabbisogno giornaliero di Vitamina D.',
+    'stat.p':'Non è una questione di volontà. Il cibo che mangiamo normalmente non basta. Le pillole funzionano ma quasi nessuno le prende ogni giorno. Uno snack con vitamine reali, che stai già mangiando, è una soluzione diversa.',
+    'vit.tag':'Cosa fanno al corpo','vit.h2':'Non è marketing.<br/><em style="color:var(--gold2);font-style:italic">È quello che senti.</em>',
+    'vit.sub':'Ogni barretta Vitalia è formulata per uno scopo preciso. Ecco perché.',
+    'vit1.name':'B12 + B6','vit1.effect':'Meno stanchezza mentale',
+    'vit1.desc':'Studi su adulti attivi mostrano una riduzione del 18% dei marcatori di affaticamento cognitivo in 4 settimane.',
+    'vit2.name':'Vitamina C + Zinco','vit2.effect':'Difese più forti',
+    'vit2.desc':'Insieme riducono la durata dei sintomi influenzali del 33%. Essenziali per la risposta immunitaria adattativa.',
+    'vit3.name':'Vitamina D3','vit3.effect':'Ossa, umore, immunità',
+    'vit3.desc':'La forma D3 ha biodisponibilità superiore del 40% rispetto alla D2. Agisce su oltre 200 geni. Carente nel 72% degli italiani.',
+    'vit4.name':'Vitamina E + Omega-3','vit4.effect':'Protezione cellulare',
+    'vit4.desc':'L\'antiossidante liposolubile più importante del corpo. Con gli Omega-3 ALA riduce lo stress ossidativo e supporta il recupero muscolare.',
+    'unipr.h3':'Parma è la Food Valley d\'Europa. Il laboratorio è lì.',
+    'unipr.p':'Abbiamo firmato un contratto di R&D con il dipartimento che ha formato i ricercatori di Barilla, Parmalat e Mutti. Loro misurano cosa resta delle vitamine dopo la lavorazione — perché il calore le degrada, e vogliamo che l\'etichetta corrisponda a quello che c\'è davvero dentro.',
+    'fm.tag':'Founding Members','fm.h2':'Sii tra i primi.<br/><em style="color:var(--gold2);font-style:italic">Vale qualcosa di concreto.</em>',
+    'fm.sub':'Non una newsletter. Chi entra prima, prende di più — e contribuisce davvero a costruire Vitalia.',
+    't1.title':'Primi 100','t1.spots':'Posti rimasti: 87',
+    't1.perk':'<strong>Ricevi le barrette di prova gratis.</strong> Le spediamo noi, prima del lancio. In cambio vogliamo solo il tuo feedback onesto.',
+    't2.title':'101 – 500','t2.spots':'Founding member',
+    't2.perk':'<strong>Sconto permanente del 30%</strong> su ogni ordine, per sempre. Bloccato al momento dell\'iscrizione.',
+    't3.title':'Tutti','t3.spots':'Co-fondatori',
+    't3.perk':'<strong>Voti quale barretta lanciamo prima.</strong> Dai il nome a un gusto. Accesso diretto al team e aggiornamenti dal laboratorio.',
+    'form.title':'Entra nella lista 🌿','form.sub':'Compila in 20 secondi. Niente spam, promesso.',
+    'form.nome':'Nome','form.email':'Email',
+    'form.cta':'Diventa Founding Member','form.priv':'Nessuno spam · Solo aggiornamenti Vitalia · Cancellazione libera in qualsiasi momento',
+    'succ.title':'Sei dentro!','succ.sub':'Benvenuto/a tra i <strong>Founding Members di Vitalia</strong>.<br/>Ti scriviamo appena ci sono novità dal laboratorio.',
+    'survey.h3':'Hai 3 minuti? Il tuo parere conta.',
+    'survey.p':'Stiamo costruendo Vitalia partendo dalle risposte reali delle persone. Ogni risposta influenza cosa produciamo. Disponibile in italiano e inglese.',
+    'survey.it':'🇮🇹 Compila in italiano','survey.en':'🇬🇧 Fill in English',
+  },
+  en:{
+    'nav.products':'Our products','nav.how':'How it works','nav.cta':'Founding Members →',
+    'stat1':'Italian brands\nin EU top-5','stat2':'Italian nutraceutical\nmarket','stat3':'R&D agreement\nalready signed','stat4':'of vitamins\ndegrade during production',
+    'hero.eyebrow':'Pre-launch · Limited spots',
+    'hero.h1':'The bar Italy<br/>has been<br/><em>missing</em>',
+    'hero.sub':'DOP/IGP ingredients from three Italian regions. Vitamins formulated with the University of Parma. Zero artificial sweeteners. A snack that actually does what it says.',
+    'hero.pill':'Got 3 minutes? <strong>Help us build it</strong> — choose:',
+    'hero.cta1':'Become a Founding Member →','hero.cta2':'Discover the products',
+    'prod.tag':'Three bars','prod.h2':'Three regions.<br/><em style="color:var(--gold2);font-style:italic">Three formulas.</em>',
+    'prod.sub':'Each one tells the story of an Italian territory and delivers exactly what your body needs.',
+    'sole.reg':'🍊 Sicily','sole.name':'Vitalia Sole',
+    'sole.desc':'Energy and immune support. Built around Bronte Pistachio DOP — one of the most nutrient-dense ingredients in existence.',
+    'terra.reg':'🌰 Tuscany','terra.name':'Vitalia Terra',
+    'terra.desc':'Focus and mental clarity. Tuscan autumn ingredients rich in complex starches and polyphenols. For the brain, not just the stomach.',
+    'alpi.reg':'🏔️ Trentino','alpi.name':'Vitalia Alpi',
+    'alpi.desc':'Recovery and cellular protection. Organic alpine fruits with high anthocyanin content. Omega-3 from hemp grown in Trentino.',
+    'stat.h3':'of Italians don\'t reach their daily Vitamin D requirement.',
+    'stat.p':'It\'s not about willpower. The food we normally eat isn\'t enough. Pills work, but almost nobody takes them consistently. A snack with real vitamins, that you\'re already eating, is a different solution.',
+    'vit.tag':'What they do to your body','vit.h2':'Not marketing.<br/><em style="color:var(--gold2);font-style:italic">You\'ll actually feel it.</em>',
+    'vit.sub':'Every Vitalia bar is formulated for a specific purpose. Here\'s why.',
+    'vit1.name':'B12 + B6','vit1.effect':'Less mental fatigue',
+    'vit1.desc':'Studies on active adults show an 18% reduction in cognitive fatigue markers in 4 weeks of regular intake.',
+    'vit2.name':'Vitamin C + Zinc','vit2.effect':'Stronger immune defence',
+    'vit2.desc':'Together they reduce cold symptom duration by 33%. Both essential for adaptive immune response.',
+    'vit3.name':'Vitamin D3','vit3.effect':'Bones, mood, immunity',
+    'vit3.desc':'D3 form has 40% higher bioavailability than D2. Acts on over 200 genes. Deficient in 72% of Italians.',
+    'vit4.name':'Vitamin E + Omega-3','vit4.effect':'Cellular protection',
+    'vit4.desc':'The most important fat-soluble antioxidant in the body. With ALA Omega-3, reduces oxidative stress and supports muscle recovery.',
+    'unipr.h3':'Parma is Europe\'s Food Valley. Our lab is there.',
+    'unipr.p':'We signed an R&D contract with the department that trained researchers at Barilla, Parmalat and Mutti. They measure what remains of the vitamins after production — because heat degrades them, and we want the label to match what\'s actually inside.',
+    'fm.tag':'Founding Members','fm.h2':'Be among the first.<br/><em style="color:var(--gold2);font-style:italic">It\'s worth something real.</em>',
+    'fm.sub':'Not a newsletter. Those who join first, get the most — and genuinely help build Vitalia.',
+    't1.title':'First 100','t1.spots':'Spots remaining: 87',
+    't1.perk':'<strong>Get the tasting bars for free.</strong> We ship them before the official launch. All we ask is your honest feedback.',
+    't2.title':'101 – 500','t2.spots':'Founding member',
+    't2.perk':'<strong>Permanent 30% discount</strong> on every order, forever. Locked in at the time of registration.',
+    't3.title':'Everyone','t3.spots':'Co-founders',
+    't3.perk':'<strong>Vote which bar we launch first.</strong> Name a flavor. Direct access to the team and lab updates.',
+    'form.title':'Join the list 🌿','form.sub':'Takes 20 seconds. No spam, promised.',
+    'form.nome':'Name','form.email':'Email',
+    'form.cta':'Become a Founding Member','form.priv':'No spam · Only Vitalia updates · Unsubscribe anytime',
+    'succ.title':'You\'re in!','succ.sub':'Welcome to the <strong>Vitalia Founding Members</strong>.<br/>We\'ll reach out as soon as there\'s news from the lab.',
+    'survey.h3':'Got 3 minutes? Your input matters.',
+    'survey.p':'We\'re building Vitalia starting from real people\'s answers. Every response shapes what we produce. Available in Italian and English.',
+    'survey.it':'🇮🇹 Fill in Italian','survey.en':'🇬🇧 Fill in English',
+  }
+};
+
+const KEYS={
+  'nav.products':['a[data-key="nav.products"]','innerHTML'],
+  'nav.how':['a[data-key="nav.how"]','innerHTML'],
+  'nav.cta':['.nr .cta','innerHTML'],
+  'stat1':['span[data-key="stat1"]','innerHTML'],
+  'stat2':['span[data-key="stat2"]','innerHTML'],
+  'stat3':['span[data-key="stat3"]','innerHTML'],
+  'stat4':['span[data-key="stat4"]','innerHTML'],
+  'hero.eyebrow':['.hey span','innerHTML'],
+  'hero.sub':['.hsub','innerHTML'],
+  'hero.pill':['.spill > span:nth-child(2)','innerHTML'],
+  'hero.cta1':['.hctas .bg','innerHTML'],
+  'hero.cta2':['.hctas .bo','innerHTML'],
+  'prod.h2':['.ph h2','innerHTML'],
+  'prod.sub':['.ph p','innerHTML'],
+  'sole.desc':['#sole-desc','innerHTML'],
+  'terra.desc':['#terra-desc','innerHTML'],
+  'alpi.desc':['#alpi-desc','innerHTML'],
+  'stat.h3':['.sr h3','innerHTML'],
+  'stat.p':['.sr p:first-of-type','innerHTML'],
+  'vit.h2':['.vh h2','innerHTML'],
+  'vit.sub':['.vh p','innerHTML'],
+  'vit1.name':['#vn1','innerHTML'],'vit1.effect':['#ve1','innerHTML'],'vit1.desc':['#vd1','innerHTML'],
+  'vit2.name':['#vn2','innerHTML'],'vit2.effect':['#ve2','innerHTML'],'vit2.desc':['#vd2','innerHTML'],
+  'vit3.name':['#vn3','innerHTML'],'vit3.effect':['#ve3','innerHTML'],'vit3.desc':['#vd3','innerHTML'],
+  'vit4.name':['#vn4','innerHTML'],'vit4.effect':['#ve4','innerHTML'],'vit4.desc':['#vd4','innerHTML'],
+  'unipr.h3':['.unipr h3','innerHTML'],
+  'unipr.p':['.unipr > .wrap > .ui > [data-r="L"] > p:first-of-type','innerHTML'],
+  'fm.h2':['.fmh h2','innerHTML'],
+  'fm.sub':['.fmh p','innerHTML'],
+  't1.title':['#t1-title','innerHTML'],'t1.spots':['#t1-spots','innerHTML'],'t1.perk':['#t1-perk','innerHTML'],
+  't2.title':['#t2-title','innerHTML'],'t2.spots':['#t2-spots','innerHTML'],'t2.perk':['#t2-perk','innerHTML'],
+  't3.title':['#t3-title','innerHTML'],'t3.spots':['#t3-spots','innerHTML'],'t3.perk':['#t3-perk','innerHTML'],
+  'form.title':['.fct','innerHTML'],'form.sub':['.fcs','innerHTML'],
+  'form.cta':['#bt','innerHTML'],'form.priv':['.fpv','innerHTML'],
+  'succ.title':['.fst','innerHTML'],'succ.sub':['.fss','innerHTML'],
+  'survey.h3':['.svc h3','innerHTML'],'survey.p':['.svc p','innerHTML'],
+  'survey.it':['.sba.it','innerHTML'],'survey.en':['.sba.en','innerHTML'],
+};
+
+function setLang(lang){
+  const tr=T[lang];
+  Object.entries(KEYS).forEach(([k,[sel,prop]])=>{
+    const el=document.querySelector(sel);
+    if(el&&tr[k]!==undefined) el[prop]=tr[k];
+  });
+  // special: h1 needs innerHTML
+  document.querySelector('h1').innerHTML=tr['hero.h1'];
+  // toggle buttons
+  document.getElementById('btn-it').classList.toggle('active',lang==='it');
+  document.getElementById('btn-en').classList.toggle('active',lang==='en');
+  // form labels
+  document.querySelector('#wf label:first-of-type').textContent=tr['form.nome'];
+  document.querySelectorAll('#wf label')[1].textContent=tr['form.email'];
+  // store
+  localStorage.setItem('vitaliaLang',lang);
+}
+// restore on load
+const savedLang=localStorage.getItem('vitaliaLang')||'it';
+if(savedLang==='en') setLang('en');
 </script>
 </body>
 </html>
