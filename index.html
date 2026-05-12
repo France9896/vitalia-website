@@ -3,95 +3,112 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="description" content="Vitalia — Barrette italiane con ingredienti DOP/IGP e vitamine brevettate con l'Università di Parma."/>
-<title>Vitalia — La barretta che mancava</title>
+<meta name="description" content="Vitalia — Barrette con ingredienti DOP/IGP italiani e vitamine formulate con l'Università di Parma."/>
+<title>Vitalia — La barretta costruita sul serio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:#060F09;color:#fff;overflow-x:hidden;line-height:1.6}
+body{font-family:'Inter',sans-serif;background:#FDFAF5;color:#1A1208;overflow-x:hidden;line-height:1.6}
 a{text-decoration:none;color:inherit}
+img{display:block}
 :root{
-  --g0:#060F09;--g1:#0D3B1E;--g2:#145430;--g3:#2D9156;
-  --gold:#C89B20;--gold2:#E0BC48;--gold3:#F5D878;
-  --border:rgba(255,255,255,0.08);--border-gold:rgba(200,155,32,0.28);
+  --bg:#FDFAF5;
+  --bg2:#F5EFE3;
+  --bg3:#EDE5D4;
+  --white:#FFFFFF;
+  --text:#1A1208;
+  --text-mid:#5A4A35;
+  --text-light:#9A8B78;
+  --gold:#A07820;
+  --gold2:#C89B30;
+  --gold3:#E8C860;
+  --green:#0D5228;
+  --green2:#1A7438;
+  --border:rgba(160,120,40,0.18);
+  --border-dark:rgba(26,18,8,0.09);
+  --sh-sm:0 2px 14px rgba(26,18,8,0.06);
+  --sh-md:0 8px 36px rgba(26,18,8,0.09);
+  --sh-lg:0 24px 64px rgba(26,18,8,0.12);
 }
-.serif{font-family:'Playfair Display',serif}
 .wrap{max-width:1100px;margin:0 auto;padding:0 6%}
 .tag{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:100px;
-     border:1px solid var(--border-gold);background:rgba(200,155,32,.10);
-     font-size:.70rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2)}
+     border:1px solid var(--border);background:rgba(160,120,40,0.07);
+     font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
 .dot{width:5px;height:5px;border-radius:50%;background:var(--gold2);animation:blink 2s ease infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-
-[data-r]{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease}
+[data-r]{opacity:0;transform:translateY(22px);transition:opacity .70s ease,transform .70s ease}
 [data-r].on{opacity:1;transform:none}
-[data-r="L"]{transform:translateX(-28px)}[data-r="L"].on{transform:none;opacity:1}
-[data-r="R"]{transform:translateX(28px)}[data-r="R"].on{transform:none;opacity:1}
-[data-r="S"]{transform:scale(.96) translateY(14px)}[data-r="S"].on{transform:none;opacity:1}
+[data-r="L"]{transform:translateX(-22px)}[data-r="L"].on{transform:none;opacity:1}
+[data-r="R"]{transform:translateX(22px)}[data-r="R"].on{transform:none;opacity:1}
+[data-r="S"]{transform:scale(.97) translateY(10px)}[data-r="S"].on{transform:none;opacity:1}
 
 /*── NAV ──*/
-nav{position:fixed;top:0;inset-x:0;z-index:300;height:60px;
+nav{position:fixed;top:0;inset-x:0;z-index:300;height:64px;
     display:flex;align-items:center;justify-content:space-between;padding:0 6%;gap:2rem;
-    background:rgba(6,15,9,0);transition:background .4s,backdrop-filter .4s,border-color .4s;
-    border-bottom:1px solid rgba(255,255,255,0);backdrop-filter:blur(0px)}
-nav.s{background:rgba(6,15,9,.90);backdrop-filter:blur(18px);border-color:rgba(255,255,255,.06)}
-.nb{display:flex;align-items:center;gap:9px;font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;flex-shrink:0}
-.nb img{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--gold);object-fit:contain}
-.nb .fb{width:32px;height:32px;border-radius:50%;background:var(--gold);color:var(--g1);
-        display:none;align-items:center;justify-content:center;font-size:.85rem;font-weight:700}
-.nr{display:flex;align-items:center;gap:2rem}
-.nr a{font-size:.80rem;color:rgba(255,255,255,.58);font-weight:500;transition:color .2s;white-space:nowrap}
-.nr a:hover{color:var(--gold2)}
-.nr .cta{padding:7px 18px;background:var(--gold);color:var(--g1)!important;border-radius:6px;font-weight:700!important;white-space:nowrap}
-.nr .cta:hover{background:var(--gold2)!important}
-/* language toggle */
-.lang-tog{display:flex;align-items:center;gap:2px;padding:4px;border-radius:8px;
-          background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10)}
-.lang-tog button{padding:3px 9px;border:none;border-radius:5px;font-size:.72rem;font-weight:600;
-                 cursor:pointer;background:transparent;color:rgba(255,255,255,.45);transition:all .2s}
-.lang-tog button.active{background:var(--gold);color:var(--g1)}
+    background:rgba(253,250,245,0);transition:background .35s,backdrop-filter .35s,border-color .35s,box-shadow .35s;
+    border-bottom:1px solid transparent}
+nav.s{background:rgba(253,250,245,.94);backdrop-filter:blur(20px);border-color:var(--border-dark);
+      box-shadow:0 1px 20px rgba(26,18,8,.07)}
+.nb{display:flex;align-items:center;gap:9px;font-family:'Playfair Display',serif;
+    font-size:1.15rem;font-weight:700;color:var(--text);flex-shrink:0;letter-spacing:.01em}
+.nb img{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--gold);object-fit:contain}
+.nb .fb{width:30px;height:30px;border-radius:50%;background:var(--gold);color:var(--white);
+        display:none;align-items:center;justify-content:center;font-size:.82rem;font-weight:700}
+.nr{display:flex;align-items:center;gap:1.8rem}
+.nr a{font-size:.78rem;color:var(--text-mid);font-weight:500;transition:color .2s;white-space:nowrap}
+.nr a:hover{color:var(--gold)}
+.nr .cta{padding:7px 18px;background:var(--text);color:var(--bg)!important;border-radius:6px;
+         font-weight:700!important;white-space:nowrap;transition:background .2s!important}
+.nr .cta:hover{background:var(--green)!important}
+.lang-tog{display:flex;align-items:center;gap:2px;padding:3px;border-radius:7px;
+          background:var(--bg2);border:1px solid var(--border-dark)}
+.lang-tog button{padding:3px 9px;border:none;border-radius:5px;font-size:.70rem;font-weight:600;
+                 cursor:pointer;background:transparent;color:var(--text-light);transition:all .2s}
+.lang-tog button.active{background:var(--text);color:var(--bg)}
 @media(max-width:720px){.nr .hm{display:none}}
 @media(max-width:480px){.lang-tog{display:none}}
 
 /*── HERO ──*/
-.hero{min-height:100vh;display:flex;align-items:center;padding:80px 0 60px;position:relative;overflow:hidden}
-.hbg{position:absolute;inset:0;z-index:0;
-  background:radial-gradient(ellipse 100% 80% at 0% 0%,rgba(45,145,86,.18) 0%,transparent 55%),
-             radial-gradient(ellipse 70% 60% at 100% 100%,rgba(200,155,32,.10) 0%,transparent 50%),var(--g0)}
-.hw{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;position:relative;z-index:1}
-.hl{display:flex;flex-direction:column;gap:1.4rem}
+.hero{min-height:100vh;display:flex;align-items:center;padding:80px 0 70px;
+      position:relative;overflow:hidden;background:var(--bg)}
+.hbg{position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse 70% 70% at -10% 40%,rgba(160,120,40,.07) 0%,transparent 60%),
+             radial-gradient(ellipse 60% 50% at 110% 80%,rgba(13,82,40,.05) 0%,transparent 55%)}
+.hw{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative;z-index:1}
+.hl{display:flex;flex-direction:column;gap:1.5rem}
 .hey{display:flex;align-items:center;gap:10px}
-.hey .line{width:30px;height:1.5px;background:var(--gold)}
-.hey span{font-size:.70rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
-h1{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5.5vw,4.4rem);font-weight:700;line-height:1.08}
-h1 em{font-style:italic;color:var(--gold2)}
-.hsub{font-size:.97rem;color:rgba(255,255,255,.57);line-height:1.75;max-width:420px}
-.hctas{display:flex;gap:.8rem;flex-wrap:wrap}
-.bg{display:inline-flex;align-items:center;gap:7px;padding:.85rem 1.7rem;
-    background:var(--gold);color:var(--g1);border-radius:8px;font-weight:700;font-size:.92rem;
-    box-shadow:0 4px 24px rgba(200,155,32,.28);transition:background .2s,transform .2s,box-shadow .2s}
-.bg:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 8px 32px rgba(200,155,32,.42)}
-.bo{display:inline-flex;align-items:center;gap:7px;padding:.85rem 1.5rem;
-    border:1.5px solid rgba(255,255,255,.20);border-radius:8px;font-size:.88rem;font-weight:500;
-    color:rgba(255,255,255,.72);transition:border-color .2s,color .2s}
+.hey .line{width:22px;height:1px;background:var(--gold)}
+.hey span{font-size:.67rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+h1{font-family:'Playfair Display',serif;font-size:clamp(2.3rem,5vw,4rem);font-weight:700;
+   line-height:1.10;color:var(--text)}
+h1 em{font-style:italic;color:var(--green)}
+.hsub{font-size:.95rem;color:var(--text-mid);line-height:1.80;max-width:430px}
+.hctas{display:flex;gap:.75rem;flex-wrap:wrap}
+.bg{display:inline-flex;align-items:center;gap:7px;padding:.88rem 1.75rem;
+    background:var(--text);color:var(--bg)!important;border-radius:8px;font-weight:700;font-size:.90rem;
+    box-shadow:var(--sh-md);transition:background .2s,transform .2s,box-shadow .2s}
+.bg:hover{background:var(--green);transform:translateY(-2px);box-shadow:var(--sh-lg)}
+.bo{display:inline-flex;align-items:center;gap:7px;padding:.88rem 1.5rem;
+    border:1.5px solid var(--border-dark);border-radius:8px;font-size:.88rem;
+    font-weight:500;color:var(--text-mid);transition:border-color .2s,color .2s}
 .bo:hover{border-color:var(--gold);color:var(--gold)}
-/* survey pill */
-.spill{display:inline-flex;align-items:center;gap:9px;padding:9px 16px;border-radius:100px;
-       background:rgba(200,155,32,.08);border:1px solid var(--border-gold);
-       font-size:.78rem;color:rgba(255,255,255,.65);cursor:pointer;max-width:fit-content;
+.spill{display:inline-flex;align-items:center;gap:9px;padding:10px 16px;border-radius:100px;
+       background:var(--bg2);border:1px solid var(--border);
+       font-size:.78rem;color:var(--text-mid);cursor:pointer;max-width:fit-content;
        transition:background .2s,border-color .2s}
-.spill:hover{background:rgba(200,155,32,.16);border-color:rgba(200,155,32,.50);color:#fff}
-.spill strong{color:var(--gold2);font-weight:600}
-.lbtns{display:flex;gap:5px}
-.lbtn{padding:2px 8px;border-radius:4px;background:rgba(255,255,255,.08);font-size:.70rem;font-weight:600;transition:background .2s}
-.lbtn:hover{background:rgba(200,155,32,.28)}
-.hprf{display:flex;gap:2rem;padding-top:1.25rem;border-top:1px solid rgba(255,255,255,.06)}
-.hpi{display:flex;flex-direction:column;gap:1px}
-.hpn{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--gold2)}
-.hpl{font-size:.68rem;color:rgba(255,255,255,.36);line-height:1.3}
+.spill:hover{background:var(--bg3);border-color:rgba(160,120,40,.40);color:var(--text)}
+.spill strong{color:var(--gold);font-weight:600}
+.lbtns{display:flex;gap:4px}
+.lbtn{padding:2px 8px;border-radius:4px;background:var(--bg3);font-size:.67rem;font-weight:600;
+      color:var(--text-mid);transition:background .2s}
+.lbtn:hover{background:rgba(160,120,40,.20);color:var(--gold)}
+.hprf{display:flex;gap:2rem;padding-top:1.5rem;border-top:1px solid var(--border-dark)}
+.hpi{display:flex;flex-direction:column;gap:2px}
+.hpn{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:700;color:var(--text)}
+.hpl{font-size:.66rem;color:var(--text-light);line-height:1.35}
 .hr{display:flex;justify-content:center;align-items:center}
 @media(max-width:860px){
   .hw{grid-template-columns:1fr;text-align:center}
@@ -101,198 +118,196 @@ h1 em{font-style:italic;color:var(--gold2)}
 }
 
 /*── TICKER ──*/
-.ticker{overflow:hidden;padding:13px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.tt{display:flex;gap:3rem;animation:tick 24s linear infinite;width:max-content}
+.ticker{overflow:hidden;padding:13px 0;
+        border-top:1px solid var(--border-dark);border-bottom:1px solid var(--border-dark);
+        background:var(--bg2)}
+.tt{display:flex;gap:3rem;animation:tick 26s linear infinite;width:max-content}
 @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.ti{display:flex;align-items:center;gap:7px;font-size:.70rem;font-weight:600;
-    letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.28)}
+.ti{display:flex;align-items:center;gap:7px;font-size:.67rem;font-weight:600;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--text-light)}
 
 /*── PRODUCTS ──*/
-.products{padding:100px 0}
+.products{padding:110px 0;background:var(--bg)}
 .ph{text-align:center;margin-bottom:4.5rem}
-.ph h2{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4vw,3rem);
-       font-weight:700;line-height:1.15;margin:.7rem 0 .75rem}
-.ph p{color:rgba(255,255,255,.50);font-size:.93rem;max-width:460px;margin:0 auto;line-height:1.7}
+.ph h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.1rem);
+       font-weight:700;line-height:1.15;margin:.7rem 0 .8rem;color:var(--text)}
+.ph p{color:var(--text-mid);font-size:.93rem;max-width:440px;margin:0 auto;line-height:1.78}
 .bg3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.bc{border-radius:20px;overflow:hidden;background:rgba(255,255,255,.03);border:1px solid var(--border);
+.bc{border-radius:20px;overflow:hidden;background:var(--white);
+    border:1px solid var(--border-dark);box-shadow:var(--sh-sm);
     transition:transform .35s,box-shadow .35s,border-color .35s;display:flex;flex-direction:column}
-.bc:hover{transform:translateY(-8px)}
-.bc[data-v="sole"]:hover{box-shadow:0 24px 60px rgba(200,120,20,.20);border-color:rgba(200,130,30,.30)}
-.bc[data-v="terra"]:hover{box-shadow:0 24px 60px rgba(130,70,20,.22);border-color:rgba(150,90,30,.30)}
-.bc[data-v="alpi"]:hover{box-shadow:0 24px 60px rgba(30,130,190,.18);border-color:rgba(40,140,200,.28)}
-.ba{height:230px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.ba[data-v="sole"]{background:linear-gradient(150deg,#1E0C00,#3A1E00,#150900)}
-.ba[data-v="terra"]{background:linear-gradient(150deg,#120800,#2A1200,#0D0500)}
-.ba[data-v="alpi"]{background:linear-gradient(150deg,#00111A,#002436,#000C12)}
-.bg2{position:absolute;border-radius:50%;filter:blur(50px);pointer-events:none}
-.ba[data-v="sole"] .bg2{width:200px;height:200px;background:rgba(210,120,20,.22);top:10%;left:15%}
-.ba[data-v="terra"] .bg2{width:200px;height:200px;background:rgba(140,80,20,.25);top:10%;left:15%}
-.ba[data-v="alpi"] .bg2{width:200px;height:200px;background:rgba(30,130,200,.20);top:10%;left:15%}
-.bb{padding:1.6rem;flex:1;display:flex;flex-direction:column;gap:.85rem}
-.brg{font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
-.brg[data-v="sole"]{color:#E89030}.brg[data-v="terra"]{color:#B07838}.brg[data-v="alpi"]{color:#38B0D0}
-.bn{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700}
-.bdesc{font-size:.80rem;color:rgba(255,255,255,.48);line-height:1.58}
-.bis{display:flex;flex-wrap:wrap;gap:.38rem}
-.bi2{padding:2px 8px;border-radius:100px;font-size:.63rem;font-weight:600;border:1px solid}
-.bi2[data-v="sole"]{background:rgba(220,140,30,.08);border-color:rgba(220,140,30,.25);color:#F0B858}
-.bi2[data-v="terra"]{background:rgba(160,100,40,.08);border-color:rgba(160,100,40,.25);color:#D09858}
-.bi2[data-v="alpi"]{background:rgba(40,150,200,.08);border-color:rgba(40,150,200,.25);color:#78C8E8}
-.bvit{padding-top:.85rem;border-top:1px solid rgba(255,255,255,.06)}
-.bvl{font-size:.63rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-     color:rgba(255,255,255,.28);margin-bottom:.38rem}
-.bvp{display:flex;flex-wrap:wrap;gap:.32rem}
-.bv{padding:2px 9px;border-radius:100px;background:rgba(200,155,32,.10);
-    border:1px solid rgba(200,155,32,.22);font-size:.65rem;font-weight:600;color:var(--gold2)}
+.bc:hover{transform:translateY(-7px);box-shadow:var(--sh-lg)}
+.bc[data-v="sole"]:hover{border-color:rgba(180,110,30,.25)}
+.bc[data-v="terra"]:hover{border-color:rgba(130,80,25,.22)}
+.bc[data-v="alpi"]:hover{border-color:rgba(40,120,180,.20)}
+.ba{height:220px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.ba[data-v="sole"]{background:linear-gradient(150deg,#FDF5E6,#F5DFA8,#E8C878)}
+.ba[data-v="terra"]{background:linear-gradient(150deg,#F8F0E0,#EDD8A8,#D4B870)}
+.ba[data-v="alpi"]{background:linear-gradient(150deg,#EAF4FC,#C4DDEE,#9AC4E0)}
+.bg2{position:absolute;border-radius:50%;filter:blur(40px);pointer-events:none}
+.ba[data-v="sole"] .bg2{width:180px;height:180px;background:rgba(190,130,30,.20);top:10%;left:15%}
+.ba[data-v="terra"] .bg2{width:180px;height:180px;background:rgba(150,90,25,.18);top:10%;left:15%}
+.ba[data-v="alpi"] .bg2{width:180px;height:180px;background:rgba(50,130,190,.16);top:10%;left:15%}
+.bb{padding:1.8rem;flex:1;display:flex;flex-direction:column;gap:.85rem}
+.brg{font-size:.63rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.brg[data-v="sole"]{color:#8A5010}.brg[data-v="terra"]{color:#6A4010}.brg[data-v="alpi"]{color:#1A6898}
+.bn{font-family:'Playfair Display',serif;font-size:1.40rem;font-weight:700;color:var(--text)}
+.bdesc{font-size:.82rem;color:var(--text-mid);line-height:1.65}
+.bis{display:flex;flex-wrap:wrap;gap:.35rem}
+.bi2{padding:3px 9px;border-radius:100px;font-size:.62rem;font-weight:600;border:1px solid}
+.bi2[data-v="sole"]{background:rgba(190,120,30,.07);border-color:rgba(190,120,30,.22);color:#7A4808}
+.bi2[data-v="terra"]{background:rgba(140,80,25,.07);border-color:rgba(140,80,25,.20);color:#5A3808}
+.bi2[data-v="alpi"]{background:rgba(40,120,180,.07);border-color:rgba(40,120,180,.20);color:#185888}
+.bvit{padding-top:.85rem;border-top:1px solid var(--border-dark)}
+.bvl{font-size:.61rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+     color:var(--text-light);margin-bottom:.38rem}
+.bvp{display:flex;flex-wrap:wrap;gap:.30rem}
+.bv{padding:2px 9px;border-radius:100px;background:rgba(160,120,40,.08);
+    border:1px solid var(--border);font-size:.63rem;font-weight:600;color:var(--gold)}
 @media(max-width:860px){.bg3{grid-template-columns:1fr}}
 
 /*── BIG STAT ──*/
-.ss{padding:80px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.ss{padding:90px 0;background:var(--green);color:#fff}
 .si{display:flex;align-items:center;gap:4rem}
 .sn{font-family:'Playfair Display',serif;font-size:clamp(5rem,12vw,9rem);
-    font-weight:700;color:var(--gold2);line-height:.9;flex-shrink:0}
-.su{font-size:1.5rem;color:var(--gold)}
-.sr h3{font-family:'Playfair Display',serif;font-size:clamp(1.25rem,2.8vw,2rem);
-       font-weight:700;line-height:1.2;margin-bottom:.65rem}
-.sr p{font-size:.90rem;color:rgba(255,255,255,.50);line-height:1.72;max-width:500px}
-.src{font-size:.66rem;color:rgba(255,255,255,.22);margin-top:.65rem}
+    font-weight:700;color:var(--gold3);line-height:.9;flex-shrink:0}
+.su{font-size:1.4rem;color:rgba(255,255,255,.55)}
+.sr h3{font-family:'Playfair Display',serif;font-size:clamp(1.2rem,2.5vw,1.9rem);
+       font-weight:700;line-height:1.28;margin-bottom:.7rem;color:#fff}
+.sr p{font-size:.88rem;color:rgba(255,255,255,.62);line-height:1.78;max-width:480px}
+.src{font-size:.62rem;color:rgba(255,255,255,.28);margin-top:.7rem}
 @media(max-width:600px){.si{flex-direction:column;gap:2rem;text-align:center}}
 
 /*── VITAMINS ──*/
-.vitamins{padding:100px 0}
+.vitamins{padding:110px 0;background:var(--bg2)}
 .vh{margin-bottom:3.5rem}
-.vh h2{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,3.2vw,2.5rem);
-       font-weight:700;line-height:1.2;margin:.5rem 0 .65rem}
-.vh p{color:rgba(255,255,255,.46);font-size:.88rem;max-width:400px;line-height:1.6}
+.vh h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.2vw,2.6rem);
+       font-weight:700;line-height:1.2;margin:.5rem 0 .65rem;color:var(--text)}
+.vh p{color:var(--text-mid);font-size:.88rem;max-width:380px;line-height:1.68}
 .vg{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
-.vc{padding:1.6rem;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid var(--border);
-    transition:background .3s,border-color .3s,transform .3s}
-.vc:hover{background:rgba(255,255,255,.05);border-color:var(--border-gold);transform:translateY(-4px)}
-.vi{font-size:1.7rem;margin-bottom:.8rem}
-.vn{font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem}
-.ve{font-size:.98rem;font-weight:700;color:#fff;margin-bottom:.35rem;line-height:1.3}
-.vd{font-size:.76rem;color:rgba(255,255,255,.40);line-height:1.52}
+.vc{padding:1.8rem;border-radius:16px;background:var(--bg);border:1px solid var(--border-dark);
+    box-shadow:var(--sh-sm);transition:background .3s,border-color .3s,transform .3s,box-shadow .3s}
+.vc:hover{background:var(--white);border-color:var(--border);transform:translateY(-4px);box-shadow:var(--sh-md)}
+.vi{font-size:1.6rem;margin-bottom:.8rem}
+.vn{font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem}
+.ve{font-size:.96rem;font-weight:700;color:var(--text);margin-bottom:.35rem;line-height:1.3}
+.vd{font-size:.76rem;color:var(--text-mid);line-height:1.58}
 @media(max-width:700px){.vg{grid-template-columns:1fr 1fr}}
 
 /*── UNIPR ──*/
-.unipr{padding:80px 0;border-top:1px solid var(--border)}
-.ui{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-.ubadge{display:flex;align-items:center;gap:.85rem;margin-bottom:1.4rem}
-.ubox{width:46px;height:46px;border-radius:10px;background:rgba(200,155,32,.10);
-      border:1px solid var(--border-gold);display:flex;align-items:center;justify-content:center;
-      font-family:'Playfair Display',serif;font-size:.82rem;font-weight:700;color:var(--gold2)}
-.unm{font-size:.78rem;color:rgba(255,255,255,.48);line-height:1.4}
-.unm strong{display:block;font-size:.92rem;color:#fff}
-.unipr h3{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,2.8vw,2.1rem);
-          font-weight:700;line-height:1.2;margin-bottom:.9rem}
-.unipr p{font-size:.86rem;color:rgba(255,255,255,.50);line-height:1.75}
-.uf2{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-top:1.6rem}
-.ufi{padding:1rem;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid var(--border)}
-.ufn{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--gold2)}
-.ufl{font-size:.70rem;color:rgba(255,255,255,.36);margin-top:1px;line-height:1.35}
-.usteps{display:flex;flex-direction:column;gap:1rem}
+.unipr{padding:100px 0;background:var(--bg);border-top:1px solid var(--border-dark)}
+.ui{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.ubadge{display:flex;align-items:center;gap:.85rem;margin-bottom:1.5rem}
+.ubox{width:46px;height:46px;border-radius:10px;background:rgba(160,120,40,.08);
+      border:1px solid var(--border);display:flex;align-items:center;justify-content:center;
+      font-family:'Playfair Display',serif;font-size:.80rem;font-weight:700;color:var(--gold)}
+.unm{font-size:.76rem;color:var(--text-mid);line-height:1.45}
+.unm strong{display:block;font-size:.90rem;color:var(--text)}
+.unipr h3{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,2.8vw,2.2rem);
+          font-weight:700;line-height:1.2;margin-bottom:.9rem;color:var(--text)}
+.unipr p{font-size:.86rem;color:var(--text-mid);line-height:1.82}
+.uf2{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-top:1.8rem}
+.ufi{padding:1.1rem;border-radius:12px;background:var(--bg2);border:1px solid var(--border-dark)}
+.ufn{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--text)}
+.ufl{font-size:.67rem;color:var(--text-light);margin-top:2px;line-height:1.38}
+.usteps{display:flex;flex-direction:column;gap:1.1rem}
 .ust{display:flex;gap:.9rem;align-items:flex-start}
-.usn{width:30px;height:30px;flex-shrink:0;border-radius:50%;background:rgba(200,155,32,.10);
-     border:1px solid var(--border-gold);display:flex;align-items:center;justify-content:center;
-     font-size:.72rem;font-weight:700;color:var(--gold2)}
-.ust-t{font-size:.84rem;font-weight:600;color:#fff;margin-bottom:.18rem}
-.ust-d{font-size:.76rem;color:rgba(255,255,255,.40);line-height:1.5}
+.usn{width:30px;height:30px;flex-shrink:0;border-radius:50%;background:rgba(160,120,40,.08);
+     border:1px solid var(--border);display:flex;align-items:center;justify-content:center;
+     font-size:.70rem;font-weight:700;color:var(--gold)}
+.ust-t{font-size:.84rem;font-weight:600;color:var(--text);margin-bottom:.18rem}
+.ust-d{font-size:.76rem;color:var(--text-mid);line-height:1.55}
 @media(max-width:760px){.ui{grid-template-columns:1fr}}
 
 /*── FOUNDING MEMBERS ──*/
-.fm{padding:100px 0;position:relative;overflow:hidden}
-.fm::before{content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(200,155,32,.055) 0%,transparent 65%)}
-.fmh{text-align:center;max-width:540px;margin:0 auto 3rem}
-.fmh h2{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,3.2vw,2.7rem);
-         font-weight:700;line-height:1.15;margin:.5rem 0 .75rem}
-.fmh p{color:rgba(255,255,255,.48);font-size:.90rem;line-height:1.7}
+.fm{padding:110px 0;background:var(--bg2)}
+.fmh{text-align:center;max-width:520px;margin:0 auto 3rem}
+.fmh h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.2vw,2.8rem);
+         font-weight:700;line-height:1.15;margin:.5rem 0 .8rem;color:var(--text)}
+.fmh p{color:var(--text-mid);font-size:.90rem;line-height:1.75}
 .tiers{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:2.5rem}
-.tier{padding:1.6rem;border-radius:16px;border:1px solid var(--border);
-      background:rgba(255,255,255,.03);text-align:center;position:relative;overflow:hidden}
-.tier.ft{border-color:rgba(200,155,32,.42);background:rgba(200,155,32,.055)}
+.tier{padding:1.8rem;border-radius:16px;border:1px solid var(--border-dark);
+      background:var(--bg);text-align:center;position:relative;overflow:hidden;box-shadow:var(--sh-sm)}
+.tier.ft{border-color:rgba(160,120,40,.30);background:var(--white);box-shadow:var(--sh-md)}
 .tier-stripe{position:absolute;top:0;inset-x:0;height:3px;
              background:linear-gradient(90deg,var(--gold),var(--gold2))}
-.te{font-size:1.9rem;margin-bottom:.65rem}
-.tt2{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;margin-bottom:.25rem}
-.tsp{font-size:.67rem;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem}
-.tpk{font-size:.80rem;color:rgba(255,255,255,.52);line-height:1.58}
-.tpk strong{color:#fff;font-weight:600}
+.te{font-size:1.8rem;margin-bottom:.65rem}
+.tt2{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;margin-bottom:.25rem;color:var(--text)}
+.tsp{font-size:.64rem;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem}
+.tpk{font-size:.80rem;color:var(--text-mid);line-height:1.62}
+.tpk strong{color:var(--text);font-weight:600}
 @media(max-width:600px){.tiers{grid-template-columns:1fr}}
-.echips{display:flex;justify-content:center;gap:.75rem;flex-wrap:wrap;margin-bottom:3rem}
+.echips{display:flex;justify-content:center;gap:.65rem;flex-wrap:wrap;margin-bottom:3rem}
 .ec{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:100px;
-    background:rgba(255,255,255,.04);border:1px solid var(--border);
-    font-size:.75rem;color:rgba(255,255,255,.55)}
-.ec span{font-size:.9rem}
-/* form */
-.fmc{max-width:500px;margin:0 auto;background:rgba(255,255,255,.04);
-     border:1.5px solid rgba(255,255,255,.10);border-radius:20px;overflow:hidden;
-     box-shadow:0 32px 80px rgba(0,0,0,.38)}
-.fmc-s{height:4px;background:linear-gradient(90deg,var(--gold),var(--gold2),var(--gold3))}
-.fmc-b{padding:2.1rem}
+    background:var(--bg);border:1px solid var(--border-dark);font-size:.74rem;color:var(--text-mid)}
+.ec span{font-size:.88rem}
+.fmc{max-width:480px;margin:0 auto;background:var(--white);
+     border:1px solid var(--border-dark);border-radius:20px;overflow:hidden;box-shadow:var(--sh-lg)}
+.fmc-s{height:3px;background:linear-gradient(90deg,var(--gold),var(--gold2),var(--gold3))}
+.fmc-b{padding:2.2rem}
 .spr{display:flex;justify-content:space-between;align-items:center;margin-bottom:.38rem}
-.spl{font-size:.70rem;color:rgba(255,255,255,.36)}
-.spv{font-size:.70rem;font-weight:700;color:var(--gold2)}
-.spt{height:4px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;margin-bottom:1.4rem}
+.spl{font-size:.67rem;color:var(--text-light)}
+.spv{font-size:.67rem;font-weight:700;color:var(--gold)}
+.spt{height:3px;background:var(--bg3);border-radius:2px;overflow:hidden;margin-bottom:1.5rem}
 .spf{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:2px}
-.fct{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;margin-bottom:.28rem}
-.fcs{font-size:.80rem;color:rgba(255,255,255,.40);margin-bottom:1.4rem;line-height:1.5}
+.fct{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;margin-bottom:.28rem;color:var(--text)}
+.fcs{font-size:.80rem;color:var(--text-light);margin-bottom:1.5rem;line-height:1.58}
 .fg{display:flex;flex-direction:column;gap:.32rem;margin-bottom:.8rem}
-.fg label{font-size:.70rem;font-weight:500;color:rgba(255,255,255,.42)}
-.fg input{background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.10);
-          border-radius:9px;padding:.70rem .9rem;font-family:'Inter',sans-serif;
-          font-size:.88rem;color:#fff;outline:none;transition:border-color .2s,background .2s}
-.fg input::placeholder{color:rgba(255,255,255,.22)}
-.fg input:focus{border-color:rgba(200,155,32,.55);background:rgba(255,255,255,.08)}
-.fmb{width:100%;margin-top:.2rem;padding:.92rem;border:none;border-radius:9px;cursor:pointer;
-     background:linear-gradient(135deg,var(--gold),var(--gold2));
-     color:var(--g1);font-family:'Inter',sans-serif;font-size:.93rem;font-weight:700;
+.fg label{font-size:.68rem;font-weight:500;color:var(--text-mid)}
+.fg input{background:var(--bg2);border:1.5px solid var(--border-dark);
+          border-radius:9px;padding:.72rem .9rem;font-family:'Inter',sans-serif;
+          font-size:.88rem;color:var(--text);outline:none;transition:border-color .2s,background .2s}
+.fg input::placeholder{color:var(--text-light)}
+.fg input:focus{border-color:rgba(160,120,40,.50);background:var(--white)}
+.fmb{width:100%;margin-top:.2rem;padding:.95rem;border:none;border-radius:9px;cursor:pointer;
+     background:var(--text);color:var(--bg);font-family:'Inter',sans-serif;font-size:.92rem;font-weight:700;
      display:flex;align-items:center;justify-content:center;gap:7px;
-     box-shadow:0 4px 18px rgba(200,155,32,.26);transition:transform .2s,box-shadow .2s,opacity .2s}
-.fmb:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 26px rgba(200,155,32,.40)}
-.fmb:disabled{opacity:.6;cursor:not-allowed}
-.fpv{font-size:.66rem;color:rgba(255,255,255,.20);text-align:center;margin-top:.75rem;line-height:1.5}
+     box-shadow:var(--sh-md);transition:transform .2s,box-shadow .2s,opacity .2s,background .2s}
+.fmb:hover:not(:disabled){background:var(--green);transform:translateY(-2px);box-shadow:var(--sh-lg)}
+.fmb:disabled{opacity:.5;cursor:not-allowed}
+.fpv{font-size:.63rem;color:var(--text-light);text-align:center;margin-top:.8rem;line-height:1.58}
 .fms{display:none;flex-direction:column;align-items:center;text-align:center;gap:.9rem;padding:.4rem 0}
-.fsi{width:62px;height:62px;border-radius:50%;background:rgba(200,155,32,.12);
-     border:2px solid rgba(200,155,32,.36);display:flex;align-items:center;justify-content:center;font-size:1.6rem}
-.fst{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700}
-.fss{font-size:.82rem;color:rgba(255,255,255,.48);line-height:1.6}
+.fsi{width:60px;height:60px;border-radius:50%;background:rgba(160,120,40,.08);
+     border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.5rem}
+.fst{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:var(--text)}
+.fss{font-size:.82rem;color:var(--text-mid);line-height:1.65}
 .fshr{display:flex;gap:.55rem;flex-wrap:wrap;justify-content:center;margin-top:.3rem}
-.shr{padding:.38rem .9rem;border-radius:100px;border:1px solid rgba(255,255,255,.14);
-     background:transparent;font-size:.70rem;font-weight:500;color:rgba(255,255,255,.58);
+.shr{padding:.38rem .9rem;border-radius:100px;border:1px solid var(--border-dark);
+     background:transparent;font-size:.70rem;font-weight:500;color:var(--text-mid);
      cursor:pointer;display:flex;align-items:center;gap:4px;transition:all .2s}
 .shr:hover{border-color:var(--gold);color:var(--gold)}
-.spin{width:14px;height:14px;border:2.5px solid rgba(13,59,30,.3);
-      border-top-color:var(--g1);border-radius:50%;animation:sp .7s linear infinite;display:none}
+.spin{width:14px;height:14px;border:2.5px solid rgba(253,250,245,.4);
+      border-top-color:var(--bg);border-radius:50%;animation:sp .7s linear infinite;display:none}
 @keyframes sp{to{transform:rotate(360deg)}}
 
-/*── SURVEY SECTION ──*/
-.survey{padding:56px 0;border-top:1px solid var(--border)}
+/*── SURVEY ──*/
+.survey{padding:60px 0;border-top:1px solid var(--border-dark);background:var(--bg)}
 .svi{display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
 .svc h3{font-family:'Playfair Display',serif;font-size:clamp(1.2rem,2.4vw,1.7rem);
-        font-weight:700;margin-bottom:.38rem}
-.svc p{font-size:.85rem;color:rgba(255,255,255,.45);line-height:1.6}
+        font-weight:700;margin-bottom:.38rem;color:var(--text)}
+.svc p{font-size:.84rem;color:var(--text-mid);line-height:1.68}
 .svb{display:flex;gap:.65rem;flex-wrap:wrap;flex-shrink:0}
 .sba{display:inline-flex;align-items:center;gap:6px;padding:.72rem 1.35rem;border-radius:8px;
-     font-size:.83rem;font-weight:600;transition:all .2s}
-.it{background:rgba(200,155,32,.14);border:1px solid var(--border-gold);color:var(--gold2)}
-.it:hover{background:rgba(200,155,32,.24)}
-.en{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.13);color:rgba(255,255,255,.68)}
-.en:hover{border-color:rgba(255,255,255,.28);color:#fff}
+     font-size:.82rem;font-weight:600;transition:all .2s}
+.it{background:rgba(160,120,40,.09);border:1px solid var(--border);color:var(--gold)}
+.it:hover{background:rgba(160,120,40,.18)}
+.en{background:var(--bg2);border:1px solid var(--border-dark);color:var(--text-mid)}
+.en:hover{border-color:rgba(160,120,40,.30);color:var(--text)}
 
 /*── FOOTER ──*/
-footer{border-top:1px solid var(--border);padding:2.25rem 6%;
-       display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;
-       max-width:1100px;margin:0 auto}
-.ftb{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;margin-bottom:.18rem}
-.ftc{font-size:.70rem;color:rgba(255,255,255,.26)}
+footer{background:var(--text);padding:2.5rem 0}
+.fw{max-width:1100px;margin:0 auto;padding:0 6%;
+    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.ftb{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;margin-bottom:.18rem;color:var(--bg)}
+.ftc{font-size:.67rem;color:rgba(253,250,245,.32)}
 .ftl{display:flex;gap:1.4rem}
-.ftl a{font-size:.72rem;color:rgba(255,255,255,.30);transition:color .2s}
-.ftl a:hover{color:var(--gold)}
+.ftl a{font-size:.70rem;color:rgba(253,250,245,.36);transition:color .2s}
+.ftl a:hover{color:rgba(253,250,245,.80)}
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav id="nav">
   <a href="#" class="nb">
     <img src="logo_vitalia.jpg" alt="Vitalia"
@@ -318,8 +333,8 @@ footer{border-top:1px solid var(--border);padding:2.25rem 6%;
     <div class="hw">
       <div class="hl">
         <div class="hey" data-r><div class="line"></div><span>Pre-lancio · Posti limitati</span></div>
-        <h1 data-r style="transition-delay:.08s">La barretta<br/>che mancava<br/>all'<em>Italia</em></h1>
-        <p class="hsub" data-r style="transition-delay:.15s">Ingredienti DOP/IGP da tre regioni italiane. Vitamine formulate con l'Università di Parma. Zero dolcificanti. Uno snack che fa quello che promette.</p>
+        <h1 data-r style="transition-delay:.08s">Da tre angoli<br/>d'Italia, una<br/>barretta <em>costruita<br/>sul serio</em></h1>
+        <p class="hsub" data-r style="transition-delay:.15s">Ingredienti DOP e IGP selezionati, vitamine studiate con l'Università di Parma, zero dolcificanti artificiali. Non l'ennesimo snack salutista.</p>
         <a href="questionario.html" class="spill" data-r style="transition-delay:.21s">
           <span>📋</span>
           <span>Hai 3 minuti? <strong>Aiutaci a costruirlo</strong> — scegli:</span>
@@ -336,48 +351,48 @@ footer{border-top:1px solid var(--border);padding:2.25rem 6%;
           <div class="hpi"><span class="hpn">0</span><span class="hpl" data-key="stat1">brand italiani<br/>nel top-5 EU</span></div>
           <div class="hpi"><span class="hpn">€4.5B</span><span class="hpl" data-key="stat2">mercato italiano<br/>nutraceutica</span></div>
           <div class="hpi"><span class="hpn">UniPR</span><span class="hpl" data-key="stat3">contratto R&amp;D<br/>già firmato</span></div>
-          <div class="hpi"><span class="hpn" style="color:#ff8c6b">40%</span><span class="hpl" data-key="stat4">delle vitamine<br/>si degrada in lavorazione</span></div>
+          <div class="hpi"><span class="hpn" style="color:var(--gold)">40%</span><span class="hpl" data-key="stat4">delle vitamine<br/>si degrada in cottura</span></div>
         </div>
       </div>
       <div class="hr" data-r="R">
         <svg width="320" height="320" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <radialGradient id="hg" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#C87820" stop-opacity=".22"/>
-              <stop offset="100%" stop-color="#C87820" stop-opacity="0"/>
+              <stop offset="0%" stop-color="#C07820" stop-opacity=".12"/>
+              <stop offset="100%" stop-color="#C07820" stop-opacity="0"/>
             </radialGradient>
             <linearGradient id="hw2" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#D4861E"/>
-              <stop offset="48%" stop-color="#A85C10"/>
-              <stop offset="100%" stop-color="#6A3808"/>
+              <stop offset="0%" stop-color="#E8A840"/>
+              <stop offset="48%" stop-color="#C07820"/>
+              <stop offset="100%" stop-color="#8A4808"/>
             </linearGradient>
             <linearGradient id="hsh" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="white" stop-opacity=".13"/>
+              <stop offset="0%" stop-color="white" stop-opacity=".28"/>
               <stop offset="100%" stop-color="white" stop-opacity="0"/>
             </linearGradient>
             <filter id="hbs">
-              <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#C87820" flood-opacity=".28"/>
+              <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#8A4808" flood-opacity=".18"/>
             </filter>
           </defs>
-          <ellipse cx="160" cy="190" rx="120" ry="95" fill="url(#hg)"/>
-          <g transform="rotate(-8,160,160)" filter="url(#hbs)">
-            <rect x="40" y="105" width="240" height="100" rx="16" fill="url(#hw2)"/>
-            <rect x="40" y="105" width="240" height="38" rx="16" fill="url(#hsh)"/>
-            <line x1="40" y1="155" x2="280" y2="155" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
-            <text x="64" y="136" font-family="Georgia,serif" font-size="10" fill="rgba(255,255,255,0.50)" letter-spacing="3.5">VITALIA</text>
-            <text x="64" y="167" font-family="Georgia,serif" font-size="28" font-weight="bold" fill="#FFFFFF">Sole</text>
-            <text x="64" y="188" font-family="Arial,sans-serif" font-size="9" fill="rgba(255,230,140,0.72)" letter-spacing="2.5">SICILIA · DOP/IGP</text>
-            <circle cx="238" cy="130" r="22" fill="rgba(80,160,60,0.18)" stroke="rgba(100,180,70,0.32)" stroke-width="1.5"/>
-            <text x="238" y="138" text-anchor="middle" font-size="20">🌿</text>
-            <circle cx="244" cy="178" r="18" fill="rgba(240,120,40,0.18)" stroke="rgba(255,130,50,0.32)" stroke-width="1.5"/>
-            <text x="244" y="185" text-anchor="middle" font-size="15">🍊</text>
+          <ellipse cx="160" cy="200" rx="128" ry="78" fill="url(#hg)"/>
+          <g transform="rotate(-6,160,160)" filter="url(#hbs)">
+            <rect x="38" y="108" width="244" height="96" rx="16" fill="url(#hw2)"/>
+            <rect x="38" y="108" width="244" height="36" rx="16" fill="url(#hsh)"/>
+            <line x1="38" y1="156" x2="282" y2="156" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+            <text x="62" y="138" font-family="Georgia,serif" font-size="9.5" fill="rgba(255,255,255,0.62)" letter-spacing="3.5">VITALIA</text>
+            <text x="62" y="172" font-family="Georgia,serif" font-size="28" font-weight="bold" fill="#FFFFFF">Sole</text>
+            <text x="62" y="190" font-family="Arial,sans-serif" font-size="8.5" fill="rgba(255,240,160,0.80)" letter-spacing="2.5">SICILIA · DOP/IGP</text>
+            <circle cx="238" cy="134" r="22" fill="rgba(255,255,255,0.14)" stroke="rgba(255,255,255,0.24)" stroke-width="1.5"/>
+            <text x="238" y="142" text-anchor="middle" font-size="20">🌿</text>
+            <circle cx="244" cy="178" r="17" fill="rgba(255,255,255,0.14)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/>
+            <text x="244" y="185" text-anchor="middle" font-size="14">🍊</text>
           </g>
-          <rect x="8" y="54" width="116" height="26" rx="13" fill="rgba(200,155,32,0.12)" stroke="rgba(200,155,32,0.26)" stroke-width="1"/>
-          <text x="66" y="72" text-anchor="middle" font-family="Arial,sans-serif" font-size="9.5" font-weight="700" fill="rgba(240,200,100,0.82)" letter-spacing="0.3">Pistacchio Bronte DOP</text>
-          <rect x="198" y="34" width="112" height="26" rx="13" fill="rgba(200,155,32,0.12)" stroke="rgba(200,155,32,0.26)" stroke-width="1"/>
-          <text x="254" y="52" text-anchor="middle" font-family="Arial,sans-serif" font-size="9.5" font-weight="700" fill="rgba(240,200,100,0.82)" letter-spacing="0.3">Arancia Rossa IGP</text>
-          <rect x="22" y="256" width="98" height="26" rx="13" fill="rgba(200,155,32,0.10)" stroke="rgba(200,155,32,0.20)" stroke-width="1"/>
-          <text x="71" y="274" text-anchor="middle" font-family="Arial,sans-serif" font-size="9.5" font-weight="700" fill="rgba(240,200,100,0.72)" letter-spacing="0.3">Vit C · Zinco · B1</text>
+          <rect x="6" y="54" width="120" height="26" rx="13" fill="rgba(160,120,40,0.10)" stroke="rgba(160,120,40,0.24)" stroke-width="1"/>
+          <text x="66" y="72" text-anchor="middle" font-family="Arial,sans-serif" font-size="9.5" font-weight="700" fill="rgba(100,65,15,0.85)" letter-spacing="0.2">Pistacchio Bronte DOP</text>
+          <rect x="192" y="34" width="118" height="26" rx="13" fill="rgba(160,120,40,0.10)" stroke="rgba(160,120,40,0.24)" stroke-width="1"/>
+          <text x="251" y="52" text-anchor="middle" font-family="Arial,sans-serif" font-size="9.5" font-weight="700" fill="rgba(100,65,15,0.85)" letter-spacing="0.2">Arancia Rossa IGP</text>
+          <rect x="22" y="258" width="96" height="26" rx="13" fill="rgba(160,120,40,0.08)" stroke="rgba(160,120,40,0.18)" stroke-width="1"/>
+          <text x="70" y="276" text-anchor="middle" font-family="Arial,sans-serif" font-size="9.5" font-weight="700" fill="rgba(100,65,15,0.72)" letter-spacing="0.2">Vit C · Zinco · B1</text>
         </svg>
       </div>
     </div>
@@ -410,36 +425,37 @@ footer{border-top:1px solid var(--border);padding:2.25rem 6%;
 <section class="products" id="prodotti">
   <div class="wrap">
     <div class="ph" data-r>
-      <div class="tag" style="margin:0 auto .85rem"><span class="dot"></span>Tre barrette</div>
-      <h2>Tre regioni.<br/><em style="color:var(--gold2);font-style:italic">Tre formule.</em></h2>
-      <p>Ognuna racconta un territorio e porta nel corpo esattamente quello di cui hai bisogno.</p>
+      <div class="tag" style="margin:0 auto .85rem"><span class="dot"></span>Le tre barrette</div>
+      <h2>Tre territori.<br/><em style="color:var(--gold);font-style:italic">Tre formule.</em></h2>
+      <p>Ogni barretta nasce da un posto preciso e porta nel corpo quello di cui hai bisogno, senza giri di parole.</p>
     </div>
     <div class="bg3">
 
+      <!-- SOLE -->
       <div class="bc" data-v="sole" data-r style="transition-delay:0s">
         <div class="ba" data-v="sole">
           <div class="bg2"></div>
           <svg width="270" height="150" viewBox="0 0 270 150"><defs>
-            <linearGradient id="sg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#D4821A"/><stop offset="50%" stop-color="#A85C10"/><stop offset="100%" stop-color="#6A3808"/></linearGradient>
-            <filter id="ss"><feDropShadow dx="0" dy="8" stdDeviation="11" flood-color="#C87820" flood-opacity=".32"/></filter>
-            <linearGradient id="ssh" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="white" stop-opacity=".11"/><stop offset="100%" stop-color="white" stop-opacity="0"/></linearGradient>
+            <linearGradient id="sg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#E8A030"/><stop offset="50%" stop-color="#C07018"/><stop offset="100%" stop-color="#8A4408"/></linearGradient>
+            <filter id="ss"><feDropShadow dx="0" dy="7" stdDeviation="10" flood-color="#A06010" flood-opacity=".24"/></filter>
+            <linearGradient id="ssh" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="white" stop-opacity=".22"/><stop offset="100%" stop-color="white" stop-opacity="0"/></linearGradient>
           </defs>
           <rect x="15" y="24" width="240" height="88" rx="14" fill="url(#sg)" filter="url(#ss)"/>
           <rect x="15" y="24" width="240" height="30" rx="14" fill="url(#ssh)"/>
-          <line x1="15" y1="68" x2="255" y2="68" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
-          <text x="36" y="50" font-family="Georgia,serif" font-size="9" fill="rgba(255,255,255,0.48)" letter-spacing="3">VITALIA</text>
+          <line x1="15" y1="68" x2="255" y2="68" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+          <text x="36" y="50" font-family="Georgia,serif" font-size="9" fill="rgba(255,255,255,0.58)" letter-spacing="3">VITALIA</text>
           <text x="36" y="78" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="#FFF">Sole</text>
-          <text x="36" y="97" font-family="Arial" font-size="8" fill="rgba(255,230,130,0.72)" letter-spacing="2.5">SICILIA · DOP/IGP</text>
-          <circle cx="216" cy="50" r="17" fill="rgba(80,160,60,.18)" stroke="rgba(100,180,70,.28)" stroke-width="1"/>
+          <text x="36" y="97" font-family="Arial" font-size="8" fill="rgba(255,240,140,0.78)" letter-spacing="2.5">SICILIA · DOP/IGP</text>
+          <circle cx="216" cy="50" r="17" fill="rgba(255,255,255,.16)" stroke="rgba(255,255,255,.24)" stroke-width="1"/>
           <text x="216" y="57" text-anchor="middle" font-size="15">🌿</text>
-          <circle cx="220" cy="90" r="13" fill="rgba(240,110,40,.18)" stroke="rgba(255,120,50,.28)" stroke-width="1"/>
+          <circle cx="220" cy="90" r="13" fill="rgba(255,255,255,.16)" stroke="rgba(255,255,255,.22)" stroke-width="1"/>
           <text x="220" y="95" text-anchor="middle" font-size="11">🍊</text>
           </svg>
         </div>
         <div class="bb">
           <div class="brg" data-v="sole">🍊 Sicilia</div>
           <h3 class="bn">Vitalia Sole</h3>
-          <p class="bdesc" id="sole-desc">Energia e difese immunitarie. Costruita attorno al Pistacchio di Bronte DOP — uno degli ingredienti più densi di nutrienti che esistano.</p>
+          <p class="bdesc" id="sole-desc">Parte dal Pistacchio di Bronte DOP e costruisce attorno. Energia, difese immunitarie e zinco — quelli che servono davvero quando sei sotto pressione.</p>
           <div class="bis">
             <span class="bi2" data-v="sole">Pistacchio Bronte DOP</span>
             <span class="bi2" data-v="sole">Arancia Rossa IGP</span>
@@ -451,30 +467,31 @@ footer{border-top:1px solid var(--border);padding:2.25rem 6%;
         </div>
       </div>
 
+      <!-- TERRA -->
       <div class="bc" data-v="terra" data-r style="transition-delay:.12s">
         <div class="ba" data-v="terra">
           <div class="bg2"></div>
           <svg width="270" height="150" viewBox="0 0 270 150"><defs>
-            <linearGradient id="tg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8B4A14"/><stop offset="50%" stop-color="#6B3408"/><stop offset="100%" stop-color="#3E1E04"/></linearGradient>
-            <filter id="ts"><feDropShadow dx="0" dy="8" stdDeviation="11" flood-color="#7A4010" flood-opacity=".36"/></filter>
-            <linearGradient id="tsh" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="white" stop-opacity=".08"/><stop offset="100%" stop-color="white" stop-opacity="0"/></linearGradient>
+            <linearGradient id="tg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#A06020"/><stop offset="50%" stop-color="#7A4410"/><stop offset="100%" stop-color="#4A2808"/></linearGradient>
+            <filter id="ts"><feDropShadow dx="0" dy="7" stdDeviation="10" flood-color="#7A4010" flood-opacity=".28"/></filter>
+            <linearGradient id="tsh" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="white" stop-opacity=".16"/><stop offset="100%" stop-color="white" stop-opacity="0"/></linearGradient>
           </defs>
           <rect x="15" y="24" width="240" height="88" rx="14" fill="url(#tg)" filter="url(#ts)"/>
           <rect x="15" y="24" width="240" height="30" rx="14" fill="url(#tsh)"/>
-          <line x1="15" y1="68" x2="255" y2="68" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-          <text x="36" y="50" font-family="Georgia,serif" font-size="9" fill="rgba(255,255,255,0.44)" letter-spacing="3">VITALIA</text>
+          <line x1="15" y1="68" x2="255" y2="68" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+          <text x="36" y="50" font-family="Georgia,serif" font-size="9" fill="rgba(255,255,255,0.52)" letter-spacing="3">VITALIA</text>
           <text x="36" y="78" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="#FFF">Terra</text>
-          <text x="36" y="97" font-family="Arial" font-size="8" fill="rgba(220,180,110,0.72)" letter-spacing="2.5">TOSCANA · IGP</text>
-          <circle cx="216" cy="50" r="17" fill="rgba(180,110,30,.20)" stroke="rgba(200,130,40,.28)" stroke-width="1"/>
+          <text x="36" y="97" font-family="Arial" font-size="8" fill="rgba(230,200,130,0.76)" letter-spacing="2.5">TOSCANA · IGP</text>
+          <circle cx="216" cy="50" r="17" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.22)" stroke-width="1"/>
           <text x="216" y="57" text-anchor="middle" font-size="15">🌰</text>
-          <circle cx="220" cy="90" r="13" fill="rgba(160,80,130,.18)" stroke="rgba(180,90,150,.26)" stroke-width="1"/>
+          <circle cx="220" cy="90" r="13" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.20)" stroke-width="1"/>
           <text x="220" y="95" text-anchor="middle" font-size="11">🍐</text>
           </svg>
         </div>
         <div class="bb">
           <div class="brg" data-v="terra">🌰 Toscana</div>
           <h3 class="bn">Vitalia Terra</h3>
-          <p class="bdesc" id="terra-desc">Concentrazione e lucidità mentale. Ingredienti autunnali toscani ricchi di amidi complessi e polifenoli. Per il cervello, non solo per lo stomaco.</p>
+          <p class="bdesc" id="terra-desc">Castagna Toscana IGP, nocciola, fico di Carmignano. Amidi complessi e vitamine del gruppo B per restare concentrati a lungo.</p>
           <div class="bis">
             <span class="bi2" data-v="terra">Castagna Toscana IGP</span>
             <span class="bi2" data-v="terra">Fico di Carmignano IGP</span>
@@ -486,30 +503,31 @@ footer{border-top:1px solid var(--border);padding:2.25rem 6%;
         </div>
       </div>
 
+      <!-- ALPI -->
       <div class="bc" data-v="alpi" data-r style="transition-delay:.24s">
         <div class="ba" data-v="alpi">
           <div class="bg2"></div>
           <svg width="270" height="150" viewBox="0 0 270 150"><defs>
-            <linearGradient id="ag" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#2A6E90"/><stop offset="50%" stop-color="#1A5270"/><stop offset="100%" stop-color="#0E2E40"/></linearGradient>
-            <filter id="as2"><feDropShadow dx="0" dy="8" stdDeviation="11" flood-color="#1A5270" flood-opacity=".36"/></filter>
-            <linearGradient id="ash" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="white" stop-opacity=".10"/><stop offset="100%" stop-color="white" stop-opacity="0"/></linearGradient>
+            <linearGradient id="ag" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#3888B0"/><stop offset="50%" stop-color="#226888"/><stop offset="100%" stop-color="#103C50"/></linearGradient>
+            <filter id="as2"><feDropShadow dx="0" dy="7" stdDeviation="10" flood-color="#1A5270" flood-opacity=".28"/></filter>
+            <linearGradient id="ash" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="white" stop-opacity=".18"/><stop offset="100%" stop-color="white" stop-opacity="0"/></linearGradient>
           </defs>
           <rect x="15" y="24" width="240" height="88" rx="14" fill="url(#ag)" filter="url(#as2)"/>
           <rect x="15" y="24" width="240" height="30" rx="14" fill="url(#ash)"/>
-          <line x1="15" y1="68" x2="255" y2="68" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
-          <text x="36" y="50" font-family="Georgia,serif" font-size="9" fill="rgba(255,255,255,0.48)" letter-spacing="3">VITALIA</text>
+          <line x1="15" y1="68" x2="255" y2="68" stroke="rgba(255,255,255,0.09)" stroke-width="1"/>
+          <text x="36" y="50" font-family="Georgia,serif" font-size="9" fill="rgba(255,255,255,0.55)" letter-spacing="3">VITALIA</text>
           <text x="36" y="78" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="#FFF">Alpi</text>
-          <text x="36" y="97" font-family="Arial" font-size="8" fill="rgba(160,220,255,0.72)" letter-spacing="2.5">TRENTINO · DOP/BIO</text>
-          <circle cx="216" cy="50" r="17" fill="rgba(80,190,120,.18)" stroke="rgba(100,210,130,.28)" stroke-width="1"/>
+          <text x="36" y="97" font-family="Arial" font-size="8" fill="rgba(170,225,255,0.76)" letter-spacing="2.5">TRENTINO · DOP/BIO</text>
+          <circle cx="216" cy="50" r="17" fill="rgba(255,255,255,.16)" stroke="rgba(255,255,255,.24)" stroke-width="1"/>
           <text x="216" y="57" text-anchor="middle" font-size="15">🍏</text>
-          <circle cx="220" cy="90" r="13" fill="rgba(220,70,110,.18)" stroke="rgba(240,80,120,.26)" stroke-width="1"/>
+          <circle cx="220" cy="90" r="13" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.22)" stroke-width="1"/>
           <text x="220" y="95" text-anchor="middle" font-size="11">🍓</text>
           </svg>
         </div>
         <div class="bb">
           <div class="brg" data-v="alpi">🏔️ Trentino</div>
           <h3 class="bn">Vitalia Alpi</h3>
-          <p class="bdesc" id="alpi-desc">Recupero e protezione cellulare. Frutti alpini biologici ad alto contenuto di antocianine. Omega-3 da canapa coltivata in Trentino.</p>
+          <p class="bdesc" id="alpi-desc">Mela Val di Non DOP, lamponi alpini, semi di canapa biologici. Antiossidanti e Omega-3 per chi vuole recuperare bene, non solo resistere.</p>
           <div class="bis">
             <span class="bi2" data-v="alpi">Mela Val di Non DOP</span>
             <span class="bi2" data-v="alpi">Lampone Alpino BIO</span>
@@ -531,8 +549,8 @@ footer{border-top:1px solid var(--border);padding:2.25rem 6%;
     <div class="si">
       <div data-r="L"><span class="sn"><span id="sc">72</span><span class="su">%</span></span></div>
       <div class="sr" data-r>
-        <h3>degli italiani non raggiunge il fabbisogno giornaliero di Vitamina D.</h3>
-        <p>Non è una questione di volontà. Il cibo che mangiamo normalmente non basta. Le pillole funzionano ma quasi nessuno le prende ogni giorno. Uno snack con vitamine reali, che stai già mangiando, è una soluzione diversa.</p>
+        <h3>degli italiani non raggiunge il fabbisogno di Vitamina D. Non è colpa loro.</h3>
+        <p>Il cibo che mangiamo ogni giorno non basta — e le pillole funzionano solo se le prendi davvero. Uno snack con le vitamine giuste, che mangi già, è qualcosa di diverso.</p>
         <p class="src">Fonte: CREA — Istituto Nazionale di Ricerca per gli Alimenti e la Nutrizione · European Nutrition Survey 2024</p>
       </div>
     </div>
@@ -543,9 +561,9 @@ footer{border-top:1px solid var(--border);padding:2.25rem 6%;
 <section class="vitamins" id="scienza">
   <div class="wrap">
     <div class="vh" data-r>
-      <div class="tag" style="margin-bottom:.75rem"><span class="dot"></span>Cosa fanno al corpo</div>
-      <h2>Non è marketing.<br/><em style="color:var(--gold2);font-style:italic">È quello che senti.</em></h2>
-      <p>Ogni barretta Vitalia è formulata per uno scopo preciso. Ecco perché.</p>
+      <div class="tag" style="margin-bottom:.75rem"><span class="dot"></span>Cosa succede nel corpo</div>
+      <h2>Non è marketing.<br/><em style="color:var(--gold);font-style:italic">È biochimica.</em></h2>
+      <p>Ogni formula ha uno scopo preciso. Ecco cosa succede davvero quando mangi Vitalia.</p>
     </div>
     <div class="vg">
       <div class="vc" data-r style="transition-delay:0s">
@@ -585,8 +603,8 @@ footer{border-top:1px solid var(--border);padding:2.25rem 6%;
           <div class="ubox">UniPR</div>
           <div class="unm"><strong>Università di Parma</strong>Dipartimento di Scienze degli Alimenti</div>
         </div>
-        <h3>Parma è la Food Valley d'Europa. Il laboratorio è lì.</h3>
-        <p>Abbiamo firmato un contratto di R&D con il dipartimento che ha formato i ricercatori di Barilla, Parmalat e Mutti. Loro misurano cosa resta delle vitamine dopo la lavorazione — perché il calore le degrada, e vogliamo che l'etichetta corrisponda a quello che c'è davvero dentro.</p>
+        <h3>Parma non è famosa solo per il Parmigiano. È la capitale europea della ricerca alimentare.</h3>
+        <p>Abbiamo un contratto di R&D con il dipartimento che ha formato i ricercatori di Barilla, Parmalat e Mutti. Il loro lavoro: misurare quante vitamine sopravvivono alla lavorazione. Perché il calore le degrada, e quello che c'è in etichetta deve corrispondere a quello che c'è dentro davvero.</p>
         <div class="uf2">
           <div class="ufi"><p class="ufn">HPLC</p><p class="ufl">Analisi vitamina residua post-lavorazione</p></div>
           <div class="ufi"><p class="ufn">NRV EU</p><p class="ufl">Dosaggi calibrati sui valori europei ufficiali</p></div>
@@ -595,7 +613,7 @@ footer{border-top:1px solid var(--border);padding:2.25rem 6%;
         </div>
       </div>
       <div class="usteps" data-r="R">
-        <p style="font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem">Come lavoriamo</p>
+        <p style="font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem">Come lavoriamo</p>
         <div class="ust"><div class="usn">01</div><div><p class="ust-t">Selezione ingredienti DOP/IGP</p><p class="ust-d">Ogni materia prima viene profilata nutrizionalmente prima di entrare nella formula.</p></div></div>
         <div class="ust"><div class="usn">02</div><div><p class="ust-t">Formulazione vitaminica</p><p class="ust-d">Il laboratorio disegna il mix per ogni barretta — dosaggi calibrati, non aggiunti a caso.</p></div></div>
         <div class="ust"><div class="usn">03</div><div><p class="ust-t">Test di stabilità termica</p><p class="ust-d">L'HPLC misura quanta vitamina sopravvive alla lavorazione. Quello che c'è in etichetta, c'è davvero.</p></div></div>
@@ -610,8 +628,8 @@ footer{border-top:1px solid var(--border);padding:2.25rem 6%;
   <div class="wrap">
     <div class="fmh" data-r>
       <div class="tag" style="margin:0 auto .85rem"><span class="dot"></span>Founding Members</div>
-      <h2>Sii tra i primi.<br/><em style="color:var(--gold2);font-style:italic">Vale qualcosa di concreto.</em></h2>
-      <p>Non una newsletter. Chi entra prima, prende di più — e contribuisce davvero a costruire Vitalia.</p>
+      <h2>Costruiamola<br/><em style="color:var(--gold);font-style:italic">insieme.</em></h2>
+      <p>Siamo in pre-lancio. Chi entra adesso non sta comprando uno snack — sta contribuendo a costruirlo. E c'è qualcosa di concreto in cambio.</p>
     </div>
     <div class="tiers" data-r>
       <div class="tier ft">
@@ -648,7 +666,7 @@ footer{border-top:1px solid var(--border);padding:2.25rem 6%;
         <div class="spt"><div class="spf" id="sf" style="width:2.6%"></div></div>
         <div id="fs">
           <p class="fct">Entra nella lista 🌿</p>
-          <p class="fcs">Compila in 20 secondi. Niente spam, promesso.</p>
+          <p class="fcs">20 secondi. Nessuno spam. Solo aggiornamenti quando ci sono novità vere.</p>
           <form id="wf" novalidate>
             <div class="fg"><label>Nome</label><input type="text" id="nome" placeholder="Il tuo nome" autocomplete="given-name" required/></div>
             <div class="fg"><label>Email</label><input type="email" id="email" placeholder="tua@email.com" autocomplete="email" required/></div>
@@ -668,7 +686,7 @@ footer{border-top:1px solid var(--border);padding:2.25rem 6%;
             <button class="shr" onclick="shareWA()">📲 WhatsApp</button>
             <button class="shr" onclick="copyLnk(this)">🔗 Copia link</button>
           </div>
-          <p style="font-size:.66rem;color:rgba(255,255,255,.22);margin-top:.35rem">Più persone coinvolgi, prima lanciamo 🙏</p>
+          <p style="font-size:.64rem;color:var(--text-light);margin-top:.35rem">Più persone coinvolgi, prima lanciamo 🙏</p>
         </div>
       </div>
     </div>
@@ -680,8 +698,8 @@ footer{border-top:1px solid var(--border);padding:2.25rem 6%;
   <div class="wrap">
     <div class="svi" data-r>
       <div class="svc">
-        <h3>Hai 3 minuti? Il tuo parere conta.</h3>
-        <p>Stiamo costruendo Vitalia partendo dalle risposte reali delle persone. Ogni risposta influenza cosa produciamo. Disponibile in italiano e inglese.</p>
+        <h3>Hai 3 minuti? Il tuo parere cambia le cose.</h3>
+        <p>Stiamo costruendo Vitalia ascoltando le persone, non le tendenze. Ogni risposta incide su cosa produciamo. Disponibile in italiano e inglese.</p>
       </div>
       <div class="svb">
         <a href="questionario.html" class="sba it" target="_blank">🇮🇹 Compila in italiano</a>
@@ -693,11 +711,13 @@ footer{border-top:1px solid var(--border);padding:2.25rem 6%;
 
 <!-- FOOTER -->
 <footer>
-  <div><p class="ftb">Vitalia</p><p class="ftc">© 2026 · La prima barretta italiana nutraceutica · Parma, Italia</p></div>
-  <div class="ftl">
-    <a href="#waitlist">Founding Members</a>
-    <a href="questionario.html">Questionario</a>
-    <a href="mailto:f.amato2798@gmail.com">Contatti</a>
+  <div class="fw">
+    <div><p class="ftb">Vitalia</p><p class="ftc">© 2026 · La prima barretta italiana nutraceutica · Parma, Italia</p></div>
+    <div class="ftl">
+      <a href="#waitlist">Founding Members</a>
+      <a href="questionario.html">Questionario</a>
+      <a href="mailto:f.amato2798@gmail.com">Contatti</a>
+    </div>
   </div>
 </footer>
 
@@ -761,24 +781,16 @@ const T={
   it:{
     'nav.products':'I prodotti','nav.how':'Come funziona','nav.cta':'Founding Members →',
     'stat1':'brand italiani\nnel top-5 EU','stat2':'mercato italiano\nnutraceutica',
-    'stat3':'contratto R&D\ngià firmato','stat4':'delle vitamine\nsi degrada in lavorazione',
-    'hero.eyebrow':'Pre-lancio · Posti limitati',
-    'hero.h1':'La barretta<br/>che mancava<br/>all\'<em>Italia</em>',
-    'hero.sub':'Ingredienti DOP/IGP da tre regioni italiane. Vitamine formulate con l\'Università di Parma. Zero dolcificanti. Uno snack che fa quello che promette.',
+    'stat3':'contratto R&D\ngià firmato','stat4':'delle vitamine\nsi degrada in cottura',
+    'hero.h1':'Da tre angoli<br/>d\'Italia, una<br/>barretta <em>costruita<br/>sul serio</em>',
+    'hero.sub':'Ingredienti DOP e IGP selezionati, vitamine studiate con l\'Università di Parma, zero dolcificanti artificiali. Non l\'ennesimo snack salutista.',
     'hero.pill':'Hai 3 minuti? <strong>Aiutaci a costruirlo</strong> — scegli:',
     'hero.cta1':'Diventa Founding Member →','hero.cta2':'Scopri i prodotti',
-    'prod.tag':'Tre barrette','prod.h2':'Tre regioni.<br/><em style="color:var(--gold2);font-style:italic">Tre formule.</em>',
-    'prod.sub':'Ognuna racconta un territorio e porta nel corpo esattamente quello di cui hai bisogno.',
-    'sole.reg':'🍊 Sicilia','sole.name':'Vitalia Sole',
-    'sole.desc':'Energia e difese immunitarie. Costruita attorno al Pistacchio di Bronte DOP — uno degli ingredienti più densi di nutrienti che esistano.',
-    'terra.reg':'🌰 Toscana','terra.name':'Vitalia Terra',
-    'terra.desc':'Concentrazione e lucidità mentale. Ingredienti autunnali toscani ricchi di amidi complessi e polifenoli. Per il cervello, non solo per lo stomaco.',
-    'alpi.reg':'🏔️ Trentino','alpi.name':'Vitalia Alpi',
-    'alpi.desc':'Recupero e protezione cellulare. Frutti alpini biologici ad alto contenuto di antocianine. Omega-3 da canapa coltivata in Trentino.',
-    'stat.h3':'degli italiani non raggiunge il fabbisogno giornaliero di Vitamina D.',
-    'stat.p':'Non è una questione di volontà. Il cibo che mangiamo normalmente non basta. Le pillole funzionano ma quasi nessuno le prende ogni giorno. Uno snack con vitamine reali, che stai già mangiando, è una soluzione diversa.',
-    'vit.tag':'Cosa fanno al corpo','vit.h2':'Non è marketing.<br/><em style="color:var(--gold2);font-style:italic">È quello che senti.</em>',
-    'vit.sub':'Ogni barretta Vitalia è formulata per uno scopo preciso. Ecco perché.',
+    'sole.desc':'Parte dal Pistacchio di Bronte DOP e costruisce attorno. Energia, difese immunitarie e zinco — quelli che servono davvero quando sei sotto pressione.',
+    'terra.desc':'Castagna Toscana IGP, nocciola, fico di Carmignano. Amidi complessi e vitamine del gruppo B per restare concentrati a lungo.',
+    'alpi.desc':'Mela Val di Non DOP, lamponi alpini, semi di canapa biologici. Antiossidanti e Omega-3 per chi vuole recuperare bene, non solo resistere.',
+    'stat.h3':'degli italiani non raggiunge il fabbisogno di Vitamina D. Non è colpa loro.',
+    'stat.p':'Il cibo che mangiamo ogni giorno non basta — e le pillole funzionano solo se le prendi davvero. Uno snack con le vitamine giuste, che mangi già, è qualcosa di diverso.',
     'vit1.name':'B12 + B6','vit1.effect':'Meno stanchezza mentale',
     'vit1.desc':'Studi su adulti attivi mostrano una riduzione del 18% dei marcatori di affaticamento cognitivo in 4 settimane.',
     'vit2.name':'Vitamina C + Zinco','vit2.effect':'Difese più forti',
@@ -787,68 +799,59 @@ const T={
     'vit3.desc':'La forma D3 ha biodisponibilità superiore del 40% rispetto alla D2. Agisce su oltre 200 geni. Carente nel 72% degli italiani.',
     'vit4.name':'Vitamina E + Omega-3','vit4.effect':'Protezione cellulare',
     'vit4.desc':'L\'antiossidante liposolubile più importante del corpo. Con gli Omega-3 ALA riduce lo stress ossidativo e supporta il recupero muscolare.',
-    'unipr.h3':'Parma è la Food Valley d\'Europa. Il laboratorio è lì.',
-    'unipr.p':'Abbiamo firmato un contratto di R&D con il dipartimento che ha formato i ricercatori di Barilla, Parmalat e Mutti. Loro misurano cosa resta delle vitamine dopo la lavorazione — perché il calore le degrada, e vogliamo che l\'etichetta corrisponda a quello che c\'è davvero dentro.',
-    'fm.tag':'Founding Members','fm.h2':'Sii tra i primi.<br/><em style="color:var(--gold2);font-style:italic">Vale qualcosa di concreto.</em>',
-    'fm.sub':'Non una newsletter. Chi entra prima, prende di più — e contribuisce davvero a costruire Vitalia.',
+    'unipr.h3':'Parma non è famosa solo per il Parmigiano. È la capitale europea della ricerca alimentare.',
+    'unipr.p':'Abbiamo un contratto di R&D con il dipartimento che ha formato i ricercatori di Barilla, Parmalat e Mutti. Il loro lavoro: misurare quante vitamine sopravvivono alla lavorazione. Perché il calore le degrada, e quello che c\'è in etichetta deve corrispondere a quello che c\'è dentro davvero.',
+    'fm.h2':'Costruiamola<br/><em style="color:var(--gold);font-style:italic">insieme.</em>',
+    'fm.sub':'Siamo in pre-lancio. Chi entra adesso non sta comprando uno snack — sta contribuendo a costruirlo. E c\'è qualcosa di concreto in cambio.',
     't1.title':'Primi 100','t1.spots':'Posti rimasti: 87',
     't1.perk':'<strong>Ricevi le barrette di prova gratis.</strong> Le spediamo noi, prima del lancio. In cambio vogliamo solo il tuo feedback onesto.',
     't2.title':'101 – 500','t2.spots':'Founding member',
     't2.perk':'<strong>Sconto permanente del 30%</strong> su ogni ordine, per sempre. Bloccato al momento dell\'iscrizione.',
     't3.title':'Tutti','t3.spots':'Co-fondatori',
     't3.perk':'<strong>Voti quale barretta lanciamo prima.</strong> Dai il nome a un gusto. Accesso diretto al team e aggiornamenti dal laboratorio.',
-    'form.title':'Entra nella lista 🌿','form.sub':'Compila in 20 secondi. Niente spam, promesso.',
-    'form.nome':'Nome','form.email':'Email',
+    'form.title':'Entra nella lista 🌿','form.sub':'20 secondi. Nessuno spam. Solo aggiornamenti quando ci sono novità vere.',
     'form.cta':'Diventa Founding Member','form.priv':'Nessuno spam · Solo aggiornamenti Vitalia · Cancellazione libera in qualsiasi momento',
     'succ.title':'Sei dentro!','succ.sub':'Benvenuto/a tra i <strong>Founding Members di Vitalia</strong>.<br/>Ti scriviamo appena ci sono novità dal laboratorio.',
-    'survey.h3':'Hai 3 minuti? Il tuo parere conta.',
-    'survey.p':'Stiamo costruendo Vitalia partendo dalle risposte reali delle persone. Ogni risposta influenza cosa produciamo. Disponibile in italiano e inglese.',
+    'survey.h3':'Hai 3 minuti? Il tuo parere cambia le cose.',
+    'survey.p':'Stiamo costruendo Vitalia ascoltando le persone, non le tendenze. Ogni risposta incide su cosa produciamo. Disponibile in italiano e inglese.',
     'survey.it':'🇮🇹 Compila in italiano','survey.en':'🇬🇧 Fill in English',
   },
   en:{
     'nav.products':'Our products','nav.how':'How it works','nav.cta':'Founding Members →',
-    'stat1':'Italian brands\nin EU top-5','stat2':'Italian nutraceutical\nmarket','stat3':'R&D agreement\nalready signed','stat4':'of vitamins\ndegrade during production',
-    'hero.eyebrow':'Pre-launch · Limited spots',
-    'hero.h1':'The bar Italy<br/>has been<br/><em>missing</em>',
-    'hero.sub':'DOP/IGP ingredients from three Italian regions. Vitamins formulated with the University of Parma. Zero artificial sweeteners. A snack that actually does what it says.',
+    'stat1':'Italian brands\nin EU top-5','stat2':'Italian nutraceutical\nmarket',
+    'stat3':'R&D agreement\nalready signed','stat4':'of vitamins\ndegrade during production',
+    'hero.h1':'From three corners<br/>of Italy, a bar<br/><em>built to last</em>',
+    'hero.sub':'Selected DOP/IGP ingredients, vitamins formulated with the University of Parma, zero artificial sweeteners. Not just another health snack.',
     'hero.pill':'Got 3 minutes? <strong>Help us build it</strong> — choose:',
     'hero.cta1':'Become a Founding Member →','hero.cta2':'Discover the products',
-    'prod.tag':'Three bars','prod.h2':'Three regions.<br/><em style="color:var(--gold2);font-style:italic">Three formulas.</em>',
-    'prod.sub':'Each one tells the story of an Italian territory and delivers exactly what your body needs.',
-    'sole.reg':'🍊 Sicily','sole.name':'Vitalia Sole',
-    'sole.desc':'Energy and immune support. Built around Bronte Pistachio DOP — one of the most nutrient-dense ingredients in existence.',
-    'terra.reg':'🌰 Tuscany','terra.name':'Vitalia Terra',
-    'terra.desc':'Focus and mental clarity. Tuscan autumn ingredients rich in complex starches and polyphenols. For the brain, not just the stomach.',
-    'alpi.reg':'🏔️ Trentino','alpi.name':'Vitalia Alpi',
-    'alpi.desc':'Recovery and cellular protection. Organic alpine fruits with high anthocyanin content. Omega-3 from hemp grown in Trentino.',
-    'stat.h3':'of Italians don\'t reach their daily Vitamin D requirement.',
-    'stat.p':'It\'s not about willpower. The food we normally eat isn\'t enough. Pills work, but almost nobody takes them consistently. A snack with real vitamins, that you\'re already eating, is a different solution.',
-    'vit.tag':'What they do to your body','vit.h2':'Not marketing.<br/><em style="color:var(--gold2);font-style:italic">You\'ll actually feel it.</em>',
-    'vit.sub':'Every Vitalia bar is formulated for a specific purpose. Here\'s why.',
+    'sole.desc':'Built around Bronte Pistachio DOP and everything that works with it. Energy, immune support and zinc — what you actually need when you\'re under pressure.',
+    'terra.desc':'Tuscan Chestnut IGP, hazelnut, Carmignano fig. Complex starches and B-vitamins for sustained focus — not just a quick fix.',
+    'alpi.desc':'Val di Non Apple DOP, organic alpine raspberries, hemp seeds. Antioxidants and Omega-3 for proper recovery, not just getting through the day.',
+    'stat.h3':'of Italians don\'t reach their daily Vitamin D requirement. It\'s not their fault.',
+    'stat.p':'The food we eat every day isn\'t enough — and supplements only work if you actually take them. A snack with the right vitamins, that you\'re already eating, is a different solution.',
     'vit1.name':'B12 + B6','vit1.effect':'Less mental fatigue',
-    'vit1.desc':'Studies on active adults show an 18% reduction in cognitive fatigue markers in 4 weeks of regular intake.',
+    'vit1.desc':'Studies on active adults show an 18% reduction in cognitive fatigue markers after 4 weeks of regular intake.',
     'vit2.name':'Vitamin C + Zinc','vit2.effect':'Stronger immune defence',
     'vit2.desc':'Together they reduce cold symptom duration by 33%. Both essential for adaptive immune response.',
     'vit3.name':'Vitamin D3','vit3.effect':'Bones, mood, immunity',
     'vit3.desc':'D3 form has 40% higher bioavailability than D2. Acts on over 200 genes. Deficient in 72% of Italians.',
     'vit4.name':'Vitamin E + Omega-3','vit4.effect':'Cellular protection',
     'vit4.desc':'The most important fat-soluble antioxidant in the body. With ALA Omega-3, reduces oxidative stress and supports muscle recovery.',
-    'unipr.h3':'Parma is Europe\'s Food Valley. Our lab is there.',
-    'unipr.p':'We signed an R&D contract with the department that trained researchers at Barilla, Parmalat and Mutti. They measure what remains of the vitamins after production — because heat degrades them, and we want the label to match what\'s actually inside.',
-    'fm.tag':'Founding Members','fm.h2':'Be among the first.<br/><em style="color:var(--gold2);font-style:italic">It\'s worth something real.</em>',
-    'fm.sub':'Not a newsletter. Those who join first, get the most — and genuinely help build Vitalia.',
+    'unipr.h3':'Parma isn\'t just famous for Parmigiano. It\'s Europe\'s food research capital.',
+    'unipr.p':'We have an R&D contract with the department that trained researchers at Barilla, Parmalat and Mutti. Their job: measuring how much of each vitamin survives processing. Because heat degrades them, and what\'s on the label must match what\'s actually inside.',
+    'fm.h2':'Let\'s build it<br/><em style="color:var(--gold);font-style:italic">together.</em>',
+    'fm.sub':'We\'re pre-launch. Joining now isn\'t buying a snack — it\'s helping shape what it becomes. There\'s something real in return.',
     't1.title':'First 100','t1.spots':'Spots remaining: 87',
     't1.perk':'<strong>Get the tasting bars for free.</strong> We ship them before the official launch. All we ask is your honest feedback.',
     't2.title':'101 – 500','t2.spots':'Founding member',
     't2.perk':'<strong>Permanent 30% discount</strong> on every order, forever. Locked in at the time of registration.',
     't3.title':'Everyone','t3.spots':'Co-founders',
     't3.perk':'<strong>Vote which bar we launch first.</strong> Name a flavor. Direct access to the team and lab updates.',
-    'form.title':'Join the list 🌿','form.sub':'Takes 20 seconds. No spam, promised.',
-    'form.nome':'Name','form.email':'Email',
+    'form.title':'Join the list 🌿','form.sub':'20 seconds. No spam. Only updates when there\'s real news.',
     'form.cta':'Become a Founding Member','form.priv':'No spam · Only Vitalia updates · Unsubscribe anytime',
     'succ.title':'You\'re in!','succ.sub':'Welcome to the <strong>Vitalia Founding Members</strong>.<br/>We\'ll reach out as soon as there\'s news from the lab.',
-    'survey.h3':'Got 3 minutes? Your input matters.',
-    'survey.p':'We\'re building Vitalia starting from real people\'s answers. Every response shapes what we produce. Available in Italian and English.',
+    'survey.h3':'Got 3 minutes? Your input shapes what we build.',
+    'survey.p':'We\'re building Vitalia by listening to real people, not trends. Every answer affects what we produce. Available in Italian and English.',
     'survey.it':'🇮🇹 Fill in Italian','survey.en':'🇬🇧 Fill in English',
   }
 };
@@ -861,20 +864,15 @@ const KEYS={
   'stat2':['span[data-key="stat2"]','innerHTML'],
   'stat3':['span[data-key="stat3"]','innerHTML'],
   'stat4':['span[data-key="stat4"]','innerHTML'],
-  'hero.eyebrow':['.hey span','innerHTML'],
   'hero.sub':['.hsub','innerHTML'],
   'hero.pill':['.spill > span:nth-child(2)','innerHTML'],
   'hero.cta1':['.hctas .bg','innerHTML'],
   'hero.cta2':['.hctas .bo','innerHTML'],
-  'prod.h2':['.ph h2','innerHTML'],
-  'prod.sub':['.ph p','innerHTML'],
   'sole.desc':['#sole-desc','innerHTML'],
   'terra.desc':['#terra-desc','innerHTML'],
   'alpi.desc':['#alpi-desc','innerHTML'],
   'stat.h3':['.sr h3','innerHTML'],
   'stat.p':['.sr p:first-of-type','innerHTML'],
-  'vit.h2':['.vh h2','innerHTML'],
-  'vit.sub':['.vh p','innerHTML'],
   'vit1.name':['#vn1','innerHTML'],'vit1.effect':['#ve1','innerHTML'],'vit1.desc':['#vd1','innerHTML'],
   'vit2.name':['#vn2','innerHTML'],'vit2.effect':['#ve2','innerHTML'],'vit2.desc':['#vd2','innerHTML'],
   'vit3.name':['#vn3','innerHTML'],'vit3.effect':['#ve3','innerHTML'],'vit3.desc':['#vd3','innerHTML'],
@@ -899,18 +897,13 @@ function setLang(lang){
     const el=document.querySelector(sel);
     if(el&&tr[k]!==undefined) el[prop]=tr[k];
   });
-  // special: h1 needs innerHTML
   document.querySelector('h1').innerHTML=tr['hero.h1'];
-  // toggle buttons
   document.getElementById('btn-it').classList.toggle('active',lang==='it');
   document.getElementById('btn-en').classList.toggle('active',lang==='en');
-  // form labels
-  document.querySelector('#wf label:first-of-type').textContent=tr['form.nome'];
-  document.querySelectorAll('#wf label')[1].textContent=tr['form.email'];
-  // store
+  document.querySelector('#wf label:first-of-type').textContent=tr['form.nome']||'Nome';
+  document.querySelectorAll('#wf label')[1].textContent=tr['form.email']||'Email';
   localStorage.setItem('vitaliaLang',lang);
 }
-// restore on load
 const savedLang=localStorage.getItem('vitaliaLang')||'it';
 if(savedLang==='en') setLang('en');
 </script>
