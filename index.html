@@ -152,7 +152,7 @@ h1 em{font-style:italic;color:var(--g6)}
 .prod-img-wrap:hover img{transform:scale(1.04)}
 .prod-img-wrap .prod-img-placeholder{
   aspect-ratio:16/10;background:rgba(255,255,255,0.04);
-  display:flex;align-items:center;justify-content:center;
+  display:none;align-items:center;justify-content:center;
   color:rgba(255,255,255,0.20);font-size:.82rem;letter-spacing:.08em;
   text-transform:uppercase}
 .prod-info{display:flex;flex-direction:column;gap:22px}
@@ -664,7 +664,7 @@ footer{background:var(--g1);padding:40px 0;border-top:1px solid var(--border-g)}
           <div class="tier ft">
             <span class="tier-ico">🎁</span>
             <div>
-              <div class="tier-tag" id="t1-spots">Primi 100 · Posti rimasti: 87</div>
+              <div class="tier-tag" id="t1-spots">Primi 200 · Posti rimasti: 187</div>
               <h4 id="t1-title">Barrette di prova gratis</h4>
               <p id="t1-perk">Le spediamo noi, prima del lancio. In cambio vogliamo solo il tuo <strong>feedback onesto</strong>.</p>
             </div>
@@ -672,7 +672,7 @@ footer{background:var(--g1);padding:40px 0;border-top:1px solid var(--border-g)}
           <div class="tier">
             <span class="tier-ico">💰</span>
             <div>
-              <div class="tier-tag" id="t2-spots">101 – 500 · Founding member</div>
+              <div class="tier-tag" id="t2-spots">201 – 1000 · Founding member</div>
               <h4 id="t2-title">Sconto permanente 30%</h4>
               <p id="t2-perk">Su ogni ordine, per sempre. <strong>Bloccato al momento dell'iscrizione.</strong></p>
             </div>
@@ -693,7 +693,7 @@ footer{background:var(--g1);padding:40px 0;border-top:1px solid var(--border-g)}
           <div class="progress-wrap">
             <div style="display:flex;justify-content:space-between;margin-bottom:7px">
               <span style="font-size:.67rem;color:var(--g8)">Posti rimasti</span>
-              <span style="font-size:.67rem;font-weight:600;color:var(--g6)" id="sv">487 / 500</span>
+              <span style="font-size:.67rem;font-weight:600;color:var(--g6)" id="sv">987 / 1000</span>
             </div>
             <div class="progress-bar"><div class="progress-fill" id="sf" style="width:2.6%"></div></div>
           </div>
@@ -752,7 +752,7 @@ footer{background:var(--g1);padding:40px 0;border-top:1px solid var(--border-g)}
 
 <script>
 const APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbyNdG9uNJro9hHpaPAc2Htu3gU8u7VipI5FEibJ81CQZkhjX2DK59x--oQQDbFJKXyK_Q/exec';
-const TOTAL=500,TAKEN=13;
+const TOTAL=1000,TAKEN=13;
 
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>nav.classList.toggle('s',scrollY>40),{passive:true});
@@ -791,7 +791,7 @@ document.getElementById('wf').addEventListener('submit',async function(e){
 });
 
 const PAGE=location.href.split('?')[0];
-const MSG=encodeURIComponent('🌿 Sono tra i Founding Members di Vitalia — la prima barretta italiana multivitaminica con ingredienti DOP/IGP e vitamine brevettate UniPR.\n\nI primi 100 ricevono le barrette gratis 👇\n'+PAGE);
+const MSG=encodeURIComponent('🌿 Sono tra i Founding Members di Vitalia — la prima barretta italiana multivitaminica con ingredienti DOP/IGP e vitamine brevettate UniPR.\n\nI primi 200 ricevono le barrette gratis 👇\n'+PAGE);
 function shareWA(){window.open('https://wa.me/?text='+MSG,'_blank')}
 function copyLnk(btn){navigator.clipboard.writeText(PAGE).then(()=>{btn.textContent='✓ Copiato!';setTimeout(()=>{btn.innerHTML='🔗 Copia link'},2000)})}
 
@@ -816,9 +816,9 @@ const T={
     'vit3.desc':'La forma D3 ha biodisponibilità superiore del 40% rispetto alla D2. Agisce su oltre 200 geni. Carente nel 72% degli italiani.',
     'vit4.name':'Vitamina E + Omega-3','vit4.effect':'Protezione cellulare',
     'vit4.desc':'L\'antiossidante liposolubile più importante del corpo. Con gli Omega-3 ALA riduce lo stress ossidativo e supporta il recupero muscolare.',
-    't1.spots':'Primi 100 · Posti rimasti: 87','t1.title':'Barrette di prova gratis',
+    't1.spots':'Primi 200 · Posti rimasti: 187','t1.title':'Barrette di prova gratis',
     't1.perk':'Le spediamo noi, prima del lancio. In cambio vogliamo solo il tuo <strong>feedback onesto</strong>.',
-    't2.spots':'101 – 500 · Founding member','t2.title':'Sconto permanente 30%',
+    't2.spots':'201 – 1000 · Founding member','t2.title':'Sconto permanente 30%',
     't2.perk':'Su ogni ordine, per sempre. <strong>Bloccato al momento dell\'iscrizione.</strong>',
     't3.spots':'Tutti · Co-fondatori','t3.title':'Voti e costruisci con noi',
     't3.perk':'Voti quale barretta lanciamo prima. Dai il nome a un gusto. <strong>Accesso diretto al team.</strong>',
@@ -843,9 +843,9 @@ const T={
     'vit3.desc':'D3 form has 40% higher bioavailability than D2. Acts on over 200 genes. Deficient in 72% of Italians.',
     'vit4.name':'Vitamin E + Omega-3','vit4.effect':'Cellular protection',
     'vit4.desc':'The most important fat-soluble antioxidant in the body. With ALA Omega-3, reduces oxidative stress and supports muscle recovery.',
-    't1.spots':'First 100 · Spots remaining: 87','t1.title':'Free tasting bars',
+    't1.spots':'First 200 · Spots remaining: 187','t1.title':'Free tasting bars',
     't1.perk':'We ship them before the launch. All we ask is your <strong>honest feedback</strong>.',
-    't2.spots':'101 – 500 · Founding member','t2.title':'Permanent 30% discount',
+    't2.spots':'201 – 1000 · Founding member','t2.title':'Permanent 30% discount',
     't2.perk':'On every order, forever. <strong>Locked in at registration.</strong>',
     't3.spots':'Everyone · Co-founders','t3.title':'Vote and build with us',
     't3.perk':'Vote which bar launches first. Name a flavor. <strong>Direct access to the team.</strong>',
