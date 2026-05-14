@@ -117,7 +117,7 @@ h1 em{font-style:italic;color:var(--g6)}
 /* ── HERO MAP ── */
 .hero-map-wrap{position:relative;display:flex;flex-direction:column;
                align-items:center;justify-content:center;gap:18px}
-.italy-svg-wrap{position:relative;width:100%;max-width:290px;margin:0 auto}
+.italy-svg-wrap{position:relative;width:100%;max-width:290px;margin:0 auto;overflow:visible}
 .italy-svg-wrap::before{content:'';position:absolute;top:40%;left:50%;
   transform:translate(-50%,-50%);width:130%;height:55%;border-radius:50%;
   background:radial-gradient(ellipse at center,rgba(58,145,71,.13) 0%,transparent 68%);
@@ -147,22 +147,20 @@ h1 em{font-style:italic;color:var(--g6)}
                    flex-shrink:0;box-shadow:0 0 7px rgba(200,169,110,.75)}
 .map-lbl-p{font-family:'Cormorant Garamond',serif;font-size:.95rem;font-weight:400;
            color:var(--cream);white-space:nowrap}
-.map-lbl--tr{left:57%;top:3%}
-.map-lbl--to{right:58%;top:24%;text-align:right}
+.map-lbl--tr{left:42%;top:6%}
+.map-lbl--to{right:64%;top:27%;text-align:right}
 .map-lbl--to .map-lbl-r{flex-direction:row-reverse}
-.map-lbl--si{left:63%;bottom:6%}
-/* floating stat pills */
-.map-pill{position:absolute;background:rgba(10,26,14,.90);
-          border:1px solid rgba(200,169,110,.22);border-radius:12px;
-          padding:11px 15px;backdrop-filter:blur(18px);z-index:3}
-.map-pill--a{top:12%;right:-8%}
-.map-pill--b{top:46%;left:-8%}
-.map-pill-n{font-family:'Cormorant Garamond',serif;font-size:1.5rem;
-            font-weight:300;color:var(--gold2);display:block;line-height:1}
-.map-pill-l{font-size:.61rem;color:var(--g8);letter-spacing:.04em;
-            display:block;margin-top:5px;max-width:82px;line-height:1.4}
+.map-lbl--si{left:64%;bottom:11%}
+/* stats grid under map */
+.map-stats{display:grid;grid-template-columns:1fr 1fr;gap:9px;width:100%;margin-top:2px}
+.mst{background:rgba(255,255,255,0.04);border:1px solid rgba(200,169,110,.18);
+     border-radius:11px;padding:10px 14px;backdrop-filter:blur(12px)}
+.mst-n{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;
+       color:var(--gold2);display:block;line-height:1}
+.mst-l{font-size:.59rem;color:var(--g8);letter-spacing:.04em;display:block;
+       margin-top:4px;line-height:1.35}
 .map-foot{font-size:.59rem;letter-spacing:.16em;text-transform:uppercase;
-          color:rgba(90,179,105,.32);text-align:center}
+          color:rgba(90,179,105,.32);text-align:center;margin-top:2px}
 @media(max-width:900px){
   .hero-inner{grid-template-columns:1fr;gap:48px;text-align:center}
   .hero-tag,.hero-btns,.spill{justify-content:center;margin-left:auto;margin-right:auto}
@@ -441,65 +439,91 @@ footer{background:var(--g1);padding:40px 0;border-top:1px solid var(--border-g)}
       <!-- ITALY MAP -->
       <div class="hero-map-wrap" data-r="R">
         <div class="italy-svg-wrap">
-          <svg class="italy-svg" viewBox="0 0 280 430" xmlns="http://www.w3.org/2000/svg" aria-label="Mappa d'Italia — tre regioni Vitalia">
+          <!--
+            Italy SVG — coordinate geografiche reali
+            scala: x=(lon-6.6)*21.5  y=(47.3-lat)*33.5
+            viewBox 0 0 260 380
+          -->
+          <svg class="italy-svg" viewBox="0 0 260 380" xmlns="http://www.w3.org/2000/svg" aria-label="Mappa d'Italia — tre regioni Vitalia">
 
             <!-- Coordinate grid -->
             <g class="map-grid">
-              <line x1="0" y1="107" x2="280" y2="107"/>
-              <line x1="0" y1="215" x2="280" y2="215"/>
-              <line x1="0" y1="322" x2="280" y2="322"/>
-              <line x1="70" y1="0" x2="70" y2="430"/>
-              <line x1="140" y1="0" x2="140" y2="430"/>
-              <line x1="210" y1="0" x2="210" y2="430"/>
+              <line x1="0" y1="77"  x2="260" y2="77"/>
+              <line x1="0" y1="178" x2="260" y2="178"/>
+              <line x1="0" y1="278" x2="260" y2="278"/>
+              <line x1="73"  y1="0" x2="73"  y2="380"/>
+              <line x1="116" y1="0" x2="116" y2="380"/>
+              <line x1="159" y1="0" x2="159" y2="380"/>
             </g>
-            <!-- Coordinate labels -->
-            <text class="map-ct" x="3" y="104">45°N</text>
-            <text class="map-ct" x="3" y="212">42°N</text>
-            <text class="map-ct" x="3" y="319">39°N</text>
-            <text class="map-ct" x="68" y="427">10°E</text>
-            <text class="map-ct" x="138" y="427">14°E</text>
+            <text class="map-ct" x="3" y="75">45°N</text>
+            <text class="map-ct" x="3" y="176">42°N</text>
+            <text class="map-ct" x="3" y="276">39°N</text>
+            <text class="map-ct" x="71" y="377">10°E</text>
+            <text class="map-ct" x="157" y="377">14°E</text>
 
-            <!-- Italy mainland — simplified boot shape -->
+            <!-- Sardinia (geografica, senza dot) -->
+            <path class="italy-land" d="M55,203 Q64,216 63,240 Q62,264 57,281 Q47,274 39,250 Q37,230 39,211 Q47,204 55,203Z"/>
+
+            <!-- Italy mainland — costruita su coordinate lon/lat reali -->
             <path class="italy-land" d="
-              M20,52 Q50,20 95,10 L145,7
-              Q175,8 200,28 L210,50
-              Q195,62 178,70 Q165,82 162,100
-              Q157,122 163,140 Q170,158 185,172
-              Q200,186 220,202 Q242,218 250,238
-              Q256,260 250,278 L238,288
-              Q226,298 218,315 Q208,332 203,348
-              Q218,358 215,352
-              Q205,338 194,318 Q182,292 168,268
-              Q158,250 148,232 Q138,215 130,198
-              Q120,176 115,156 Q107,134 103,116
-              Q95,96 84,80 Q73,66 61,56
-              Q43,52 20,52Z
+              M11,50 L105,10
+              Q148,27 154,55
+              Q138,60 124,63
+              Q124,86 128,109
+              Q138,117 148,124
+              Q156,143 164,162
+              Q182,176 200,190
+              Q212,199 221,207
+              Q233,215 244,223
+              Q250,232 253,252
+              Q241,245 228,229
+              Q219,240 208,258
+              Q205,277 202,296
+              Q199,308 195,314
+              L196,310
+              Q198,292 200,278
+              Q196,264 190,248
+              Q186,240 182,226
+              Q175,218 165,216
+              Q152,208 150,204
+              Q130,190 112,175
+              Q94,152 80,126
+              Q70,110 50,97
+              Q34,100 22,118
+              Q15,110 6,94
+              L11,50Z
             "/>
-            <!-- Sicily -->
+
+            <!-- Sicily — coordinate reali -->
             <path class="italy-land" d="
-              M136,380 Q155,365 175,365
-              Q193,363 202,375 Q208,388 202,402
-              Q192,414 173,416 Q153,416 140,403
-              Q127,391 136,380Z
+              M195,303
+              Q188,316 182,328
+              Q183,342 184,356
+              Q167,345 150,334
+              Q138,327 126,319
+              Q128,310 132,306
+              Q139,306 146,308
+              Q153,309 160,310
+              Q178,307 195,303Z
             "/>
 
-            <!-- Dashed connector through the 3 points -->
-            <path class="map-conn" d="M148,30 Q133,82 118,122 Q132,212 168,390"/>
+            <!-- Connector dorato attraverso i 3 punti -->
+            <path class="map-conn" d="M97,40 Q99,80 101,117 Q133,222 165,326"/>
 
-            <!-- TRENTINO dot (northern Italy ~46°N 11°E) -->
-            <circle class="mp-ring" cx="148" cy="30" r="5"/>
-            <circle class="mp-ring d1" cx="148" cy="30" r="5"/>
-            <circle class="mp-dot" cx="148" cy="30" r="3.5"/>
+            <!-- TRENTINO — 46.1°N 11.1°E → (97,40) -->
+            <circle class="mp-ring" cx="97" cy="40" r="5"/>
+            <circle class="mp-ring d1" cx="97" cy="40" r="5"/>
+            <circle class="mp-dot" cx="97" cy="40" r="3.5"/>
 
-            <!-- TOSCANA dot (~43.8°N 11.3°E) -->
-            <circle class="mp-ring" cx="118" cy="122" r="5" style="animation-delay:.35s"/>
-            <circle class="mp-ring d1" cx="118" cy="122" r="5" style="animation-delay:1.75s"/>
-            <circle class="mp-dot" cx="118" cy="122" r="3.5"/>
+            <!-- TOSCANA (Firenze) — 43.8°N 11.3°E → (101,117) -->
+            <circle class="mp-ring" cx="101" cy="117" r="5" style="animation-delay:.35s"/>
+            <circle class="mp-ring d1" cx="101" cy="117" r="5" style="animation-delay:1.75s"/>
+            <circle class="mp-dot" cx="101" cy="117" r="3.5"/>
 
-            <!-- SICILIA dot (~37.5°N 14°E) -->
-            <circle class="mp-ring" cx="168" cy="390" r="5" style="animation-delay:.7s"/>
-            <circle class="mp-ring d1" cx="168" cy="390" r="5" style="animation-delay:2.1s"/>
-            <circle class="mp-dot" cx="168" cy="390" r="3.5"/>
+            <!-- SICILIA (Enna) — 37.56°N 14.28°E → (165,326) -->
+            <circle class="mp-ring" cx="165" cy="326" r="5" style="animation-delay:.7s"/>
+            <circle class="mp-ring d1" cx="165" cy="326" r="5" style="animation-delay:2.1s"/>
+            <circle class="mp-dot" cx="165" cy="326" r="3.5"/>
 
           </svg>
 
@@ -519,14 +543,25 @@ footer{background:var(--g1);padding:40px 0;border-top:1px solid var(--border-g)}
             </div>
           </div>
 
-          <!-- Floating stat cards -->
-          <div class="map-pill map-pill--a">
-            <span class="map-pill-n">€4.5B</span>
-            <span class="map-pill-l">mercato nutraceutica italiano</span>
+        </div>
+
+        <!-- 4 statistiche chiave -->
+        <div class="map-stats">
+          <div class="mst">
+            <span class="mst-n">€4.5B</span>
+            <span class="mst-l">mercato nutraceutica italiano</span>
           </div>
-          <div class="map-pill map-pill--b">
-            <span class="map-pill-n" style="color:var(--g6)">0</span>
-            <span class="map-pill-l">brand italiani nel top-5 EU</span>
+          <div class="mst">
+            <span class="mst-n" style="color:var(--g6)">0</span>
+            <span class="mst-l">brand italiani nel top-5 EU nutraceutica</span>
+          </div>
+          <div class="mst">
+            <span class="mst-n">37%</span>
+            <span class="mst-l">degli italiani assume integratori regolarmente</span>
+          </div>
+          <div class="mst">
+            <span class="mst-n">+12%</span>
+            <span class="mst-l">crescita annua consumo barrette funzionali IT</span>
           </div>
         </div>
 
