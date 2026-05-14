@@ -105,20 +105,71 @@ h1 em{font-style:italic;color:var(--g6)}
 .lbtn{padding:2px 8px;border-radius:4px;background:rgba(90,179,105,.14);font-size:.68rem;
       font-weight:600;color:var(--g6);transition:background .2s}
 .lbtn:hover{background:rgba(90,179,105,.28)}
-/* stat cards */
-.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+/* stat cards (kept for legacy) */
 .stat-card{background:var(--card-bg);border:1px solid var(--border-g);
-           border-radius:18px;padding:24px;
-           backdrop-filter:blur(10px);
+           border-radius:18px;padding:24px;backdrop-filter:blur(10px);
            transition:border-color .3s,transform .3s}
 .stat-card:hover{border-color:var(--border-g2);transform:translateY(-3px)}
 .stat-num{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:300;
           color:var(--g6);line-height:1}
 .stat-label{font-size:.76rem;color:var(--g8);margin-top:6px;line-height:1.45}
+
+/* ── HERO MAP ── */
+.hero-map-wrap{position:relative;display:flex;flex-direction:column;
+               align-items:center;justify-content:center;gap:18px}
+.italy-svg-wrap{position:relative;width:100%;max-width:290px;margin:0 auto}
+.italy-svg-wrap::before{content:'';position:absolute;top:40%;left:50%;
+  transform:translate(-50%,-50%);width:130%;height:55%;border-radius:50%;
+  background:radial-gradient(ellipse at center,rgba(58,145,71,.13) 0%,transparent 68%);
+  pointer-events:none;z-index:0}
+.italy-svg{width:100%;height:auto;overflow:visible;position:relative;z-index:1}
+.map-grid line{stroke:rgba(90,179,105,.07);stroke-width:.5}
+.italy-land{fill:rgba(58,145,71,.07);stroke:rgba(90,179,105,.58);stroke-width:1.4;
+            stroke-linejoin:round;stroke-linecap:round;
+            filter:drop-shadow(0 0 14px rgba(58,145,71,.18))}
+.map-conn{fill:none;stroke:rgba(200,169,110,.30);stroke-width:.9;
+          stroke-dasharray:3.5 5;animation:mapDash 6s linear infinite}
+@keyframes mapDash{to{stroke-dashoffset:-34}}
+.mp-ring{fill:none;stroke:var(--gold);stroke-width:1.2;opacity:0;
+         transform-box:fill-box;transform-origin:center;
+         animation:mpRing 2.8s ease-out infinite}
+.mp-ring.d1{animation-delay:1.4s}
+@keyframes mpRing{0%{opacity:.85;transform:scale(1)}100%{opacity:0;transform:scale(4.2)}}
+.mp-dot{fill:var(--gold);filter:drop-shadow(0 0 6px rgba(200,169,110,.9))}
+.map-ct{fill:rgba(90,179,105,.28);font-size:5.5px;font-family:'DM Sans',sans-serif;
+        letter-spacing:.05em}
+/* labels */
+.map-labels{position:absolute;inset:0;pointer-events:none;z-index:2}
+.map-lbl{position:absolute;display:flex;flex-direction:column;gap:2px}
+.map-lbl-r{font-size:.60rem;letter-spacing:.13em;text-transform:uppercase;
+           color:var(--g6);display:flex;align-items:center;gap:5px}
+.map-lbl-r::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold);
+                   flex-shrink:0;box-shadow:0 0 7px rgba(200,169,110,.75)}
+.map-lbl-p{font-family:'Cormorant Garamond',serif;font-size:.95rem;font-weight:400;
+           color:var(--cream);white-space:nowrap}
+.map-lbl--tr{left:57%;top:3%}
+.map-lbl--to{right:58%;top:24%;text-align:right}
+.map-lbl--to .map-lbl-r{flex-direction:row-reverse}
+.map-lbl--si{left:63%;bottom:6%}
+/* floating stat pills */
+.map-pill{position:absolute;background:rgba(10,26,14,.90);
+          border:1px solid rgba(200,169,110,.22);border-radius:12px;
+          padding:11px 15px;backdrop-filter:blur(18px);z-index:3}
+.map-pill--a{top:12%;right:-8%}
+.map-pill--b{top:46%;left:-8%}
+.map-pill-n{font-family:'Cormorant Garamond',serif;font-size:1.5rem;
+            font-weight:300;color:var(--gold2);display:block;line-height:1}
+.map-pill-l{font-size:.61rem;color:var(--g8);letter-spacing:.04em;
+            display:block;margin-top:5px;max-width:82px;line-height:1.4}
+.map-foot{font-size:.59rem;letter-spacing:.16em;text-transform:uppercase;
+          color:rgba(90,179,105,.32);text-align:center}
 @media(max-width:900px){
   .hero-inner{grid-template-columns:1fr;gap:48px;text-align:center}
   .hero-tag,.hero-btns,.spill{justify-content:center;margin-left:auto;margin-right:auto}
   .hero-sub{margin:0 auto 42px}
+  .map-pill{display:none}
+  .map-lbl--tr,.map-lbl--to,.map-lbl--si{display:none}
+  .italy-svg-wrap{max-width:240px}
 }
 
 /* ── TICKER ── */
@@ -387,23 +438,99 @@ footer{background:var(--g1);padding:40px 0;border-top:1px solid var(--border-g)}
           <a href="#prodotti" class="btn-outline">Scopri i prodotti</a>
         </div>
       </div>
-      <div class="hero-stats" data-r="R">
-        <div class="stat-card">
-          <div class="stat-num">0</div>
-          <div class="stat-label" data-key="stat1">brand italiani nel top-5 EU nutraceutica</div>
+      <!-- ITALY MAP -->
+      <div class="hero-map-wrap" data-r="R">
+        <div class="italy-svg-wrap">
+          <svg class="italy-svg" viewBox="0 0 280 430" xmlns="http://www.w3.org/2000/svg" aria-label="Mappa d'Italia — tre regioni Vitalia">
+
+            <!-- Coordinate grid -->
+            <g class="map-grid">
+              <line x1="0" y1="107" x2="280" y2="107"/>
+              <line x1="0" y1="215" x2="280" y2="215"/>
+              <line x1="0" y1="322" x2="280" y2="322"/>
+              <line x1="70" y1="0" x2="70" y2="430"/>
+              <line x1="140" y1="0" x2="140" y2="430"/>
+              <line x1="210" y1="0" x2="210" y2="430"/>
+            </g>
+            <!-- Coordinate labels -->
+            <text class="map-ct" x="3" y="104">45°N</text>
+            <text class="map-ct" x="3" y="212">42°N</text>
+            <text class="map-ct" x="3" y="319">39°N</text>
+            <text class="map-ct" x="68" y="427">10°E</text>
+            <text class="map-ct" x="138" y="427">14°E</text>
+
+            <!-- Italy mainland — simplified boot shape -->
+            <path class="italy-land" d="
+              M20,52 Q50,20 95,10 L145,7
+              Q175,8 200,28 L210,50
+              Q195,62 178,70 Q165,82 162,100
+              Q157,122 163,140 Q170,158 185,172
+              Q200,186 220,202 Q242,218 250,238
+              Q256,260 250,278 L238,288
+              Q226,298 218,315 Q208,332 203,348
+              Q218,358 215,352
+              Q205,338 194,318 Q182,292 168,268
+              Q158,250 148,232 Q138,215 130,198
+              Q120,176 115,156 Q107,134 103,116
+              Q95,96 84,80 Q73,66 61,56
+              Q43,52 20,52Z
+            "/>
+            <!-- Sicily -->
+            <path class="italy-land" d="
+              M136,380 Q155,365 175,365
+              Q193,363 202,375 Q208,388 202,402
+              Q192,414 173,416 Q153,416 140,403
+              Q127,391 136,380Z
+            "/>
+
+            <!-- Dashed connector through the 3 points -->
+            <path class="map-conn" d="M148,30 Q133,82 118,122 Q132,212 168,390"/>
+
+            <!-- TRENTINO dot (northern Italy ~46°N 11°E) -->
+            <circle class="mp-ring" cx="148" cy="30" r="5"/>
+            <circle class="mp-ring d1" cx="148" cy="30" r="5"/>
+            <circle class="mp-dot" cx="148" cy="30" r="3.5"/>
+
+            <!-- TOSCANA dot (~43.8°N 11.3°E) -->
+            <circle class="mp-ring" cx="118" cy="122" r="5" style="animation-delay:.35s"/>
+            <circle class="mp-ring d1" cx="118" cy="122" r="5" style="animation-delay:1.75s"/>
+            <circle class="mp-dot" cx="118" cy="122" r="3.5"/>
+
+            <!-- SICILIA dot (~37.5°N 14°E) -->
+            <circle class="mp-ring" cx="168" cy="390" r="5" style="animation-delay:.7s"/>
+            <circle class="mp-ring d1" cx="168" cy="390" r="5" style="animation-delay:2.1s"/>
+            <circle class="mp-dot" cx="168" cy="390" r="3.5"/>
+
+          </svg>
+
+          <!-- Region labels -->
+          <div class="map-labels">
+            <div class="map-lbl map-lbl--tr">
+              <span class="map-lbl-r">Trentino</span>
+              <span class="map-lbl-p">Vitalia Alpi</span>
+            </div>
+            <div class="map-lbl map-lbl--to">
+              <span class="map-lbl-r">Toscana</span>
+              <span class="map-lbl-p">Vitalia Terra</span>
+            </div>
+            <div class="map-lbl map-lbl--si">
+              <span class="map-lbl-r">Sicilia</span>
+              <span class="map-lbl-p">Dark Crunch</span>
+            </div>
+          </div>
+
+          <!-- Floating stat cards -->
+          <div class="map-pill map-pill--a">
+            <span class="map-pill-n">€4.5B</span>
+            <span class="map-pill-l">mercato nutraceutica italiano</span>
+          </div>
+          <div class="map-pill map-pill--b">
+            <span class="map-pill-n" style="color:var(--g6)">0</span>
+            <span class="map-pill-l">brand italiani nel top-5 EU</span>
+          </div>
         </div>
-        <div class="stat-card">
-          <div class="stat-num">€4.5B</div>
-          <div class="stat-label" data-key="stat2">mercato italiano nutraceutica</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">UniPR</div>
-          <div class="stat-label" data-key="stat3">contratto R&amp;D già firmato</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num" style="color:var(--gold)">40%</div>
-          <div class="stat-label" data-key="stat4">delle vitamine si degrada in lavorazione</div>
-        </div>
+
+        <p class="map-foot">Ingredienti DOP · IGP · Bio · Made in Italy</p>
       </div>
     </div>
   </div>
